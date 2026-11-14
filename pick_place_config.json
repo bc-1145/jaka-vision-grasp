@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "camera": {
+    "sdk": null,
+    "mount": "eye_in_hand",
+    "warmup_frames": 3,
+    "frames": 5,
+    "roi": {
+      "min_mm": [
+        -250.0,
+        -170.0,
+        150.0
+      ],
+      "max_mm": [
+        220.0,
+        280.0,
+        450.0
+      ]
+    },
+    "base_T_camera": null,
+    "tcp_T_camera": [
+      [-0.002269905777721941, 0.999980073923184, -0.005890609844854176, 68.00336779272727],
+      [0.9999960480570503, 0.002279634276846483, 0.0016453382162851153, 31.733340484948133],
+      [0.001658733867263288, -0.005886851802776676, -0.9999812966139967, -24.066712241311986],
+      [0.0, 0.0, 0.0, 1.0]
+    ],
+    "calibration_tool_id": 0
+  },
+  "model": {
+    "path": "螺栓.FCStd",
+    "axis_model": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "large_end_z_mm": 0.0,
+    "grasp_point_mm": [
+      0.0,
+      0.0,
+      27.4
+    ],
+    "grasp_width_mm": 21.0,
+    "grasp_region": "shaft",
+    "shaft_z_range_mm": [
+      3.6,
+      51.2
+    ],
+    "head_z_range_mm": [
+      0.0,
+      3.2
+    ]
+  },
+  "matching": {
+    "scene_voxel_mm": 1.0,
+    "model_voxel_mm": 1.5,
+    "model_sample_points": 7000,
+    "plane_distance_mm": 1.5,
+    "cluster_eps_mm": 3.0,
+    "cluster_min_points": 20,
+    "min_cluster_points": 180,
+    "extent_tolerance": 0.55,
+    "ransac_distance_mm": 4.5,
+    "icp_distance_mm": 2.5,
+    "minimum_score": 0.58
+  },
+  "gripper": {
+    "open_command_mm": 20.0,
+    "close_command_mm": 9.43,
+    "measured_max_object_mm": 21.5,
+    "tcp_to_grasp_center_mm": [
+      0.0,
+      0.0,
+      -180.0
+    ],
+    "tcp_to_grasp_center_estimate_mm": [
+      0.0,
+      0.0,
+      -180.0
+    ],
+    "tcp_to_grasp_center_estimate_source": "Operator estimated approximately 18 cm. Axis sign corrected to flange -Z from the calibrated camera viewing direction and observed workpiece depth; provisional for first pickup",
+    "down_rpy_deg": [
+      -180.0,
+      0.0,
+      90.0
+    ],
+    "jaw_axis_tcp": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "confirmed_hold_setting": {
+      "command_mm": 9.43,
+      "source": "Operator confirmed holding the shaft/body, not the large head, at 9.43 mm command",
+      "is_measured_finger_spacing": false,
+      "is_camera_or_tool_geometry_calibration": false,
+      "grasp_region": "shaft"
+    }
+  },
+  "robot": {
+    "speed_mm_s": 10.0,
+    "accel_mm_s2": 20.0,
+    "approach_mm": 60.0,
+    "lift_mm": 80.0,
+    "motion_timeout_s": 120.0,
+    "max_direct_rotation_deg": 100.0,
+    "observation_pose": {
+      "created_unix": 1794606561.3957477,
+      "tcp_pose": [
+        253.56110175124527,
+        -62.730297336802245,
+        262.28821902853895,
+        177.6921274143897,
+        -1.7455069485724777,
+        179.84335931934498
+      ],
+      "tool_id": 0,
+      "user_id": 0
+    }
+  },
+  "placement": {
+    "home_pose": [
+      -90.0,
+      -180.0,
+      280.0,
+      -180.0,
+      0.0,
+      90.0
+    ],
+    "platform_z_mm": null,
+    "yaw_deg": 0.0,
+    "mode": "home_tcp"
+  },
+  "fixture": {
+    "enabled": false,
+    "open_command_mm": 20.0,
+    "close_command_mm": 10.0,
+    "deposit_approach_pose": null,
+    "deposit_pose": null,
+    "pickup_approach_pose": null,
+    "pickup_pose": null,
+    "model_pose_when_clamped": null
+  }
+}

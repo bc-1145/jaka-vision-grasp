@@ -1,0 +1,78 @@
+{
+  "created_unix": 1794610192.8966064,
+  "trajectory_file": "calibration_data\\auto_trajectory.json",
+  "motion_commands_sent": 0,
+  "gripper_writes_sent": 0,
+  "captured_new_views": 0,
+  "planned_views": 9,
+  "kinematics": {
+    "ik_samples": 64,
+    "fk_samples": 257,
+    "max_sampled_flange_shift_mm": 0.006877597845960711,
+    "max_sampled_flange_tilt_deg": 8.000000000134241,
+    "joint_min_deg": [
+      153.63739187983944,
+      -7.04731378881198,
+      73.93600065133636,
+      -6.414523994034467,
+      94.6294008779975,
+      154.14673442974953
+    ],
+    "joint_max_deg": [
+      165.83327694249567,
+      4.375125467955379,
+      85.18761910466151,
+      9.12030282773734,
+      109.22828773828958,
+      163.5242584052832
+    ],
+    "max_joint_excursion_deg": [
+      6.132626942495676,
+      5.713675467955379,
+      5.766589104661506,
+      7.834973994034467,
+      7.332919122002508,
+      4.694438405283194
+    ],
+    "joint_limits_checked": false,
+    "collision_clearance_checked": false
+  },
+  "actual_pose_after": [
+    192.14357877768828,
+    -60.53203595616978,
+    279.89968636936476,
+    178.68904622316145,
+    0.4634232190481902,
+    -178.8405831503684
+  ],
+  "actual_joints_after": [
+    159.70065,
+    -1.33855,
+    79.42103,
+    1.42045,
+    101.96232,
+    158.82982
+  ],
+  "tests": {
+    "calibration_motion": 10,
+    "markerless_handeye": 9,
+    "gui_smoke": "passed"
+  },
+  "blocked_by": [
+    "现场相机/夹具/支架与整条机械臂、线缆的运动净空",
+    "当前机器人的实际关节软限位",
+    "与已安装附件一致的负载和重心配置"
+  ],
+  "payload_readback": {
+    "errorCode": "0",
+    "centroid": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "mass": 0.0,
+    "cmdName": "get_payload",
+    "errorMsg": ""
+  },
+  "plan_sha256": "50bfb5bc2d146889bccd5cd55d9c618f47f3a9148af3e2a6771f57882c71c65e"
+}

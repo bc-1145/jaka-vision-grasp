@@ -1,0 +1,7 @@
+{
+  "completed": false,
+  "motion_attempts": 1,
+  "samples": 1,
+  "returned_to_start": false,
+  "error": "no complete status frame on 10.5.5.100:10000"
+}

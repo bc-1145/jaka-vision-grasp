@@ -1,0 +1,33 @@
+# Local Python runtimes and installation artifacts
+/.runtime/
+/.camera-runtime/
+/.runtime-setup/
+/.driver-setup/
+/installers/*
+!/installers/README.md
+
+# Python caches
+__pycache__/
+*.py[cod]
+!JAKA/*.pyd
+.pytest_cache/
+
+# Generated diagnostics and runtime logs
+/logs/
+/diagnostics/*
+!/diagnostics/README.md
+/.jaka-command-port.lock
+*.log
+*.log.*
+
+# Local credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# Calibration data, robot configurations, CAD models and pick results are
+# intentionally not ignored here: keep their backup/versioning policy explicit.

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "samples": [
+    {
+      "file": "sample_001.ply",
+      "sha256": "a4c25778b4079ccde7f020970017c6779a2dd19b5ad0e40f69396a950a5b9ffa",
+      "observation": {
+        "created_unix": 1794609099.0469813,
+        "tcp_pose": [
+          192.14357877768828,
+          -60.53203595616978,
+          279.89968636936476,
+          178.68904622316145,
+          0.4634232190481902,
+          -178.8405831503684
+        ],
+        "tool_id": 0,
+        "user_id": 0
+      },
+      "point_count": 370119
+    }
+  ],
+  "roi": {
+    "min_mm": [
+      -250.0,
+      -170.0,
+      150.0
+    ],
+    "max_mm": [
+      220.0,
+      280.0,
+      450.0
+    ]
+  },
+  "robot_host": "10.5.5.100",
+  "instructions": "Keep the entire scene static; change camera viewing angles around more than one rotation axis."
+}

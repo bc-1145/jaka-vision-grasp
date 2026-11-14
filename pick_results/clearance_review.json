@@ -1,0 +1,17 @@
+[
+  {
+    "cluster_index": 5,
+    "previous_clearance_mm": 27.958708791311057,
+    "full_scene_clearance_mm": 1.732
+  },
+  {
+    "cluster_index": 3,
+    "previous_clearance_mm": 5.279019082972504,
+    "full_scene_clearance_mm": 1.604
+  },
+  {
+    "cluster_index": 1,
+    "previous_clearance_mm": 14.521038214733904,
+    "full_scene_clearance_mm": 13.127
+  }
+]

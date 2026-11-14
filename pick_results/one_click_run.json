@@ -1,0 +1,17 @@
+{
+  "created_unix": 1794625607.727248,
+  "completed": false,
+  "holding": false,
+  "mode": "one_click_fast_staged",
+  "stage": "低速直线到新拍照接近点",
+  "target_pose": [
+    249.939199851175,
+    -58.857948256384105,
+    162.42888426595576,
+    177.6921274143897,
+    -1.7455069485724777,
+    179.84335931934498
+  ],
+  "stop_error": "robot motion fault: collision=1",
+  "error": "robot motion fault: collision=1"
+}

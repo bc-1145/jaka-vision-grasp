@@ -1,0 +1,19 @@
+{
+  "host": "10.5.5.100",
+  "devices": [
+    {
+      "name": "机器人夹爪",
+      "high_index": 3,
+      "low_index": 4,
+      "unit_id": 1,
+      "device_id": "ext_n7sn2kaoncejc6b2"
+    },
+    {
+      "name": "定位夹爪",
+      "high_index": 23,
+      "low_index": 24,
+      "unit_id": 2,
+      "device_id": "ext_okd192pie73plk2t"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "measurement_source": "Operator estimated flange-to-grasp-center as approximately 180 mm and confirmed at least 30 mm clear around camera and gripper for this 6 degree slow calibration sweep; controller state and IK were read live",
+  "attachment_radius_mm": 180.0,
+  "attachment_clearance_mm": 30.0,
+  "arm_and_cables_clear": true,
+  "joint_limits_deg": [
+    [-180.0, 180.0],
+    [-180.0, 180.0],
+    [-180.0, 180.0],
+    [-180.0, 180.0],
+    [-180.0, 180.0],
+    [-180.0, 180.0]
+  ],
+  "joint_limit_source": "conservative planning guard; controller IK and live soft-limit state remain authoritative",
+  "verified_payload": {
+    "mass": 0.0,
+    "centroid": [0.0, 0.0, 0.0]
+  },
+  "use_existing_controller_payload_for_slow_calibration": true,
+  "payload_note": "existing controller configuration retained for the 1 deg/s calibration only; it is not accepted as a measured attachment payload for picking",
+  "reviewed_plan_sha256": "969f1ff98ba65355d6ee8f369f611e663b7d24b0c785e78b99763463392aef65"
+}

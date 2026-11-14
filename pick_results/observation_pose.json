@@ -1,0 +1,48 @@
+{
+  "recorded_at": "2026-11-13T21:45:19.054529+00:00",
+  "robot_host": "10.5.5.100",
+  "tcp_pose": [
+    192.14357877768828,
+    -60.53203595616978,
+    279.89968636936476,
+    178.68904622316145,
+    0.4634232190481902,
+    -178.8405831503684
+  ],
+  "joint_pose": [
+    159.70064904758067,
+    -1.3385468215660228,
+    79.42103284294612,
+    1.4204507272125222,
+    101.96232190571511,
+    158.8298158734382
+  ],
+  "state": {
+    "enable": true,
+    "power": 1,
+    "errorMsg": "",
+    "errcode": 0,
+    "cmdName": "get_robot_state",
+    "errorCode": "0",
+    "msg": ""
+  },
+  "motion": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 0
+  },
+  "purpose": "User-designated camera observation pose; read-only recording, no motion",
+  "tool_id": 0,
+  "user_id": 0,
+  "camera_mount": "eye_in_hand"
+}

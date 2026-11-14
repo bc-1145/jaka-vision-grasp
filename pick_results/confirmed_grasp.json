@@ -1,0 +1,75 @@
+{
+  "recorded_at": "2026-11-13T21:58:32.947374+00:00",
+  "model_path": "螺栓.FCStd",
+  "gripper": {
+    "name": "机器人夹爪",
+    "unit_id": 1,
+    "high": 16800.0,
+    "low": 0.0,
+    "command_mm": 20.0
+  },
+  "tcp_pose": [
+    192.14357877768828,
+    -60.53203595616978,
+    279.89968636936476,
+    178.68904622316145,
+    0.4634232190481902,
+    -178.8405831503684
+  ],
+  "joint_pose": [
+    159.70064904758067,
+    -1.3385468215660228,
+    79.42103284294612,
+    1.4204507272125222,
+    101.96232190571511,
+    158.8298158734382
+  ],
+  "motion": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 0
+  },
+  "tool_id": 0,
+  "user_id": 0,
+  "home_pose": [
+    -90.0,
+    -180.0,
+    280.0,
+    -180.0,
+    0.0,
+    90.0
+  ],
+  "screenshot_confirmation": {
+    "command_mm": 9.43,
+    "operator_confirmed_holding": true
+  },
+  "current_grasp_verified": false,
+  "readback_consistency": "Live command differs from the confirmed screenshot; no motion or gripper write was issued",
+  "latest_read_at": "2026-11-13T21:59:21.159723+00:00",
+  "latest_readbacks": [
+    {
+      "name": "机器人夹爪",
+      "unit_id": 1,
+      "command_mm": 20.0,
+      "high": 16800.0,
+      "low": 0.0
+    },
+    {
+      "name": "定位夹爪",
+      "unit_id": 2,
+      "command_mm": 0.0,
+      "high": 0.0,
+      "low": 0.0
+    }
+  ]
+}

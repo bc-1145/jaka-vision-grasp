@@ -1,0 +1,47 @@
+{
+  "tested_at": "2026-11-13T22:21:31.997013+00:00",
+  "process_exit_code": 1,
+  "result": "blocked_before_motion",
+  "plan_status": "preview",
+  "executable": false,
+  "shaft_grasp_center_camera_mm": [
+    -152.3326385106026,
+    137.6683313131438,
+    293.2408965930602
+  ],
+  "close_command_mm": 9.43,
+  "missing_calibration": [
+    "gripper.tcp_to_grasp_center_mm",
+    "gripper.measured_max_object_mm",
+    "camera.tcp_T_camera",
+    "camera.calibration_tool_id"
+  ],
+  "before": {
+    "created_unix": 1794608465.7318997,
+    "tcp_pose": [
+      192.14357877768828,
+      -60.53203595616978,
+      279.89968636936476,
+      178.68904622316145,
+      0.4634232190481902,
+      -178.8405831503684
+    ],
+    "tool_id": 0,
+    "user_id": 0
+  },
+  "after": {
+    "created_unix": 1794608491.997014,
+    "tcp_pose": [
+      192.14357877768828,
+      -60.53203595616978,
+      279.89968636936476,
+      178.68904622316145,
+      0.4634232190481902,
+      -178.8405831503684
+    ],
+    "tool_id": 0,
+    "user_id": 0
+  },
+  "max_pose_change": 0.0,
+  "log_path": "C:\\Users\\Administrator\\Desktop\\1\\logs\\grasp_trial.log"
+}
