@@ -399,18 +399,26 @@ class GripperPanel(ttk.Frame):
                 self.busy = False
                 self.active_action = None
                 if error is not None:
-                    self.armed.set(False)
                     self._cancel_live()
                     self.operation_text.set(str(error))
                     self._log(f"{action} 失败：{error}")
                     if isinstance(error, ControllerBusyError):
-                        self.connected = self.client is not None
-                        self.connection_text.set("机械臂程序正在控制 · 夹具端口已让出")
+                        # A lease refusal sends nothing and does not invalidate
+                        # an established connection. Background polling must not
+                        # silently revoke permission after every arm workflow.
+                        self.connection_text.set("控制端口忙 · 等待空闲后恢复读取")
+                        self.operation_text.set("其他程序正在使用控制端口；待发送目标已清除。")
+                        if action in ("connect", "reconnect"):
+                            self._schedule_reconnect()
+                        elif action in ("write", "live"):
+                            self.operation_text.set("控制端口忙，本次开度未发送；请空闲后重新操作。")
                     elif isinstance(error, (OSError, CommunicationError)):
+                        self.armed.set(False)
                         self.connected = False
                         self.connection_text.set("通信中断")
                         self._schedule_reconnect()
                     elif action in ("write", "live") and self.connected:
+                        self.armed.set(False)
                         # Preflight faults are operation errors, not TCP loss.
                         # An uncertain write remains a manual recovery case.
                         if isinstance(error, WriteUncertainError):
@@ -419,6 +427,7 @@ class GripperPanel(ttk.Frame):
                         else:
                             self.connection_text.set("已连接 · 操作被阻止")
                     else:
+                        self.armed.set(False)
                         self.connected = False
                         self.connection_text.set("连接或配置异常 · 请重新连接")
                 else:

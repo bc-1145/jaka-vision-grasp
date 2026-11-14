@@ -1,0 +1,5 @@
+{"stage": "控制器与夹爪反馈检查", "created_unix": 1794675093.4279814, "feedback": {"available": false, "grip_state": null, "state_name": null, "holding": null, "dropped": null, "actual_position_mm": null, "current_a": null, "initialization_state": null, "reason": "夹爪反馈读取失败：timed out", "source": "jaka_extio_input_registers", "protocol_source": "https://cn.hitbot.cc/hitbot/document/Z-EFG/Z-EFG-20P/Z-EFG-20P.pdf", "created_unix": 1794675093.4279814, "field_available": {"state": false, "position": false, "current": false, "initialization": false}, "device_id": "ext_n7sn2kaoncejc6b2", "unit_id": 1, "command_is_measured_gap": false}}
+{"stage": "已在高处总览位", "created_unix": 1794675093.4604857}
+{"stage": "高位重新扫描零件", "created_unix": 1794675093.4628592, "scan_attempt": 1}
+{"stage": "核对大法兰方向", "created_unix": 1794675115.8587565, "direction": {"accepted": true, "status": "verified", "reason": "Measured wide flange supports CAD direction", "head_annulus_points": 479, "reverse_annulus_points": 223, "direction_ratio": 2.142857142857143}}
+{"stage": "只读识别完成", "created_unix": 1794675115.8648129}

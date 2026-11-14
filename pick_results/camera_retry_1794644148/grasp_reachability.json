@@ -1,0 +1,35 @@
+{
+  "current": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 0,
+    "actual_position": [
+      6.006182982225864,
+      -472.8634883878092,
+      221.7190440458768,
+      179.99886828066735,
+      45.00051052970893,
+      89.99950438851145
+    ],
+    "joint_actual_position": [
+      90.00063705325697,
+      45.00041177725308,
+      44.9994936413517,
+      0.00046782138971612763,
+      44.99958404244222,
+      180.0004701057055
+    ]
+  },
+  "solutions": [],
+  "motion_sent": false
+}

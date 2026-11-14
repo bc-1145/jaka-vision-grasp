@@ -1,0 +1,19 @@
+{
+  "accepted": true,
+  "status": "verified",
+  "reason": "Current tabletop measured",
+  "plane_base": [
+    -0.0038445191345956096,
+    0.0016091151413448932,
+    0.9999913151728297,
+    -66.33199268895868
+  ],
+  "support_points": 70857,
+  "normal_tilt_deg": 0.2387913191547596,
+  "residual_median_mm": 0.34030187407624624,
+  "height_at_grasp_xy_mm": 67.3619868698623,
+  "fit_xy_mm": [
+    43.0,
+    -537.0
+  ]
+}

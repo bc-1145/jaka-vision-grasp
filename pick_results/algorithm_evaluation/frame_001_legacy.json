@@ -1,0 +1,165 @@
+{
+  "frame": "frame_001.npz",
+  "strategy": "legacy",
+  "duration_s": 4.09400000000096,
+  "scene_points": 121720,
+  "clusters": 25,
+  "matches": [],
+  "diagnostics": [
+    {
+      "cluster_index": 0,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 1,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 2,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 3,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 4,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 5,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 6,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 7,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 8,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 9,
+      "observed_support": 0.8187250996015937,
+      "visible_support": 0.22268326417704012,
+      "head_support": 0.09696969696969697,
+      "shaft_support": 0.29977628635346754,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "cluster_index": 10,
+      "observed_support": 0.8528896672504378,
+      "visible_support": 0.4170822942643391,
+      "head_support": 0.12053571428571429,
+      "shaft_support": 0.46589259796806964,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "cluster_index": 11,
+      "observed_support": 0.9653312788906009,
+      "visible_support": 0.21865745310957552,
+      "head_support": 0.004592422502870264,
+      "shaft_support": 0.3800865800865801,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "cluster_index": 12,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 13,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 14,
+      "observed_support": 0.9987937273823885,
+      "visible_support": 0.19780743565300285,
+      "head_support": 0.010882708585247884,
+      "shaft_support": 0.32018927444794953,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "cluster_index": 15,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 16,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 17,
+      "observed_support": 0.9986357435197817,
+      "visible_support": 0.04688279301745636,
+      "head_support": 0.07566938300349244,
+      "shaft_support": 0.025349650349650348,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "cluster_index": 18,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 19,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 20,
+      "observed_support": 0.9258215962441314,
+      "visible_support": 0.3749315818281336,
+      "head_support": 0.06343283582089553,
+      "shaft_support": 0.43209876543209874,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "cluster_index": 21,
+      "observed_support": 1.0,
+      "visible_support": 0.12147984538928769,
+      "head_support": 0.03295454545454545,
+      "shaft_support": 0.2053763440860215,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "cluster_index": 22,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 23,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    },
+    {
+      "cluster_index": 24,
+      "accepted": false,
+      "reason": "cluster dimensions incompatible with CAD"
+    }
+  ],
+  "statistics": {},
+  "preview_only": true
+}

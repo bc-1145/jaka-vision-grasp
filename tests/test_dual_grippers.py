@@ -10,6 +10,7 @@ from gripper_backend import (
 
 def status_fixture():
     return {"extio": {
+        "mode": 1,
         "num": 2,
         "setup": [
             [0, "机器人夹爪", [115200, 8, 1, 78, 1],
@@ -64,6 +65,16 @@ class DualGripperTests(unittest.TestCase):
         with patch("gripper_backend.read_controller_status", return_value=changed), patch(
                 "gripper_backend.send_command") as command:
             with self.assertRaisesRegex(RuntimeError, "映射已变化"):
+                GripperClient(profile=profile).set_opening_mm(10)
+            command.assert_not_called()
+
+    def test_stopped_bus_blocks_even_when_cached_mapping_is_valid(self):
+        status = status_fixture()
+        profile = profiles_from_status(status)[0]
+        status["extio"]["mode"] = 0
+        with patch("gripper_backend.read_controller_status", return_value=status), patch(
+                "gripper_backend.send_command") as command:
+            with self.assertRaisesRegex(RuntimeError, "扩展 IO 未运行"):
                 GripperClient(profile=profile).set_opening_mm(10)
             command.assert_not_called()
 

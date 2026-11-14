@@ -118,6 +118,9 @@ def camera_transform(config: dict[str, Any], observation: dict | None = None):
         raise RuntimeError("camera hand-eye calibration does not match the active robot tool")
     if observation.get("user_id") != 0:
         raise RuntimeError("eye-in-hand observation must use robot base user frame 0")
+    expected_frame = camera.get("point_cloud_frame")
+    if expected_frame and observation.get("camera_frame") != expected_frame:
+        raise RuntimeError("point-cloud coordinate frame changed; scan again before planning motion")
     return pose_to_matrix(observation["tcp_pose"]) @ matrix(camera.get("tcp_T_camera"), "camera.tcp_T_camera")
 
 
@@ -226,15 +229,21 @@ def capture_point_cloud(config: dict[str, Any]):
 
     config.pop("_observation", None)
     observation = read_observation_pose() if config["camera"].get("mount") == "eye_in_hand" else None
+    if observation is not None and config["camera"].get("point_cloud_frame"):
+        observation["camera_frame"] = config["camera"]["point_cloud_frame"]
+    from camera_cleanup import CameraResource
     sensor = InuSensor()
+    sensor_lifecycle = CameraResource(sensor)
     stream = None
+    stream_lifecycle = None
     frames: list[np.ndarray] = []
     try:
-        sensor.init()
-        sensor.start()
+        sensor_lifecycle.init()
+        sensor_lifecycle.start()
         stream = sensor.create_stream(StreamType.POINT_CLOUD)
-        stream.init()
-        stream.start()
+        stream_lifecycle = CameraResource(stream)
+        stream_lifecycle.init()
+        stream_lifecycle.start()
         warmup = int(config["camera"].get("warmup_frames", 3))
         count = int(config["camera"].get("frames", 5))
         complete_frames = 0
@@ -246,6 +255,10 @@ def capture_point_cloud(config: dict[str, Any]):
             if raw.size < 300 or raw.size % 3:
                 continue
             points = raw.reshape(-1, 3).astype(np.float64)
+            if config["camera"].get("point_cloud_frame") == "opencv_optical":
+                # NU4000 native XYZ has +Y upward. Projection/calibration here
+                # use the optical convention: +X right, +Y down, +Z forward.
+                points[:, 1] *= -1.0
             valid = np.isfinite(points).all(axis=1) & (np.linalg.norm(points, axis=1) > 0)
             if np.count_nonzero(valid) < 100:
                 continue
@@ -255,17 +268,9 @@ def capture_point_cloud(config: dict[str, Any]):
             if len(frames) >= count:
                 break
     finally:
-        if stream is not None:
-            for operation in (stream.stop, stream.terminate):
-                try:
-                    operation()
-                except Exception:
-                    pass
-        for operation in (sensor.stop, sensor.terminate):
-            try:
-                operation()
-            except Exception:
-                pass
+        if stream_lifecycle is not None:
+            stream_lifecycle.close()
+        sensor_lifecycle.close()
     if len(frames) < count:
         raise RuntimeError(f"camera supplied only {len(frames)} complete point-cloud frames")
     if observation is not None:
@@ -307,6 +312,21 @@ def cluster_objects(cloud, config: dict[str, Any]) -> list[Any]:
         if len(indexes) >= int(config["matching"]["min_cluster_points"]):
             result.append(cloud.select_by_index(indexes.tolist()))
     return result
+
+
+def exclude_camera_geometry(cloud, config: dict[str, Any]):
+    """Remove configured tool volumes in the wrist camera's fixed coordinates."""
+    import numpy as np
+
+    points = np.asarray(cloud.points)
+    keep = np.ones(len(points), dtype=bool)
+    for box in config["camera"].get("excluded_boxes_mm", []):
+        lower = np.asarray(box["min_mm"], dtype=float)
+        upper = np.asarray(box["max_mm"], dtype=float)
+        if lower.shape != (3,) or upper.shape != (3,) or not np.all(lower < upper):
+            raise ValueError("invalid camera exclusion box")
+        keep &= ~np.all((points >= lower) & (points <= upper), axis=1)
+    return cloud.select_by_index(np.flatnonzero(keep).tolist())
 
 
 def _features(cloud, voxel_mm: float):
@@ -405,7 +425,10 @@ def _partial_view_registration(model_cloud, target, config: dict[str, Any]) -> R
     return best
 
 
-def register_model(model_cloud, target, config: dict[str, Any]):
+def register_model(model_cloud, target, config: dict[str, Any], *, scene_cloud=None, local_window=False):
+    if config["matching"].get("strategy") == "clutter" and scene_cloud is not None:
+        from clutter_matching import register_model as register_clutter
+        return register_clutter(model_cloud, target, config, scene_cloud, local_window)
     import open3d as o3d
 
     voxel = float(config["matching"]["model_voxel_mm"])
@@ -434,6 +457,12 @@ def register_model(model_cloud, target, config: dict[str, Any]):
         float(config["matching"]["icp_distance_mm"]), 1e-6)
     partial_quality = partial.fitness - 0.08 * partial.inlier_rmse / max(
         float(config["matching"]["icp_distance_mm"]), 1e-6)
+    full_valid = validate_model_support(model_cloud, target, refined.transformation, config)["accepted"]
+    partial_valid = validate_model_support(model_cloud, target, partial.transformation, config)["accepted"]
+    if full_valid != partial_valid:
+        if partial_valid:
+            return partial
+        return RegistrationResult(float(refined.fitness), float(refined.inlier_rmse), refined.transformation)
     if partial_quality > full_quality:
         return partial
     return RegistrationResult(float(refined.fitness), float(refined.inlier_rmse),
@@ -476,16 +505,31 @@ def scene_clearance_mm(model_cloud, scene_cloud, camera_T_model, grasp_model, to
     return float(np.linalg.norm(other_points - center, axis=1).min())
 
 
-def find_matches(model_cloud, scene_cloud, clusters, config: dict[str, Any]) -> list[MatchResult]:
+def find_matches(model_cloud, scene_cloud, clusters, config: dict[str, Any], *, previous_matches=None) -> list[MatchResult]:
+    if config["matching"].get("strategy") == "clutter":
+        from clutter_matching import find_matches as find_clutter
+        return find_clutter(model_cloud, scene_cloud, clusters, config, previous_matches)
     import numpy as np
     import open3d as o3d
 
     results: list[MatchResult] = []
+    diagnostics = config["_matching_diagnostics"] = []
     tolerance = float(config["matching"]["extent_tolerance"])
     for index, cluster in enumerate(clusters):
+        filtered = exclude_camera_geometry(cluster, config)
+        if len(filtered.points) < 0.8 * len(cluster.points):
+            diagnostics.append({"cluster_index": index, "accepted": False,
+                                "reason": "intersects camera/tool exclusion volume"})
+            continue
         if not _extent_is_plausible(model_cloud, cluster, tolerance):
+            diagnostics.append({"cluster_index": index, "accepted": False,
+                                "reason": "cluster dimensions incompatible with CAD"})
             continue
         registration = register_model(model_cloud, cluster, config)
+        validation = validate_model_support(model_cloud, cluster, registration.transformation, config)
+        diagnostics.append({"cluster_index": index, **validation})
+        if not validation["accepted"]:
+            continue
         clearance = scene_clearance_mm(
             model_cloud, scene_cloud, registration.transformation,
             config["model"]["grasp_point_mm"], float(config["matching"]["icp_distance_mm"]))
@@ -493,6 +537,9 @@ def find_matches(model_cloud, scene_cloud, clusters, config: dict[str, Any]) -> 
         score = (0.78 * float(registration.fitness) +
                  0.17 * max(0.0, 1.0 - float(registration.inlier_rmse) / rmse_scale) +
                  0.05 * min(clearance / 30.0, 1.0))
+        if score < float(config["matching"]["minimum_score"]):
+            diagnostics[-1].update(accepted=False, reason="score below threshold")
+            continue
         results.append(MatchResult(
             cluster_index=index,
             score=score,
@@ -506,6 +553,53 @@ def find_matches(model_cloud, scene_cloud, clusters, config: dict[str, Any]) -> 
     return sorted(results, key=lambda item: item.score, reverse=True)
 
 
+def validate_model_support(model_cloud, cluster, camera_T_model, config: dict[str, Any], *, visibility=None) -> dict[str, Any]:
+    """Require support across the visible CAD and each configured bolt region."""
+    import numpy as np
+    import open3d as o3d
+    from scipy.spatial import cKDTree
+
+    tolerance = float(config["matching"]["icp_distance_mm"])
+    model_points = np.asarray(model_cloud.points)
+    aligned = transform_points(model_points, np.asarray(camera_T_model))
+    observed = np.asarray(cluster.points)
+    if not len(aligned) or not len(observed):
+        return {"accepted": False, "reason": "empty geometry"}
+    distances, _ = cKDTree(observed).query(aligned)
+    observed_distances, _ = cKDTree(aligned).query(observed)
+    visible_cloud = o3d.geometry.PointCloud(o3d.utility.Vector3dVector(aligned))
+    radius = max(float(np.linalg.norm(aligned, axis=1).max()) * 100, 1.0)
+    _, visible = visible_cloud.hidden_point_removal([0, 0, 0], radius)
+    visible = np.asarray(visible, dtype=int)
+    if not len(visible):
+        return {"accepted": False, "reason": "no visible CAD surface"}
+    self_visible = visible.copy()
+    if visibility is not None:
+        visible = visibility.unoccluded(aligned, visible)
+        if len(visible) < max(30, .25 * len(self_visible)):
+            return {"accepted": False, "reason": "too little unoccluded CAD evidence"}
+    supported = distances <= tolerance
+    metrics = {"observed_support": float(np.mean(observed_distances <= tolerance)),
+               "visible_support": float(np.mean(supported[visible]))}
+    limits = {"observed_support": config["matching"].get("minimum_observed_support", 0.65),
+              "visible_support": config["matching"].get("minimum_visible_support", 0.60)}
+    for region in ("head", "shaft"):
+        bounds = config["model"].get(f"{region}_z_range_mm")
+        if bounds is None:
+            continue
+        indexes = visible[(model_points[visible, 2] >= bounds[0]) &
+                          (model_points[visible, 2] <= bounds[1])]
+        region_visible = self_visible[(model_points[self_visible, 2] >= bounds[0]) &
+                                     (model_points[self_visible, 2] <= bounds[1])]
+        # A hidden end cannot establish the distinctive geometry of this bolt.
+        required = max(10, int(.2 * len(region_visible))) if visibility is not None else 10
+        metrics[f"{region}_support"] = float(np.mean(supported[indexes])) if len(indexes) >= required else 0.0
+        limits[f"{region}_support"] = config["matching"].get(f"minimum_{region}_support", 0.65)
+    rejected = [name for name, minimum in limits.items() if metrics[name] < float(minimum)]
+    return {**metrics, "accepted": not rejected,
+            "reason": "insufficient " + ", ".join(rejected) if rejected else "geometry supported"}
+
+
 def scan_scene(config: dict[str, Any]):
     import numpy as np
     import open3d as o3d
@@ -515,6 +609,7 @@ def scan_scene(config: dict[str, Any]):
     model_cloud = mesh.sample_points_uniformly(int(config["matching"]["model_sample_points"]))
     scene = crop_cloud(capture_point_cloud(config), config["camera"]["roi"])
     objects, plane, support = remove_support_plane(scene, config)
+    objects = exclude_camera_geometry(objects, config)
     clusters = cluster_objects(objects, config)
     matches = find_matches(model_cloud, scene, clusters, config)
     return mesh, model_cloud, scene, objects, support, clusters, matches, plane
@@ -577,6 +672,8 @@ def save_scan(output_dir: Path, scene, objects, model_cloud, clusters,
         aligned = type(model_cloud)(model_cloud)
         aligned.transform(matches[0].camera_T_model)
         o3d.io.write_point_cloud(str(output_dir / "best_model.ply"), aligned)
+    else:
+        (output_dir / "best_model.ply").unlink(missing_ok=True)
     with (output_dir / "matches.json").open("w", encoding="utf-8") as stream:
         json.dump([asdict(item) for item in matches], stream, ensure_ascii=False, indent=2)
     _write_preview(output_dir / "preview.png", scene, clusters, model_cloud, matches)
@@ -1145,6 +1242,8 @@ def main() -> int:
 
     mesh, model_cloud, scene, objects, support, clusters, matches, plane = scan_scene(config)
     save_scan(args.output, scene, objects, model_cloud, clusters, matches)
+    (args.output / "matching_diagnostics.json").write_text(
+        json.dumps(config.get("_matching_diagnostics", []), ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"scene={len(scene.points)} object_points={len(objects.points)} clusters={len(clusters)} matches={len(matches)}")
     print("support_plane_camera:", [round(float(value), 6) for value in plane])
     if not matches:

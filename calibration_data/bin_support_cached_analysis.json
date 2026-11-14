@@ -1,0 +1,350 @@
+{
+  "read_only": true,
+  "no_actuator_writes": true,
+  "source": "pick_results/bin_grasp/run_20261115_013827/scan_1",
+  "reference": {
+    "support_observed": false,
+    "plane_base": null,
+    "reference_kind": "measured_flange_normals_without_floor",
+    "reason": "No defensible floor plane; use independent flange normals and keep full scene clearance checks",
+    "measured_points": 117442,
+    "normal_neighborhood_mm": 4,
+    "plane_candidates": [
+      {
+        "plane_base": [
+          -0.056881037357604074,
+          -0.9981812194612283,
+          0.019969995093092947,
+          150.8014066122999
+        ],
+        "support_points": 5470,
+        "normal_tilt_deg": 88.85572749956007,
+        "inlier_xy_extent_mm": [
+          194.30299248003513,
+          11.550105050110375
+        ],
+        "planar_normal_fraction": 0.7084095063985375,
+        "minimum_target_clearance_mm": 85.96052054092456,
+        "accepted": false
+      },
+      {
+        "plane_base": [
+          0.08190942849493844,
+          0.055948544698440024,
+          0.9950681413198592,
+          -23.290963353198695
+        ],
+        "support_points": 5064,
+        "normal_tilt_deg": 5.692743204865685,
+        "inlier_xy_extent_mm": [
+          234.14860987712478,
+          291.20842989454616
+        ],
+        "planar_normal_fraction": 0.035347551342812006,
+        "minimum_target_clearance_mm": -26.351277503434485,
+        "accepted": false
+      },
+      {
+        "plane_base": [
+          0.09046172623785757,
+          0.0560857367001131,
+          0.994319398495711,
+          -29.444910160871665
+        ],
+        "support_points": 4403,
+        "normal_tilt_deg": 6.109991340698398,
+        "inlier_xy_extent_mm": [
+          217.44225305422395,
+          295.28248870620223
+        ],
+        "planar_normal_fraction": 0.04633204633204633,
+        "minimum_target_clearance_mm": -30.37382177420586,
+        "accepted": false
+      },
+      {
+        "plane_base": [
+          0.11165286737559632,
+          0.03354919646231532,
+          0.9931807935232843,
+          -44.52114416838807
+        ],
+        "support_points": 3802,
+        "normal_tilt_deg": 6.695016550201418,
+        "inlier_xy_extent_mm": [
+          223.63461299732427,
+          284.1728725397661
+        ],
+        "planar_normal_fraction": 0.03971593897948448,
+        "minimum_target_clearance_mm": -38.60460772335513,
+        "accepted": false
+      },
+      {
+        "plane_base": [
+          0.08433848806201459,
+          0.05527942423005424,
+          0.9949026106550365,
+          -21.473887130179037
+        ],
+        "support_points": 3368,
+        "normal_tilt_deg": 5.787569069314587,
+        "inlier_xy_extent_mm": [
+          228.126342295368,
+          289.647160260328
+        ],
+        "planar_normal_fraction": 0.021080760095011877,
+        "minimum_target_clearance_mm": -23.88003988886349,
+        "accepted": false
+      },
+      {
+        "plane_base": [
+          0.09684497317581028,
+          0.05118466600570476,
+          0.9939824853268096,
+          -35.51007168343602
+        ],
+        "support_points": 3000,
+        "normal_tilt_deg": 6.288748561406804,
+        "inlier_xy_extent_mm": [
+          225.09908331301932,
+          283.874152178019
+        ],
+        "planar_normal_fraction": 0.016,
+        "minimum_target_clearance_mm": -34.50120487523937,
+        "accepted": false
+      }
+    ],
+    "scene_geometry_removed_for_planning": false
+  },
+  "directions": [
+    {
+      "cluster_index": 28,
+      "accepted": false,
+      "status": "unknown",
+      "reason": "Wide-end geometry and independent end-face normals are insufficient",
+      "reference_kind": "measured_flange_normals_without_floor",
+      "support_observed": false,
+      "axis_vertical_alignment": 0.23319682748239814,
+      "normal_alignment_threshold": 0.75,
+      "scene_clearance_still_required": true,
+      "head_annulus_points": 11,
+      "reverse_annulus_points": 0,
+      "direction_ratio": 12.0,
+      "head_planar_fraction": 0.04182509505703422,
+      "head_angular_band_points": [
+        0,
+        0,
+        2,
+        2,
+        7,
+        0,
+        0,
+        0
+      ],
+      "head_raw_annulus_points": 263
+    },
+    {
+      "cluster_index": 29,
+      "accepted": true,
+      "status": "verified",
+      "reason": "Measured wide flange and shaft-aligned planar face agree with CAD direction",
+      "reference_kind": "measured_flange_normals_without_floor",
+      "support_observed": false,
+      "axis_vertical_alignment": 0.2932828703808584,
+      "normal_alignment_threshold": 0.75,
+      "scene_clearance_still_required": true,
+      "head_annulus_points": 499,
+      "reverse_annulus_points": 18,
+      "direction_ratio": 26.31578947368421,
+      "head_planar_fraction": 0.5775462962962963,
+      "head_angular_band_points": [
+        108,
+        107,
+        0,
+        0,
+        49,
+        84,
+        56,
+        95
+      ],
+      "head_raw_annulus_points": 864
+    },
+    {
+      "cluster_index": 30,
+      "accepted": true,
+      "status": "verified",
+      "reason": "Measured wide flange and shaft-aligned planar face agree with CAD direction",
+      "reference_kind": "measured_flange_normals_without_floor",
+      "support_observed": false,
+      "axis_vertical_alignment": 0.3833206388576699,
+      "normal_alignment_threshold": 0.75,
+      "scene_clearance_still_required": true,
+      "head_annulus_points": 186,
+      "reverse_annulus_points": 23,
+      "direction_ratio": 7.791666666666667,
+      "head_planar_fraction": 0.5181058495821727,
+      "head_angular_band_points": [
+        47,
+        0,
+        0,
+        0,
+        0,
+        30,
+        63,
+        46
+      ],
+      "head_raw_annulus_points": 359
+    },
+    {
+      "cluster_index": 31,
+      "accepted": false,
+      "status": "unknown",
+      "reason": "Wide-end geometry and independent end-face normals are insufficient",
+      "reference_kind": "measured_flange_normals_without_floor",
+      "support_observed": false,
+      "axis_vertical_alignment": 0.28702759836623915,
+      "normal_alignment_threshold": 0.75,
+      "scene_clearance_still_required": true,
+      "head_annulus_points": 75,
+      "reverse_annulus_points": 3,
+      "direction_ratio": 19.0,
+      "head_planar_fraction": 0.19633507853403143,
+      "head_angular_band_points": [
+        0,
+        52,
+        23,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "head_raw_annulus_points": 382
+    },
+    {
+      "cluster_index": 32,
+      "accepted": false,
+      "status": "unknown",
+      "reason": "Wide-end geometry and independent end-face normals are insufficient",
+      "reference_kind": "measured_flange_normals_without_floor",
+      "support_observed": false,
+      "axis_vertical_alignment": 0.01185247201966202,
+      "normal_alignment_threshold": 0.75,
+      "scene_clearance_still_required": true,
+      "head_annulus_points": 23,
+      "reverse_annulus_points": 0,
+      "direction_ratio": 24.0,
+      "head_planar_fraction": 0.07076923076923076,
+      "head_angular_band_points": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        23
+      ],
+      "head_raw_annulus_points": 325
+    },
+    {
+      "cluster_index": 33,
+      "accepted": false,
+      "status": "unknown",
+      "reason": "Wide-end geometry and independent end-face normals are insufficient",
+      "reference_kind": "measured_flange_normals_without_floor",
+      "support_observed": false,
+      "axis_vertical_alignment": 0.16019221513403203,
+      "normal_alignment_threshold": 0.75,
+      "scene_clearance_still_required": true,
+      "head_annulus_points": 44,
+      "reverse_annulus_points": 1,
+      "direction_ratio": 22.5,
+      "head_planar_fraction": 0.15331010452961671,
+      "head_angular_band_points": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        12,
+        22,
+        10
+      ],
+      "head_raw_annulus_points": 287
+    },
+    {
+      "cluster_index": 34,
+      "accepted": false,
+      "status": "unknown",
+      "reason": "Wide-end geometry and independent end-face normals are insufficient",
+      "reference_kind": "measured_flange_normals_without_floor",
+      "support_observed": false,
+      "axis_vertical_alignment": 0.37809557279378736,
+      "normal_alignment_threshold": 0.75,
+      "scene_clearance_still_required": true,
+      "head_annulus_points": 28,
+      "reverse_annulus_points": 6,
+      "direction_ratio": 4.142857142857143,
+      "head_planar_fraction": 0.07106598984771574,
+      "head_angular_band_points": [
+        9,
+        19,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "head_raw_annulus_points": 394
+    },
+    {
+      "cluster_index": 35,
+      "accepted": false,
+      "status": "unknown",
+      "reason": "A near-vertical shaft needs a measured support to distinguish floor from flange",
+      "reference_kind": "measured_flange_normals_without_floor",
+      "support_observed": false,
+      "axis_vertical_alignment": 0.6942383842651659,
+      "normal_alignment_threshold": 0.75,
+      "scene_clearance_still_required": true
+    },
+    {
+      "cluster_index": 36,
+      "accepted": true,
+      "status": "verified",
+      "reason": "Measured wide flange and shaft-aligned planar face agree with CAD direction",
+      "reference_kind": "measured_flange_normals_without_floor",
+      "support_observed": false,
+      "axis_vertical_alignment": 0.45811128374493204,
+      "normal_alignment_threshold": 0.75,
+      "scene_clearance_still_required": true,
+      "head_annulus_points": 259,
+      "reverse_annulus_points": 0,
+      "direction_ratio": 260.0,
+      "head_planar_fraction": 0.547568710359408,
+      "head_angular_band_points": [
+        48,
+        15,
+        0,
+        0,
+        13,
+        80,
+        56,
+        47
+      ],
+      "head_raw_annulus_points": 473
+    },
+    {
+      "cluster_index": 37,
+      "accepted": false,
+      "status": "unknown",
+      "reason": "A near-vertical shaft needs a measured support to distinguish floor from flange",
+      "reference_kind": "measured_flange_normals_without_floor",
+      "support_observed": false,
+      "axis_vertical_alignment": 0.7798066536281248,
+      "normal_alignment_threshold": 0.75,
+      "scene_clearance_still_required": true
+    }
+  ]
+}

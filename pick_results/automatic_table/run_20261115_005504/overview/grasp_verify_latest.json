@@ -1,0 +1,10 @@
+{
+  "created_unix": 1794675321.1829634,
+  "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_005504\\overview\\grasp_verify_color_20261115_005521.png",
+  "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_005504\\overview\\grasp_verify_depth_20261115_005521.png",
+  "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_005504\\overview\\grasp_verify_depth_raw_20261115_005521.png",
+  "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_005504\\overview\\grasp_verify_view_20261115_005521.png",
+  "depth_min_mm": 220,
+  "depth_median_mm": 419.0,
+  "depth_max_mm": 2373
+}

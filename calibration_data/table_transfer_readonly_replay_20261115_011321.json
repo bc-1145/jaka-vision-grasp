@@ -1,0 +1,60 @@
+{
+  "executable": false,
+  "actuator_writes": false,
+  "motion_sent": false,
+  "purpose": "Read-only controller IK/FK replay using an old, absent target",
+  "target_is_current": false,
+  "source": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_005504",
+  "target_observation_unchanged": {
+    "created_unix": 1794675344.8243105,
+    "tcp_pose": [
+      6.033276321806451,
+      -298.8207927277766,
+      363.31132842354793,
+      -179.99923596941485,
+      28.012900721338053,
+      90.0087500023081
+    ],
+    "tool_id": 0,
+    "user_id": 0,
+    "camera_frame": "opencv_optical"
+  },
+  "placement_xy_mm": [
+    43,
+    -537
+  ],
+  "created_unix": 1794676401.7307885,
+  "route_found": false,
+  "start_state": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 72842736,
+    "actual_position": [
+      6.033276321806451,
+      -298.8207927277766,
+      363.31132842354793,
+      -179.99923596941485,
+      28.012900721338053,
+      90.0087500023081
+    ],
+    "joint_actual_position": [
+      90.0061302173027,
+      12.54954517706651,
+      44.97752098516875,
+      0.00046782138971612763,
+      94.4600331102509,
+      179.99772352368262
+    ]
+  },
+  "error": "No controller-valid upright route with table clearance"
+}

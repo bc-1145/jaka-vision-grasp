@@ -1,0 +1,78 @@
+{
+  "completed": true,
+  "operation": "rotate_j6_180_update_unloading",
+  "created_unix": 1794633936.2222645,
+  "start": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 0,
+    "actual_position": [
+      6.006182982235719,
+      -472.8634883878092,
+      221.7190440458768,
+      -179.99886773134116,
+      -45.00051052969809,
+      -90.00049638834128
+    ],
+    "joint_actual_position": [
+      90.00063705325697,
+      45.00041177725308,
+      44.9994936413517,
+      0.00046782138971612763,
+      44.99958404244222,
+      0.00047065502190962727
+    ]
+  },
+  "target_joints": [
+    90.00063705325697,
+    45.00041177725308,
+    44.9994936413517,
+    0.00046782138971612763,
+    44.99958404244222,
+    -179.9995293449781
+  ],
+  "j6_delta_deg": -180.0,
+  "stage": "unloading_updated",
+  "actual": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 0,
+    "actual_position": [
+      6.006182982225878,
+      -472.8634883878092,
+      221.7190440458768,
+      179.98719400070874,
+      45.0005091097969,
+      89.98299461042416
+    ],
+    "joint_actual_position": [
+      90.00063705325697,
+      45.00041177725308,
+      44.9994936413517,
+      0.00046782138971612763,
+      44.99958404244222,
+      -179.98785582206452
+    ]
+  },
+  "backup": "C:\\Users\\Administrator\\Desktop\\1\\robot_poses.before_j6_1794633957483731600.json"
+}

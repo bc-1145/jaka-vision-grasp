@@ -1,0 +1,443 @@
+{
+  "frame": "frame_003.npz",
+  "strategy": "clutter",
+  "duration_s": 1.9069999999992433,
+  "scene_points": 122744,
+  "clusters": 33,
+  "matches": [
+    {
+      "cluster_index": 26,
+      "score": 0.83499079969787,
+      "fitness": 0.9201725997842503,
+      "rmse_mm": 1.156674931635355,
+      "camera_T_model": [
+        [
+          0.7121173267822511,
+          0.6735962679461913,
+          -0.19788122878500378,
+          -141.5166092703835
+        ],
+        [
+          0.5410392427890919,
+          -0.3469213785050888,
+          0.7661084093640633,
+          2.6912864111972397
+        ],
+        [
+          0.4473985367194522,
+          -0.652620582685753,
+          -0.611490739419823,
+          229.87338580087825
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 2438,
+      "clearance_mm": 15.546040330415366,
+      "observation": null
+    },
+    {
+      "cluster_index": 27,
+      "score": 0.8322325757477695,
+      "fitness": 0.912751677852349,
+      "rmse_mm": 1.049535506054304,
+      "camera_T_model": [
+        [
+          0.8642527522761149,
+          -0.1396260977257192,
+          -0.4832925956571728,
+          -92.81821001974379
+        ],
+        [
+          -0.27488438010216726,
+          0.6735254186986307,
+          -0.6861501934290205,
+          34.846784557986275
+        ],
+        [
+          0.4213143218061876,
+          0.7258567787110081,
+          0.543715163518796,
+          233.31280503326187
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 2144,
+      "clearance_mm": 12.992808860778036,
+      "observation": null
+    },
+    {
+      "cluster_index": 28,
+      "score": 0.773417095568876,
+      "fitness": 0.8325703073904512,
+      "rmse_mm": 1.057009229099409,
+      "camera_T_model": [
+        [
+          0.7259628531897698,
+          0.622379292961705,
+          -0.292612288670621,
+          -174.0326854506241
+        ],
+        [
+          0.6584959388928233,
+          -0.5063053916111004,
+          0.5568105143468387,
+          -72.42854583047541
+        ],
+        [
+          0.19839615482722842,
+          -0.5969077534410323,
+          -0.7773931435456269,
+          243.83681453959997
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 2038,
+      "clearance_mm": 15.533330029850234,
+      "observation": null
+    },
+    {
+      "cluster_index": 29,
+      "score": 0.7416852829184163,
+      "fitness": 0.8020063357972544,
+      "rmse_mm": 1.10578014489694,
+      "camera_T_model": [
+        [
+          0.5395183978413837,
+          -0.49166444075239346,
+          -0.6835100409579233,
+          -102.13874325432543
+        ],
+        [
+          -0.8025411540477775,
+          -0.5458174018405862,
+          -0.24085485236476584,
+          69.11874196817935
+        ],
+        [
+          -0.2546519083971841,
+          0.6784905611337778,
+          -0.6890594778406609,
+          245.4263158592927
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 2156,
+      "clearance_mm": 12.788034509729789,
+      "observation": null
+    },
+    {
+      "cluster_index": 30,
+      "score": 0.7048984216066085,
+      "fitness": 0.7540073982737361,
+      "rmse_mm": 1.1039886736355538,
+      "camera_T_model": [
+        [
+          -0.8341225241811296,
+          -0.4157308535725342,
+          0.36250168557063583,
+          -183.08922948255588
+        ],
+        [
+          -0.15086787338347002,
+          0.8041035415219755,
+          0.5750272856939627,
+          -23.24622750717861
+        ],
+        [
+          -0.5305454734840827,
+          0.4249533526161068,
+          -0.7334413055356793,
+          245.97932062416285
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 1546,
+      "clearance_mm": 13.106328456187219,
+      "observation": null
+    },
+    {
+      "cluster_index": 31,
+      "score": 0.6927106020347582,
+      "fitness": 0.7396963123644251,
+      "rmse_mm": 1.1345892970174538,
+      "camera_T_model": [
+        [
+          0.9677163020747835,
+          0.25141623927536927,
+          -0.017749178215595914,
+          -152.80145373226765
+        ],
+        [
+          -0.03510796419568037,
+          0.0647275471845757,
+          -0.9972852026805057,
+          100.45686333699642
+        ],
+        [
+          -0.24958483437247095,
+          0.9657122859651767,
+          0.0714646149305214,
+          227.0191211643033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 1425,
+      "clearance_mm": 13.739730352616059,
+      "observation": null
+    },
+    {
+      "cluster_index": 32,
+      "score": 0.6500831482081628,
+      "fitness": 0.6945551128818062,
+      "rmse_mm": 1.2270677310681446,
+      "camera_T_model": [
+        [
+          -0.0466836884623414,
+          -0.12901471866143283,
+          -0.9905432022886541,
+          -26.773554279616626
+        ],
+        [
+          0.7908214919992055,
+          0.6010395965996826,
+          -0.11555419123268958,
+          -38.15732160507234
+        ],
+        [
+          0.6102638781901661,
+          -0.788737348987609,
+          0.07396886702050103,
+          265.88114323272794
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 1352,
+      "clearance_mm": 13.062459523792711,
+      "observation": null
+    }
+  ],
+  "diagnostics": [
+    {
+      "candidate_index": 0,
+      "source_cluster_index": -2,
+      "local_window": true,
+      "previous_pose_refit": true,
+      "supported_points": 2428,
+      "observed_support": 1.0,
+      "visible_support": 0.9001601708489055,
+      "head_support": 0.864951768488746,
+      "shaft_support": 0.9083820662768031,
+      "accepted": false,
+      "reason": "duplicate pose suppressed",
+      "score": 0.8189469005100436,
+      "rmse_mm": 1.1645763902661428
+    },
+    {
+      "candidate_index": 1,
+      "source_cluster_index": -2,
+      "local_window": true,
+      "previous_pose_refit": true,
+      "supported_points": 2144,
+      "observed_support": 1.0,
+      "visible_support": 0.912751677852349,
+      "head_support": 0.935005701254276,
+      "shaft_support": 0.8951841359773371,
+      "accepted": true,
+      "reason": "geometry supported",
+      "score": 0.8322325757477695,
+      "rmse_mm": 1.049535506054304
+    },
+    {
+      "candidate_index": 2,
+      "source_cluster_index": -2,
+      "local_window": true,
+      "previous_pose_refit": true,
+      "supported_points": 2038,
+      "observed_support": 1.0,
+      "visible_support": 0.8325703073904512,
+      "head_support": 0.5925925925925926,
+      "shaft_support": 0.8592162554426706,
+      "accepted": true,
+      "reason": "geometry supported",
+      "score": 0.773417095568876,
+      "rmse_mm": 1.057009229099409
+    },
+    {
+      "candidate_index": 3,
+      "source_cluster_index": -2,
+      "local_window": true,
+      "previous_pose_refit": true,
+      "supported_points": 2156,
+      "observed_support": 1.0,
+      "visible_support": 0.8020063357972544,
+      "head_support": 0.8978978978978979,
+      "shaft_support": 0.7817357512953368,
+      "accepted": true,
+      "reason": "geometry supported",
+      "score": 0.7416852829184163,
+      "rmse_mm": 1.10578014489694
+    },
+    {
+      "candidate_index": 4,
+      "source_cluster_index": -2,
+      "local_window": true,
+      "previous_pose_refit": true,
+      "supported_points": 1352,
+      "observed_support": 1.0,
+      "visible_support": 0.6945551128818062,
+      "head_support": 0.6528662420382165,
+      "shaft_support": 0.7064760302775441,
+      "accepted": true,
+      "reason": "geometry supported",
+      "score": 0.6500831482081628,
+      "rmse_mm": 1.2270677310681446
+    },
+    {
+      "candidate_index": 5,
+      "source_cluster_index": -2,
+      "local_window": true,
+      "previous_pose_refit": true,
+      "supported_points": 1554,
+      "observed_support": 1.0,
+      "visible_support": 0.7204081632653061,
+      "head_support": 0.39295392953929537,
+      "shaft_support": 0.8014003819223424,
+      "accepted": false,
+      "reason": "insufficient head_support"
+    },
+    {
+      "candidate_index": 6,
+      "source_cluster_index": -2,
+      "local_window": true,
+      "previous_pose_refit": true,
+      "supported_points": 1425,
+      "observed_support": 1.0,
+      "visible_support": 0.7396963123644251,
+      "head_support": 0.5643153526970954,
+      "shaft_support": 0.7804232804232805,
+      "accepted": true,
+      "reason": "geometry supported",
+      "score": 0.6927106020347582,
+      "rmse_mm": 1.1345892970174538
+    },
+    {
+      "candidate_index": 7,
+      "source_cluster_index": -2,
+      "local_window": true,
+      "previous_pose_refit": true,
+      "supported_points": 1546,
+      "observed_support": 1.0,
+      "visible_support": 0.7540073982737361,
+      "head_support": 0.5919540229885057,
+      "shaft_support": 0.7772346368715084,
+      "accepted": true,
+      "reason": "geometry supported",
+      "score": 0.7048984216066085,
+      "rmse_mm": 1.1039886736355538
+    },
+    {
+      "candidate_index": 8,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "accepted": false,
+      "reason": "no cylinder-supported hypothesis"
+    },
+    {
+      "candidate_index": 9,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 1835,
+      "observed_support": 1.0,
+      "visible_support": 0.3876088069636457,
+      "head_support": 0.2245508982035928,
+      "shaft_support": 0.4731098986749805,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "candidate_index": 10,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "accepted": false,
+      "reason": "no cylinder-supported hypothesis"
+    },
+    {
+      "candidate_index": 11,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "accepted": false,
+      "reason": "no cylinder-supported hypothesis"
+    },
+    {
+      "candidate_index": 12,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 2438,
+      "observed_support": 1.0,
+      "visible_support": 0.9201725997842503,
+      "head_support": 0.9709677419354839,
+      "shaft_support": 0.9100459619172685,
+      "accepted": true,
+      "reason": "geometry supported",
+      "score": 0.83499079969787,
+      "rmse_mm": 1.156674931635355
+    },
+    {
+      "candidate_index": 13,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "accepted": false,
+      "reason": "no cylinder-supported hypothesis"
+    }
+  ],
+  "statistics": {
+    "segmented_clusters": 26,
+    "candidate_regions": 14,
+    "registered_candidates": 14,
+    "validated_instances": 7,
+    "previous_pose_hints": 8,
+    "elapsed_s": 1.5790000000015425
+  },
+  "preview_only": true
+}

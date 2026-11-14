@@ -1,0 +1,52 @@
+{
+  "completed": false,
+  "stage": "grasp_ik_unreachable",
+  "motion_sent": false,
+  "gripper_command_sent": false,
+  "grasp_center_base_mm": [
+    34.957513254305866,
+    93.83582220692483,
+    670.0419953140077
+  ],
+  "attempts": 12,
+  "solutions": [],
+  "required_grasp_pose": [
+    106.73690980391679,
+    196.98115991317252,
+    541.1670266799172,
+    -135.72291875598125,
+    0.0,
+    -34.83426490105211
+  ],
+  "actual": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 0,
+    "actual_position": [
+      1.5880064555700582,
+      -267.9573935912538,
+      373.76607080008296,
+      -178.65886172869975,
+      20.04476250946004,
+      89.3933130133308
+    ],
+    "joint_actual_position": [
+      89.97866439707401,
+      13.777267341288548,
+      36.86274439860496,
+      -1.6337484822168016,
+      109.32178843599019,
+      -179.9912890495931
+    ]
+  }
+}

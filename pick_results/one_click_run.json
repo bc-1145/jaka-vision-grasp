@@ -1,17 +1,26 @@
 {
-  "created_unix": 1794625607.727248,
+  "created_unix": 1794635380.945862,
   "completed": false,
   "holding": false,
   "mode": "one_click_fast_staged",
-  "stage": "低速直线到新拍照接近点",
+  "stage": "下降到已标定拍照点",
   "target_pose": [
-    249.939199851175,
-    -58.857948256384105,
-    162.42888426595576,
+    253.56110175124527,
+    -62.730297336802245,
+    262.28821902853895,
     177.6921274143897,
     -1.7455069485724777,
     179.84335931934498
   ],
-  "stop_error": "robot motion fault: collision=1",
-  "error": "robot motion fault: collision=1"
+  "before_grasp_verification": {
+    "created_unix": 1794635423.0142782,
+    "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\before_grasp\\grasp_verify_color_20261114_135022.png",
+    "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\before_grasp\\grasp_verify_depth_20261114_135022.png",
+    "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\before_grasp\\grasp_verify_depth_raw_20261114_135022.png",
+    "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\before_grasp\\grasp_verify_view_20261114_135022.png",
+    "depth_min_mm": 179,
+    "depth_median_mm": 226.0,
+    "depth_max_mm": 285
+  },
+  "error": "没有同时满足匹配分和外部净空要求的螺栓"
 }

@@ -1,0 +1,50 @@
+[
+  {
+    "frame": "frame_001.npz",
+    "strategy": "clutter",
+    "matches": 5,
+    "duration_s": 10.515,
+    "clusters": 30,
+    "reasons": {
+      "insufficient visible_support, head_support, shaft_support": 6,
+      "insufficient head_support": 4,
+      "shaft curvature supported": 5,
+      "insufficient visible_support, head_support": 5,
+      "duplicate pose suppressed": 6,
+      "no cylinder-supported hypothesis": 5
+    }
+  },
+  {
+    "frame": "frame_002.npz",
+    "strategy": "clutter",
+    "matches": 7,
+    "duration_s": 12.766,
+    "clusters": 41,
+    "reasons": {
+      "shaft curvature supported": 7,
+      "insufficient visible_support, shaft_support": 6,
+      "insufficient visible_support, head_support, shaft_support": 8,
+      "insufficient visible_support, head_support": 1,
+      "insufficient head_support": 2,
+      "no cylinder-supported hypothesis": 7,
+      "duplicate pose suppressed": 4,
+      "shaft evidence is better explained by a plane": 1
+    }
+  },
+  {
+    "frame": "frame_003.npz",
+    "strategy": "clutter",
+    "matches": 5,
+    "duration_s": 12.375,
+    "clusters": 31,
+    "reasons": {
+      "insufficient visible_support, head_support, shaft_support": 11,
+      "duplicate pose suppressed": 6,
+      "insufficient visible_support, head_support": 1,
+      "shaft curvature supported": 5,
+      "no cylinder-supported hypothesis": 7,
+      "insufficient head_support": 1,
+      "insufficient visible_support, shaft_support": 2
+    }
+  }
+]

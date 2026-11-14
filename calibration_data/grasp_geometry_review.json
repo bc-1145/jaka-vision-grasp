@@ -1,0 +1,90 @@
+{
+  "created_unix": 1794639915.5005949,
+  "read_only": true,
+  "translation_units": "mm",
+  "rotation_units": "degrees",
+  "active_tool_id": 0,
+  "active_user_id": 0,
+  "tcp_pose_base": [
+    259.05424232643713,
+    -93.27062785327749,
+    265.7527656614533,
+    -171.53681799732536,
+    0.638306695742548,
+    178.1626954591873
+  ],
+  "tcp_offset_from_flange": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "flange_pose_base": [
+    259.05424232643713,
+    -93.27062785327749,
+    265.7527656614533,
+    -171.53681799732536,
+    0.6383066957425503,
+    178.1626954591873
+  ],
+  "flange_T_camera_from_existing_handeye": [
+    [
+      0.0023554855949167175,
+      0.9999746201025155,
+      0.0067239005378091285,
+      -68.04274853232859
+    ],
+    [
+      -0.9999948001784398,
+      0.0023702365609072906,
+      -0.0021866857862803536,
+      -31.672073927879104
+    ],
+    [
+      -0.002202567523305886,
+      -0.006718714867855949,
+      0.9999750034710018,
+      24.03193202052736
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "camera_origin_in_flange_mm": [
+    -68.04274853232859,
+    -31.672073927879104,
+    24.03193202052736
+  ],
+  "camera_to_flange_center_estimate_mm": 78.80653305003331,
+  "camera_lateral_offset_estimate_mm": 75.05288731772245,
+  "camera_optical_axis_in_flange": [
+    0.0067239005378091285,
+    -0.0021866857862803536,
+    0.9999750034710018
+  ],
+  "camera_origin_base_mm": [
+    326.1527653668907,
+    -130.3050049847745,
+    247.4030308503515
+  ],
+  "grasp_center_base_for_170mm_tool": [
+    260.124346475253,
+    -118.33737733318156,
+    97.61439125625569
+  ],
+  "grasp_center_base_for_180mm_tool": [
+    260.1872937781245,
+    -119.81189200847005,
+    87.72389864418523
+  ],
+  "tool_length_status": "170-180mm operator estimate; actual opposing-finger contact center not independently measured",
+  "depth_stream_units": "Native SDK uint16 depth and point cloud consumed as mm; do not multiply them as if cm",
+  "model_matches_available": 0,
+  "formula": "B_T_F_grasp = (B_T_F_now @ F_T_C @ C_T_G) @ inverse(F_T_G)",
+  "physical_distance_independently_measured": false
+}

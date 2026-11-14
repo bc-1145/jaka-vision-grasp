@@ -192,7 +192,12 @@ def main() -> int:
     ap.add_argument("--max-depth", type=int, default=4000, help="深度显示上限 mm (默认 4000)")
     ap.add_argument("--scale", type=float, default=1.0, help="窗口缩放 (默认 1.0)")
     ap.add_argument("--check-frames", type=int, default=0, help="Exit after verifying this many color/depth frame pairs")
+    ap.add_argument("--live-model", action="store_true", help="Continuously match native XYZ to CAD; no robot/gripper commands")
     args = ap.parse_args()
+
+    from pose_overlay import PoseOverlay
+    root = Path(__file__).resolve().parent
+    pose_overlay = PoseOverlay(root / "pick_results", root / "pick_place_config.json", live=args.live_model)
 
     sdk_dir = find_sdk_dir(args.sdk)
     prepare_runtime(sdk_dir)
@@ -207,8 +212,13 @@ def main() -> int:
     configure_logging("camera_viewer.log")
     log = logging.getLogger(__name__)
     log.info("Camera preview opened; SDK=%s", sdk_dir)
-    capture = CameraCapture(sdk_dir)
-    win = "Inuitive NU4000  color | depth"
+    capture = CameraCapture(sdk_dir, with_points=args.live_model)
+    live_matcher = None
+    if args.live_model:
+        from live_model_preview import LiveModelMatcher
+        live_matcher = LiveModelMatcher(root / "pick_place_config.json", root / "pick_results" / "live_model")
+        print("[i] Live CAD preview only: no robot or gripper I/O", flush=True)
+    win = "Inuitive NU4000  color | depth | model pose"
     cv2.namedWindow(win, cv2.WINDOW_NORMAL)
     cv2.imshow(win, _placeholder(1280, 480, "Connecting to camera..."))
 
@@ -243,6 +253,19 @@ def main() -> int:
                     print(f"[i] Frames received: color={last_color.shape}, depth={last_depth.shape}, valid_depth={np.count_nonzero(last_depth)}", flush=True)
             if args.check_frames and verified_frames < args.check_frames and time.monotonic() > frame_deadline:
                 raise RuntimeError("Camera verification timed out after 30 seconds; see logs/camera_capture.log")
+            if live_matcher is not None:
+                result = live_matcher.poll()
+                if result is not None:
+                    source_depth = (live_matcher.source_images[1]
+                                    if live_matcher.source_images is not None else None)
+                    pose_overlay.set_live_result(result, source_depth)
+                    print(f"[i] Live CAD: matches={len(result['matches'])} "
+                          f"fit={result.get('duration_s', 0):.2f}s error={result.get('error', '')}", flush=True)
+                if last_color is not None and last_depth is not None and not live_matcher.busy:
+                    cloud = capture.poll_points()
+                    if cloud is not None:
+                        sequence, stamp, points = cloud
+                        live_matcher.submit(points, stamp, sequence, last_color, last_depth)
             # Overlays must not modify the last raw image or an SDK-owned buffer.
             color_img = last_color.copy() if last_color is not None else None
             depth_arr = last_depth
@@ -268,6 +291,9 @@ def main() -> int:
                 cv2.putText(color_img, f"COLOR {w}x{h}", (12, 30),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2, cv2.LINE_AA)
 
+            panel_height = color_img.shape[0] if color_img is not None and depth_img is not None and color_img.shape[:2] == depth_img.shape[:2] else 480
+            pose_panel = pose_overlay.draw(color_img, height=panel_height, depth_image=depth_img,
+                                           current_depth=depth_arr, camera_live=capture.status == "Live")
             if color_img is not None and depth_img is not None and color_img.shape[:2] == depth_img.shape[:2]:
                 left, right = color_img, depth_img
             else:  # 尺寸不一致时各自缩放, 并排显示
@@ -276,17 +302,25 @@ def main() -> int:
                 left = cv2.resize(left, (640, 480))
                 right = cv2.resize(right, (640, 480))
 
-            canvas = cv2.hconcat([left, right])
+            canvas = cv2.hconcat([left, right, pose_panel])
             cv2.putText(canvas, f"{fps:5.1f} FPS   ['q' quit  's' save  'a' auto  '+'/'-' range  'm' colormap]",
                         (12, canvas.shape[0] - 12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (200, 200, 200), 1, cv2.LINE_AA)
             if capture.status != "Live":
                 age = "" if last_color is None else f" - last image {time.monotonic() - last_t:.1f}s ago"
-                cv2.rectangle(canvas, (0, 40), (canvas.shape[1], 80), (0, 0, 0), -1)
+                cv2.rectangle(canvas, (0, 40), (left.shape[1] + right.shape[1], 80), (0, 0, 0), -1)
                 cv2.putText(canvas, capture.status + age, (12, 67),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.65, (0, 190, 255), 2, cv2.LINE_AA)
             if args.scale != 1.0:
                 canvas = cv2.resize(canvas, None, fx=args.scale, fy=args.scale)
             cv2.imshow(win, canvas)
+            if live_matcher is not None and result is not None:
+                result["displayed_contours"] = pose_overlay.outline_count
+                cv2.imwrite(str(root / "pick_results" / "live_model" / "preview.png"), canvas)
+                if pose_overlay.outline_count:
+                    cv2.imwrite(str(root / "pick_results" / "live_model" / "contours.png"), canvas)
+                log.info("Live CAD display: matches=%s contours=%s input_age=%.1fs",
+                         len(result["matches"]), pose_overlay.outline_count,
+                         time.time() - result.get("captured_unix", time.time()))
 
             if args.check_frames and verified_frames >= args.check_frames:
                 if not np.any(depth_arr):
@@ -322,6 +356,8 @@ def main() -> int:
         try:
             capture.close()
         finally:
+            if live_matcher is not None:
+                live_matcher.close()
             cv2.destroyAllWindows()
 
     return 0

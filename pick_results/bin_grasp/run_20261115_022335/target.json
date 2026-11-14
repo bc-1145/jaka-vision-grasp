@@ -1,0 +1,342 @@
+{
+  "schema_version": 1,
+  "executable": true,
+  "execution_status": "planner_checked",
+  "planning_error": null,
+  "image_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_022335\\bin_overview\\grasp_verify_color_20261115_022354.png",
+  "coordinate_convention": {
+    "length_unit": "mm",
+    "angle_unit": "deg",
+    "base": "robot base at acquisition",
+    "tcp": "active TCP at acquisition",
+    "grasp_origin": "estimated current contact center; axes remain current TCP axes",
+    "camera_frame": "opencv_optical",
+    "camera_frame_assumed_from_config": false
+  },
+  "cluster_index": 12,
+  "score": 0.8833340938969327,
+  "target": {
+    "center": {
+      "base_mm": [
+        253.50019095062675,
+        -205.89360044292482,
+        37.98175408023917
+      ],
+      "tcp_origin_mm": [
+        -42.124994873057005,
+        -200.08190003709373,
+        278.4124004292965
+      ],
+      "grasp_origin_tcp_axes_mm": [
+        -19.794994873057007,
+        -199.00190003709372,
+        111.99240042929651
+      ]
+    },
+    "large_head": {
+      "base_mm": [
+        275.4661853745707,
+        -203.31946290296074,
+        21.806807252116016
+      ],
+      "tcp_origin_mm": [
+        -64.0892102125033,
+        -197.50801860752244,
+        294.5898037718896
+      ],
+      "grasp_origin_tcp_axes_mm": [
+        -41.759210212503305,
+        -196.42801860752243,
+        128.1698037718896
+      ]
+    },
+    "small_end": {
+      "base_mm": [
+        234.42023958968272,
+        -208.12953013092283,
+        52.03152541269651
+      ],
+      "tcp_origin_mm": [
+        -23.046588848282482,
+        -202.3176072642396,
+        264.36049533609525
+      ],
+      "grasp_origin_tcp_axes_mm": [
+        -0.716588848282484,
+        -201.23760726423959,
+        97.94049533609527
+      ]
+    }
+  },
+  "current_contact_base_mm": [
+    233.69157090479064,
+    -6.892675551587656,
+    149.97347814316154
+  ],
+  "head_relative_target_center_tcp_axes_mm": [
+    -21.9642153394463,
+    2.573881429571296,
+    16.177403342593074
+  ],
+  "shaft_axis_tcp": [
+    0.8016136985199379,
+    -0.09393727845150714,
+    -0.5904161803866085
+  ],
+  "shaft_axis_base": [
+    -0.8016786286110938,
+    -0.09394662554613487,
+    0.5903265265738378
+  ],
+  "toward_large_head_tcp": [
+    -0.8016136985199379,
+    0.09393727845150714,
+    0.5904161803866085
+  ],
+  "shaft_angles_tcp_deg": {
+    "yaw": -6.683735302214323,
+    "elevation": -36.18654718712388,
+    "to_positive_axes": [
+      36.71552331022433,
+      95.39015681910692,
+      126.18654718712394
+    ]
+  },
+  "direction_evidence": {
+    "accepted": true,
+    "status": "verified",
+    "reason": "Measured wide flange and shaft-aligned planar face agree with CAD direction",
+    "reference_kind": "measured_flange_normals_without_floor",
+    "support_observed": false,
+    "axis_vertical_alignment": 0.5903265265738378,
+    "normal_alignment_threshold": 0.75,
+    "scene_clearance_still_required": true,
+    "head_annulus_points": 437,
+    "reverse_annulus_points": 110,
+    "direction_ratio": 3.945945945945946,
+    "head_planar_fraction": 0.5190023752969121,
+    "head_angular_band_points": [
+      68,
+      10,
+      0,
+      41,
+      54,
+      116,
+      24,
+      124
+    ],
+    "head_raw_annulus_points": 842
+  },
+  "current_flange_tilt_deg": 0.006371552104421488,
+  "tilt_definition": "TCP/flange +Z relative to base downward -Z",
+  "flange_tilt_candidates": [
+    {
+      "tilt_deg": 30,
+      "executable": false,
+      "validation": "requires IK and route checks"
+    },
+    {
+      "tilt_deg": 45,
+      "executable": false,
+      "validation": "requires IK and route checks"
+    },
+    {
+      "tilt_deg": 60,
+      "executable": false,
+      "validation": "requires IK and route checks"
+    }
+  ],
+  "downward_depth_from_current_contact_mm": 111.99172406292237,
+  "suggested_vertical_clearance_mm": 35.0,
+  "planned_descent": {
+    "depth_mm": 111.99172406292234,
+    "horizontal_delta_mm": [
+      0.0,
+      0.0
+    ],
+    "base_vertical": true
+  },
+  "gripper": {
+    "close_command": 8.65,
+    "command_is_measured_gap": false,
+    "actual_jaw_gap_mm": null,
+    "contact_offset_is_estimate": true
+  },
+  "motion": {
+    "poses": {
+      "retreat": [
+        211.34310160108308,
+        -5.814081855840941,
+        316.39100803535985,
+        179.99956224763173,
+        0.006356496495267988,
+        -179.99965435894023
+      ],
+      "approach": [
+        132.77254510221485,
+        -22.963956049631783,
+        283.2118955542529,
+        174.06811884973794,
+        29.461366578980165,
+        179.96971294193173
+      ],
+      "prepick": [
+        152.58116514805096,
+        -221.96488094096895,
+        283.2118955542529,
+        174.06811884973794,
+        29.461366578980165,
+        179.96971294193173
+      ],
+      "pick": [
+        152.58116514805096,
+        -221.96488094096895,
+        171.22017149133058,
+        174.06811884973794,
+        29.461366578980165,
+        179.96971294193173
+      ],
+      "lift_first": [
+        152.58116514805096,
+        -221.96488094096895,
+        211.22017149133058,
+        174.06811884973794,
+        29.461366578980165,
+        179.96971294193173
+      ],
+      "lift": [
+        152.58116514805096,
+        -221.96488094096895,
+        241.22017149133058,
+        174.06811884973794,
+        29.461366578980165,
+        179.96971294193173
+      ]
+    },
+    "joints": {
+      "retreat": [
+        0.05007580432679504,
+        -4.516342222024411,
+        -62.985125169730395,
+        0.00046782138971612763,
+        -112.49217573083732,
+        0.04990913143353537
+      ],
+      "approach": [
+        -30.872914033734748,
+        38.6644147344933,
+        -108.84888205664267,
+        19.876344433970164,
+        -87.0349622427163,
+        -29.403279136145915
+      ],
+      "prepick": [
+        -71.34896016524775,
+        -11.223080817046915,
+        -70.7647440568898,
+        29.83498649262208,
+        -93.58280224694373,
+        -69.79429976185723
+      ],
+      "pick": [
+        -71.34896016524775,
+        -14.998102806904182,
+        -97.14811634633848,
+        32.48092446898963,
+        -67.60918671748027,
+        -85.47775189279018
+      ],
+      "lift_first": [
+        -71.34896016524775,
+        -11.835083750707906,
+        -89.70183132931213,
+        30.684498847036004,
+        -76.65528170895327,
+        -79.64558971233835
+      ],
+      "lift": [
+        -71.34896016524775,
+        -10.762228456865879,
+        -82.75485984118384,
+        29.977802671622037,
+        -83.58037644397626,
+        -75.53708095196836
+      ]
+    },
+    "motion_modes": {
+      "retreat": "MoveL",
+      "approach": "MoveJ",
+      "prepick": "MoveL",
+      "pick": "MoveL",
+      "lift_first": "MoveL",
+      "lift": "MoveL"
+    },
+    "route_checks": {
+      "segments": [
+        {
+          "name": "retreat",
+          "mode": "MoveL",
+          "samples": 8,
+          "minimum_flange_foreign_mm": 230.382878383734,
+          "minimum_tool_axis_foreign_mm": 122.37273033730938,
+          "minimum_contact_base_z_mm": 149.97347814206574,
+          "minimum_finger_foreign_mm": null
+        },
+        {
+          "name": "approach",
+          "mode": "MoveJ",
+          "samples": 24,
+          "minimum_flange_foreign_mm": 191.46241266488147,
+          "minimum_tool_axis_foreign_mm": 119.8782669609946,
+          "minimum_contact_base_z_mm": 149.97347814316154,
+          "minimum_finger_foreign_mm": null
+        },
+        {
+          "name": "prepick",
+          "mode": "MoveL",
+          "samples": 68,
+          "minimum_flange_foreign_mm": 169.65059490195773,
+          "minimum_tool_axis_foreign_mm": 82.90970787979204,
+          "minimum_contact_base_z_mm": 149.9734781431151,
+          "minimum_finger_foreign_mm": null
+        },
+        {
+          "name": "pick",
+          "mode": "MoveL",
+          "samples": 39,
+          "minimum_flange_foreign_mm": 80.61504359068327,
+          "minimum_tool_axis_foreign_mm": 14.00922775396048,
+          "minimum_contact_base_z_mm": 37.98175408025605,
+          "minimum_finger_foreign_mm": null
+        },
+        {
+          "name": "lift_first",
+          "mode": "MoveL",
+          "samples": 15,
+          "minimum_flange_foreign_mm": 80.61504359068327,
+          "minimum_tool_axis_foreign_mm": 14.00922775396048,
+          "minimum_contact_base_z_mm": 37.98175408025605,
+          "minimum_finger_foreign_mm": null
+        },
+        {
+          "name": "lift",
+          "mode": "MoveL",
+          "samples": 11,
+          "minimum_flange_foreign_mm": 112.59597246854962,
+          "minimum_tool_axis_foreign_mm": 28.492894745002467,
+          "minimum_contact_base_z_mm": 77.98175408017204,
+          "minimum_finger_foreign_mm": null
+        }
+      ],
+      "full_collision_checked": false,
+      "continuous_sweep_proved": false,
+      "model": "sampled flange and flange-to-contact axis against measured non-target points",
+      "linear_spacing_mm": 3,
+      "joint_spacing_deg": 2,
+      "minimum_flange_foreign_mm": 80.61504359068327,
+      "minimum_tool_axis_foreign_mm": 14.00922775396048
+    },
+    "movement_strategy": "high_orientation_then_horizontal_alignment_then_base_vertical_grasp"
+  },
+  "selected_flange_tilt_deg": 30
+}

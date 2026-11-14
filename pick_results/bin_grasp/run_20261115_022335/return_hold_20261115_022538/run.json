@@ -1,0 +1,23 @@
+{
+  "completed": false,
+  "motion_sent": false,
+  "create_home": false,
+  "mode": "return_hold",
+  "source_run": "pick_results\\bin_grasp\\run_20261115_022335\\run.json",
+  "created_unix": 1794680738.0557926,
+  "gripper_command_unchanged": true,
+  "gripper_write_attempted": false,
+  "released": false,
+  "holding": null,
+  "holding_status": "unknown",
+  "full_collision_checked": false,
+  "events": [
+    {
+      "stage": "返回停止，不改夹爪、不自动重试 BAT",
+      "created_unix": 1794680738.0568252,
+      "error": "Return requires a final measured robot state, including failed grasps"
+    }
+  ],
+  "error": "Return requires a final measured robot state, including failed grasps",
+  "stage": "返回停止，不改夹爪、不自动重试 BAT"
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "frame": "frame_001.npz",
+    "strategy": "clutter",
+    "matches": 5,
+    "duration_s": 9.75,
+    "clusters": 30,
+    "reasons": {
+      "insufficient visible_support, head_support, shaft_support": 6,
+      "insufficient head_support": 4,
+      "geometry supported": 5,
+      "insufficient visible_support, head_support": 5,
+      "duplicate pose suppressed": 6,
+      "no cylinder-supported hypothesis": 5
+    }
+  },
+  {
+    "frame": "frame_002.npz",
+    "strategy": "clutter",
+    "matches": 8,
+    "duration_s": 7.906,
+    "clusters": 42,
+    "reasons": {
+      "geometry supported": 8,
+      "insufficient visible_support, head_support, shaft_support": 6,
+      "insufficient visible_support, shaft_support": 3,
+      "insufficient visible_support, head_support": 1,
+      "insufficient head_support": 2,
+      "no cylinder-supported hypothesis": 2,
+      "duplicate pose suppressed": 1
+    }
+  },
+  {
+    "frame": "frame_003.npz",
+    "strategy": "clutter",
+    "matches": 7,
+    "duration_s": 1.907,
+    "clusters": 33,
+    "reasons": {
+      "duplicate pose suppressed": 1,
+      "geometry supported": 7,
+      "insufficient head_support": 1,
+      "no cylinder-supported hypothesis": 4,
+      "insufficient visible_support, head_support, shaft_support": 1
+    }
+  }
+]

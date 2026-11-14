@@ -74,10 +74,18 @@ class CadAndMatchingTests(unittest.TestCase):
         np.testing.assert_allclose(result.transformation[:3, 3], expected[:3, 3], atol=1.0)
 
     def test_execution_stays_blocked_without_physical_calibration(self):
-        missing = vision.missing_execution_calibration(self.config)
+        config = self.uncalibrated_config()
+        missing = vision.missing_execution_calibration(config)
         self.assertIn("camera.tcp_T_camera", missing)
         self.assertIn("gripper.tcp_to_grasp_center_mm", missing)
         self.assertIn("gripper.measured_max_object_mm", missing)
+
+    def uncalibrated_config(self):
+        # Tests must not depend on whether the operator has calibrated this site.
+        config = copy.deepcopy(self.config)
+        config["camera"]["tcp_T_camera"] = None
+        config["gripper"].update(tcp_to_grasp_center_mm=None, measured_max_object_mm=None)
+        return config
 
     def eye_in_hand_config(self):
         config = copy.deepcopy(self.config)
@@ -90,7 +98,8 @@ class CadAndMatchingTests(unittest.TestCase):
         return config
 
     def observation(self):
-        return {"tcp_pose": [192, -60, 280, 178, 0.5, -179], "tool_id": 0, "user_id": 0}
+        return {"tcp_pose": [192, -60, 280, 178, 0.5, -179], "tool_id": 0, "user_id": 0,
+                "camera_frame": self.config["camera"].get("point_cloud_frame")}
 
     def test_eye_in_hand_uses_acquisition_pose_and_tool_relative_transform(self):
         config = self.eye_in_hand_config()
@@ -133,6 +142,14 @@ class CadAndMatchingTests(unittest.TestCase):
         config["camera"].update(mount="fixed", base_T_camera=np.eye(4).tolist())
         np.testing.assert_allclose(vision.camera_transform(config), np.eye(4))
 
+    def test_old_native_frame_cannot_use_optical_handeye(self):
+        config = self.eye_in_hand_config()
+        config["camera"]["point_cloud_frame"] = "opencv_optical"
+        observation = self.observation()
+        observation.pop("camera_frame", None)
+        with self.assertRaisesRegex(RuntimeError, "coordinate frame changed"):
+            vision.camera_transform(config, observation)
+
     def test_scaled_or_reflected_calibration_matrix_is_rejected(self):
         for factor in (2, -1):
             transform = np.eye(4)
@@ -165,7 +182,7 @@ class CadAndMatchingTests(unittest.TestCase):
     def test_execution_with_missing_calibration_never_calls_motion_or_grippers(self):
         with patch("pick_place_3d._move_verified") as move, patch("pick_place_3d._load_grippers") as grippers:
             with self.assertRaisesRegex(RuntimeError, "calibration is incomplete"):
-                vision.execute_plan({"route": "direct"}, self.config)
+                vision.execute_plan({"route": "direct"}, self.uncalibrated_config())
             move.assert_not_called()
             grippers.assert_not_called()
 
@@ -190,7 +207,7 @@ class CadAndMatchingTests(unittest.TestCase):
         self.assertFalse(plan["executable"])
         self.assertIsNone(plan["pick"])
         self.assertIsNone(plan["pick_approach"])
-        self.assertEqual(plan["close_command_mm"], 9.43)
+        self.assertEqual(plan["close_command_mm"], config["gripper"]["close_command_mm"])
         self.assertEqual(plan["grasp_width_mm"], 21)
         self.assertEqual(plan["place"], config["placement"]["home_pose"])
         self.assertEqual(plan["selected_grasp"]["cluster_index"], 1)
@@ -209,7 +226,7 @@ class CadAndMatchingTests(unittest.TestCase):
             grippers.assert_not_called()
 
     def test_draft_plan_writes_json_and_readable_shaft_grasp_instructions(self):
-        plan, _ = self.draft_grasp_plan()
+        plan, config = self.draft_grasp_plan()
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory)
             vision.write_grasp_plan(path, plan)
@@ -217,7 +234,7 @@ class CadAndMatchingTests(unittest.TestCase):
             self.assertFalse(saved["executable"])
             text = (path / "grasp_plan.md").read_text(encoding="utf-8")
             self.assertIn("杆身", text)
-            self.assertIn("9.43", text)
+            self.assertIn(str(config["gripper"]["close_command_mm"]), text)
             self.assertIn("相机坐标", text)
 
     def test_shaft_region_overlapping_large_head_is_rejected(self):

@@ -1,0 +1,29 @@
+{
+  "created_unix": 1794635980.3173666,
+  "action": "close_gripper_only",
+  "arm_motion_issued": false,
+  "physical_grasp_confirmed": false,
+  "tcp_before": [
+    210.80721158222786,
+    -5.996346418918281,
+    236.3832067664362,
+    179.99953216023633,
+    0.0022367458445894154,
+    -179.99983333492608
+  ],
+  "command_before_mm": 20.0,
+  "target_mm": 9.43,
+  "command_readback_mm": 9.430000305175781,
+  "command_completed": true,
+  "tcp_after": [
+    210.80721158222786,
+    -5.996346418918281,
+    236.3832067664362,
+    179.99953216023633,
+    0.0022367458445894154,
+    -179.99983333492608
+  ],
+  "before_image": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\retry_close_before\\grasp_verify_color_20261114_135902.png",
+  "after_image": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\retry_close_after\\grasp_verify_color_20261114_140008.png",
+  "comparison_image": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\retry_close_comparison.png"
+}

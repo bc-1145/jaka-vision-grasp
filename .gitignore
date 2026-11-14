@@ -16,6 +16,12 @@ __pycache__/
 /logs/
 /diagnostics/*
 !/diagnostics/README.md
+!/diagnostics/evaluate_matching.py
+!/diagnostics/inspect_pick_target.py
+!/diagnostics/pick_highest_then_home.py
+!/diagnostics/stand_table_part.py
+!/diagnostics/record_gripper_calibration.py
+!/diagnostics/measure_jaw_stroke.py
 /.jaka-command-port.lock
 *.log
 *.log.*
@@ -31,3 +37,10 @@ id_ed25519
 
 # Calibration data, robot configurations, CAD models and pick results are
 # intentionally not ignored here: keep their backup/versioning policy explicit.
+
+# Local duplicate project backups
+/backups/
+/project2_backup_*/
+
+# Vendor installer exceeds GitHub's 100 MiB file limit
+/INU_Camera_Package/installers/InuDev_Pro_*.exe

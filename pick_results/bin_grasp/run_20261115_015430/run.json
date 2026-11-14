@@ -1,0 +1,790 @@
+{
+  "completed": false,
+  "motion_sent": true,
+  "actuator_write_attempted": true,
+  "stage": "零件框尝试停止，保留夹爪状态",
+  "run_created_unix": 1794678870.8343413,
+  "create_home": false,
+  "mode": "execute",
+  "events": [
+    {
+      "stage": "控制器与夹爪反馈检查",
+      "created_unix": 1794678875.1811974,
+      "feedback": {
+        "available": false,
+        "grip_state": null,
+        "state_name": null,
+        "holding": null,
+        "dropped": null,
+        "actual_position_mm": null,
+        "current_a": null,
+        "initialization_state": null,
+        "reason": "夹持状态 0x0041 未映射到输入；AO 开度设定值不能确认夹持",
+        "source": "jaka_extio_input_registers",
+        "protocol_source": "https://cn.hitbot.cc/hitbot/document/Z-EFG/Z-EFG-20P/Z-EFG-20P.pdf",
+        "created_unix": 1794678875.1811974,
+        "field_available": {
+          "state": false,
+          "position": false,
+          "current": false,
+          "initialization": false
+        },
+        "device_id": "ext_n7sn2kaoncejc6b2",
+        "unit_id": 1,
+        "command_is_measured_gap": false,
+        "input_mapping": {
+          "first_register": 0,
+          "register_count": 0,
+          "input_offset": 0
+        }
+      }
+    },
+    {
+      "stage": "确认已在零件框 BAT 拍照位置或其向上观察位",
+      "created_unix": 1794678875.2189643,
+      "actual": {
+        "queue": 0,
+        "errorCode": "0",
+        "errorMsg": "",
+        "cmdName": "get_motion_state",
+        "queue_full": false,
+        "active_queue": 0,
+        "inpos": true,
+        "collision": 0,
+        "paused": false,
+        "err_add_line": 0,
+        "soft_limit": 0,
+        "estop": 0,
+        "motion_line": 0,
+        "actual_position": [
+          211.07641729145604,
+          -5.905302677643121,
+          276.38786696119405,
+          179.9995385080749,
+          0.004983349373981837,
+          -179.99974448816076
+        ],
+        "joint_actual_position": [
+          0.02535656612098225,
+          -1.1160736777137068,
+          -77.93202453817858,
+          0.00046782138971612763,
+          -100.94691819771128,
+          0.0251898932277225
+        ]
+      }
+    },
+    {
+      "stage": "保存复核画面：bin_overview",
+      "created_unix": 1794678889.3106902,
+      "view": {
+        "created_unix": 1794678888.2511225,
+        "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_015430\\bin_overview\\grasp_verify_color_20261115_015448.png",
+        "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_015430\\bin_overview\\grasp_verify_depth_20261115_015448.png",
+        "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_015430\\bin_overview\\grasp_verify_depth_raw_20261115_015448.png",
+        "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_015430\\bin_overview\\grasp_verify_view_20261115_015448.png",
+        "depth_min_mm": 179,
+        "depth_median_mm": 239.0,
+        "depth_max_mm": 308,
+        "observation": {
+          "created_unix": 1794678877.201455,
+          "tcp_pose": [
+            211.07641729145604,
+            -5.905302677643121,
+            276.38786696119405,
+            179.9995385080749,
+            0.004983349373981837,
+            -179.99974448816076
+          ],
+          "tool_id": 0,
+          "user_id": 0
+        }
+      }
+    },
+    {
+      "stage": "下爪前空爪检查",
+      "created_unix": 1794678889.9522748,
+      "empty_jaws": {
+        "accepted": false,
+        "status": "occupied_or_uncertain",
+        "reason": "A dark object or occlusion occupies the visible grasp space",
+        "visible_grasp_pixels": 44784,
+        "fixed_tool_pixels": 41834,
+        "visible_volume_fraction": 0.3813124217732254,
+        "inspection_radius_mm": 34.27100840070827,
+        "tool_visible_fraction": 0.8826074484868767,
+        "tool_reference_error_median": 28.0,
+        "new_dark_fraction": 0.6507011432654519,
+        "largest_new_dark_component_pixels": 25796,
+        "bright_grasp_fraction": 0.28733476241514827
+      }
+    },
+    {
+      "stage": "保持夹爪原状，检查向上拍照路线",
+      "created_unix": 1794678892.017197,
+      "inspection": {
+        "pose": [
+          211.34189397605508,
+          -5.818156236383679,
+          316.38689104463526,
+          179.9995385080749,
+          0.004983349373981837,
+          -179.99974448816076
+        ],
+        "samples": [
+          {
+            "pose": [
+              211.07641729145604,
+              -5.905302677643121,
+              276.38786696119405,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.025356566120962813,
+              -1.1160736777095703,
+              -77.93202453818064,
+              0.0004678213896484546,
+              -100.94691823267563,
+              0.025189893227883228
+            ]
+          },
+          {
+            "pose": [
+              211.09537991178453,
+              -5.8990779318388755,
+              279.24494011001127,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.02704394987187584,
+              -1.2781268601502234,
+              -76.97448268486774,
+              0.0004689764549945264,
+              -101.74240688999635,
+              0.026883880269235966
+            ]
+          },
+          {
+            "pose": [
+              211.11434253211306,
+              -5.892853186034629,
+              282.1020132588285,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.02873103183710966,
+              -1.4516993754457015,
+              -76.0023524179475,
+              0.0004702345057763595,
+              -102.5409646280762,
+              0.028577625473056447
+            ]
+          },
+          {
+            "pose": [
+              211.13330515244155,
+              -5.886628440230384,
+              284.9590864076457,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.030417812094313747,
+              -1.636956829366953,
+              -75.01517238670829,
+              0.00047159861247811217,
+              -103.34288719185582,
+              0.03027113478275588
+            ]
+          },
+          {
+            "pose": [
+              211.15226777277005,
+              -5.880403694426137,
+              287.816159556463,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.03210429072111311,
+              -1.8340837771030365,
+              -74.01244489066711,
+              0.00047307218561043956,
+              -104.14848772662909,
+              0.03196441449257899
+            ]
+          },
+          {
+            "pose": [
+              211.17123039309854,
+              -5.874178948621892,
+              290.6732327052802,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.033790467795106915,
+              -2.0432854624773444,
+              -72.9936324372952,
+              0.0004746590077061046,
+              -104.95809848110133,
+              0.03365747128912324
+            ]
+          },
+          {
+            "pose": [
+              211.19019301342706,
+              -5.867954202817646,
+              293.53030585409743,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.035476343393869104,
+              -2.264789781588494,
+              -71.95815384710203,
+              0.0004763632699751277,
+              -105.77207273866445,
+              0.03535031229834627
+            ]
+          },
+          {
+            "pose": [
+              211.20915563375556,
+              -5.8617294570134,
+              296.38737900291466,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.03716191759494875,
+              -2.4988495082040463,
+              -70.90537983177013,
+              0.0004781896144052585,
+              -106.59078701386831,
+              0.03704294513900459
+            ]
+          },
+          {
+            "pose": [
+              211.22811825408405,
+              -5.8555047112091545,
+              299.2444521517319,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.0388471904758685,
+              -2.745744825665422,
+              -69.83462795617872,
+              0.0004801431822566097,
+              -107.41464355849219,
+              0.038735377983660495
+            ]
+          },
+          {
+            "pose": [
+              211.24708087441255,
+              -5.849279965404908,
+              302.1015253005491,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.04053216211412633,
+              -3.0057862192617666,
+              -68.74515687676184,
+              0.00048222967010210985,
+              -108.24407323081292,
+              0.04042761962864251
+            ]
+          },
+          {
+            "pose": [
+              211.26604349474107,
+              -5.843055219600663,
+              304.9585984493663,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.04221683258719481,
+              -3.2793177944959777,
+              -67.63615972572943,
+              0.0004844553948193704,
+              -109.07953879311756,
+              0.04211967957463447
+            ]
+          },
+          {
+            "pose": [
+              211.28500611506956,
+              -5.836830473796416,
+              307.8156715981836,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.04390120197252061,
+              -3.5667211010483273,
+              -66.50675648193562,
+              0.0004868273692596116,
+              -109.9215387168717,
+              0.04381156811995719
+            ]
+          },
+          {
+            "pose": [
+              211.30396873539806,
+              -5.830605727992171,
+              310.6727447470008,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.04558527034752603,
+              -3.868419560413318,
+              -65.35598513286618,
+              0.000489353390725619,
+              -110.77061159309503,
+              0.045503296469086824
+            ]
+          },
+          {
+            "pose": [
+              211.32293135572658,
+              -5.824380982187925,
+              313.52981789581804,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.04726903778960764,
+              -4.184883618314521,
+              -64.18279138599854,
+              0.0004920421449104561,
+              -111.62734126858648,
+              0.047194876859564715
+            ]
+          },
+          {
+            "pose": [
+              211.34189397605508,
+              -5.818156236383679,
+              316.38689104463526,
+              179.9995385080749,
+              0.004983349373981837,
+              -179.99974448816076
+            ],
+            "joints": [
+              0.048952504376135846,
+              -4.516636772680741,
+              -62.98601662848608,
+              0.0004949033286189804,
+              -112.49236285826379,
+              0.048886322711254045
+            ]
+          }
+        ],
+        "delta_mm": [
+          0.26547668459903273,
+          0.08714644125944185,
+          39.99902408344121
+        ],
+        "gripper_unchanged": true,
+        "full_collision_checked": false
+      }
+    },
+    {
+      "stage": "向上退 40 mm 观察料框与空爪",
+      "created_unix": 1794678893.3957717
+    },
+    {
+      "stage": "保存复核画面：bin_overview_retreat",
+      "created_unix": 1794678909.6048288,
+      "view": {
+        "created_unix": 1794678908.5095887,
+        "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_015430\\bin_overview_retreat\\grasp_verify_color_20261115_015508.png",
+        "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_015430\\bin_overview_retreat\\grasp_verify_depth_20261115_015508.png",
+        "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_015430\\bin_overview_retreat\\grasp_verify_depth_raw_20261115_015508.png",
+        "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_015430\\bin_overview_retreat\\grasp_verify_view_20261115_015508.png",
+        "depth_min_mm": 179,
+        "depth_median_mm": 269.0,
+        "depth_max_mm": 348,
+        "observation": {
+          "created_unix": 1794678897.4497294,
+          "tcp_pose": [
+            211.3412504551313,
+            -5.811550779951535,
+            316.39100783375886,
+            179.99956270985737,
+            0.0056698403359693806,
+            179.99965900078985
+          ],
+          "tool_id": 0,
+          "user_id": 0
+        }
+      }
+    },
+    {
+      "stage": "通过实测位移核对空爪",
+      "created_unix": 1794678909.8723402,
+      "empty_jaws": {
+        "accepted": true,
+        "status": "visually_empty_from_motion",
+        "reason": "Visible grasp-space features move with the scene; no stationary part established",
+        "visible_grasp_pixels": 44784,
+        "hidden_volume_observed": false,
+        "before_tool_visible_fraction": 0.8826074484868767,
+        "before_tool_error": 28.0,
+        "after_tool_visible_fraction": 0.8831572405220633,
+        "after_tool_error": 27.0,
+        "motion_tracks": 438,
+        "motion_median_px": 27.475749969482422,
+        "moving_fraction": 1.0,
+        "stationary_tracks": 0,
+        "dark_regions": [
+          {
+            "pixels": 25796,
+            "tracks": 373,
+            "moving_fraction": 1.0,
+            "stationary_tracks": 0,
+            "bbox_pixels": [
+              853,
+              662,
+              326,
+              161
+            ]
+          },
+          {
+            "pixels": 1211,
+            "tracks": 12,
+            "moving_fraction": 1.0,
+            "stationary_tracks": 0,
+            "bbox_pixels": [
+              803,
+              731,
+              37,
+              74
+            ]
+          },
+          {
+            "pixels": 2121,
+            "tracks": 6,
+            "moving_fraction": 1.0,
+            "stationary_tracks": 0,
+            "bbox_pixels": [
+              953,
+              812,
+              66,
+              56
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "在零件框上方采集原生深度",
+      "created_unix": 1794678909.8773856,
+      "attempt": 1
+    },
+    {
+      "stage": "核对零件大头与轴向",
+      "created_unix": 1794678932.3873408,
+      "candidates": [
+        {
+          "cluster_index": 13,
+          "match_score": 0.8786407935430591,
+          "direction": {
+            "accepted": true,
+            "status": "verified",
+            "reason": "Measured wide flange and shaft-aligned planar face agree with CAD direction",
+            "reference_kind": "measured_flange_normals_without_floor",
+            "support_observed": false,
+            "axis_vertical_alignment": 0.5821526297335388,
+            "normal_alignment_threshold": 0.75,
+            "scene_clearance_still_required": true,
+            "head_annulus_points": 406,
+            "reverse_annulus_points": 127,
+            "direction_ratio": 3.1796875,
+            "head_planar_fraction": 0.46882217090069284,
+            "head_angular_band_points": [
+              85,
+              20,
+              0,
+              37,
+              43,
+              51,
+              66,
+              104
+            ],
+            "head_raw_annulus_points": 866
+          }
+        },
+        {
+          "cluster_index": 14,
+          "match_score": 0.8281578652538533,
+          "direction": {
+            "accepted": false,
+            "status": "unknown",
+            "reason": "A near-vertical shaft needs a measured support to distinguish floor from flange",
+            "reference_kind": "measured_flange_normals_without_floor",
+            "support_observed": false,
+            "axis_vertical_alignment": 0.9839229016510165,
+            "normal_alignment_threshold": 0.75,
+            "scene_clearance_still_required": true
+          }
+        },
+        {
+          "cluster_index": 15,
+          "match_score": 0.7854642600566003,
+          "direction": {
+            "accepted": false,
+            "status": "unknown",
+            "reason": "A near-vertical shaft needs a measured support to distinguish floor from flange",
+            "reference_kind": "measured_flange_normals_without_floor",
+            "support_observed": false,
+            "axis_vertical_alignment": 0.7694989732486561,
+            "normal_alignment_threshold": 0.75,
+            "scene_clearance_still_required": true
+          }
+        },
+        {
+          "cluster_index": 16,
+          "match_score": 0.7796460145057601,
+          "direction": {
+            "accepted": true,
+            "status": "verified",
+            "reason": "Measured wide flange and shaft-aligned planar face agree with CAD direction",
+            "reference_kind": "measured_flange_normals_without_floor",
+            "support_observed": false,
+            "axis_vertical_alignment": 0.1742003505586723,
+            "normal_alignment_threshold": 0.75,
+            "scene_clearance_still_required": true,
+            "head_annulus_points": 105,
+            "reverse_annulus_points": 0,
+            "direction_ratio": 106.0,
+            "head_planar_fraction": 0.30434782608695654,
+            "head_angular_band_points": [
+              21,
+              26,
+              0,
+              0,
+              0,
+              0,
+              4,
+              54
+            ],
+            "head_raw_annulus_points": 345
+          }
+        },
+        {
+          "cluster_index": 17,
+          "match_score": 0.6676044323332109,
+          "direction": {
+            "accepted": false,
+            "status": "unknown",
+            "reason": "Wide-end geometry and independent end-face normals are insufficient",
+            "reference_kind": "measured_flange_normals_without_floor",
+            "support_observed": false,
+            "axis_vertical_alignment": 0.23612822647151652,
+            "normal_alignment_threshold": 0.75,
+            "scene_clearance_still_required": true,
+            "head_annulus_points": 17,
+            "reverse_annulus_points": 0,
+            "direction_ratio": 18.0,
+            "head_planar_fraction": 0.07423580786026202,
+            "head_angular_band_points": [
+              0,
+              0,
+              10,
+              0,
+              0,
+              0,
+              0,
+              7
+            ],
+            "head_raw_annulus_points": 229
+          }
+        },
+        {
+          "cluster_index": 18,
+          "match_score": 0.6544454059309939,
+          "direction": {
+            "accepted": false,
+            "status": "unknown",
+            "reason": "Wide-end geometry and independent end-face normals are insufficient",
+            "reference_kind": "measured_flange_normals_without_floor",
+            "support_observed": false,
+            "axis_vertical_alignment": 0.07254424063968797,
+            "normal_alignment_threshold": 0.75,
+            "scene_clearance_still_required": true,
+            "head_annulus_points": 8,
+            "reverse_annulus_points": 12,
+            "direction_ratio": 0.6923076923076923,
+            "head_planar_fraction": 0.031007751937984496,
+            "head_angular_band_points": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              3
+            ],
+            "head_raw_annulus_points": 258
+          }
+        }
+      ],
+      "bin_reference": {
+        "support_observed": false,
+        "plane_base": null,
+        "reference_kind": "measured_flange_normals_without_floor",
+        "reason": "No defensible floor plane; use independent flange normals and keep full scene clearance checks",
+        "measured_points": 262714,
+        "normal_neighborhood_mm": 4,
+        "plane_candidates": [
+          {
+            "plane_base": [
+              -0.9975172838275516,
+              0.05189222878198247,
+              0.04760740548845781,
+              429.4193740226172
+            ],
+            "support_points": 19158,
+            "normal_tilt_deg": 87.27126516555855,
+            "inlier_xy_extent_mm": [
+              16.701666435950074,
+              316.4116506220206
+            ],
+            "planar_normal_fraction": 0.7948637644848106,
+            "minimum_target_clearance_mm": 136.1648398754175,
+            "accepted": false
+          },
+          {
+            "plane_base": [
+              -0.0540813248291391,
+              -0.9985357465669918,
+              0.0012542458393061265,
+              149.0253449061463
+            ],
+            "support_points": 16738,
+            "normal_tilt_deg": 89.92813698809424,
+            "inlier_xy_extent_mm": [
+              223.48181449537242,
+              12.559202549477689
+            ],
+            "planar_normal_fraction": 0.8609152825905126,
+            "minimum_target_clearance_mm": -0.6556295854522034,
+            "accepted": false
+          },
+          {
+            "plane_base": [
+              0.0526558044594244,
+              0.07214469126457784,
+              0.9960032679560191,
+              -14.368627162922918
+            ],
+            "support_points": 6250,
+            "normal_tilt_deg": 5.124304150257403,
+            "inlier_xy_extent_mm": [
+              207.09087644376353,
+              310.0462089581045
+            ],
+            "planar_normal_fraction": 0.0488,
+            "minimum_target_clearance_mm": -6.735263373667997,
+            "accepted": false
+          },
+          {
+            "plane_base": [
+              0.0783037743344562,
+              0.01834705649052055,
+              0.9967607057078004,
+              -36.82478767582883
+            ],
+            "support_points": 5272,
+            "normal_tilt_deg": 4.612964758722994,
+            "inlier_xy_extent_mm": [
+              220.33616690607113,
+              307.3578972585629
+            ],
+            "planar_normal_fraction": 0.057283763277693474,
+            "minimum_target_clearance_mm": -17.934595254898525,
+            "accepted": false
+          },
+          {
+            "plane_base": [
+              -0.9986361858976478,
+              0.05210016730757055,
+              0.003367607804068658,
+              172.77934160074352
+            ],
+            "support_points": 6389,
+            "normal_tilt_deg": 89.80704992106958,
+            "inlier_xy_extent_mm": [
+              17.71982293981648,
+              326.98528791082066
+            ],
+            "planar_normal_fraction": 0.52731256847707,
+            "minimum_target_clearance_mm": -122.38324298115845,
+            "accepted": false
+          },
+          {
+            "plane_base": [
+              0.056176604772847555,
+              0.06433572699442154,
+              0.9963458753406342,
+              -12.401140952320768
+            ],
+            "support_points": 4928,
+            "normal_tilt_deg": 4.899611503831049,
+            "inlier_xy_extent_mm": [
+              204.7613983087147,
+              298.7082702622914
+            ],
+            "planar_normal_fraction": 0.018262987012987012,
+            "minimum_target_clearance_mm": -2.2178522406979777,
+            "accepted": false
+          }
+        ],
+        "scene_geometry_removed_for_planning": false
+      },
+      "depth_units": "mm",
+      "point_cloud_frame": "opencv_optical"
+    },
+    {
+      "stage": "零件框尝试停止，保留夹爪状态",
+      "created_unix": 1794678932.6551838,
+      "error": "Controller joint range or literal branch jump exceeded"
+    }
+  ],
+  "output": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_015430",
+  "independent_tool_calibration": false,
+  "target_pose": [
+    211.34189397605508,
+    -5.818156236383679,
+    316.38689104463526,
+    179.9995385080749,
+    0.004983349373981837,
+    -179.99974448816076
+  ],
+  "error": "Controller joint range or literal branch jump exceeded"
+}

@@ -110,10 +110,19 @@ class RecoveryTests(unittest.TestCase):
 
 
 class AcquisitionTests(unittest.TestCase):
-    def run_worker(self, color_responses, *, depth_init_error=None):
+    def run_worker(self, color_responses, *, depth_init_error=None, with_points=False,
+                   point_init_error=None, point_frame_error=None):
         sensor, color, depth, mailbox, stop = [MagicMock() for _ in range(5)]
         stop.value = False
         sensor.create_stream.side_effect = [color, depth]
+        point_stream, point_mailbox = MagicMock(), MagicMock()
+        if with_points:
+            sensor.create_stream.side_effect = [color, depth, point_stream]
+            point_stream.frame.data = np.ones((100, 3), dtype=np.float32)
+            if point_frame_error is not None:
+                type(point_stream).frame = PropertyMock(side_effect=point_frame_error)
+            if point_init_error is not None:
+                point_stream.init.side_effect = point_init_error
         type(color).frame = PropertyMock(side_effect=color_responses)
         depth.frame = object()
         if depth_init_error is not None:
@@ -123,13 +132,44 @@ class AcquisitionTests(unittest.TestCase):
             "api.inu_sensor", "api.image_stream", "api.depth_stream", "api.shared")}
         modules["api.inu_sensor"].InuSensor.return_value = sensor
         self.resources = sensor, color, depth, mailbox
+        self.point_resources = point_stream, point_mailbox
         with patch.dict("sys.modules", modules), \
              patch("camera_capture.configure_logging"), \
              patch("camera_capture.time.sleep"), \
              patch("color_depth_viewer.prepare_runtime"), \
              patch("color_depth_viewer.frame_to_color", return_value=np.zeros((2, 3, 3), np.uint8)), \
              patch("color_depth_viewer.frame_to_depth", return_value=np.ones((2, 3), np.uint16)):
-            capture_worker("unused", mailbox, stop)
+            capture_worker("unused", mailbox, stop, point_mailbox if with_points else None)
+
+    def test_native_xyz_shares_sensor_with_images_and_is_released(self):
+        self.run_worker([object()], with_points=True)
+        sensor, color, depth, mailbox = self.resources
+        points, point_mailbox = self.point_resources
+        sensor.init.assert_called_once()
+        mailbox.publish.assert_called_once()
+        point_mailbox.publish.assert_called_once()
+        points.stop.assert_called_once()
+        points.terminate.assert_called_once()
+
+    def test_native_xyz_initialization_failure_releases_both_image_streams(self):
+        with self.assertRaisesRegex(RuntimeError, "XYZ init failed"):
+            self.run_worker([], with_points=True, point_init_error=RuntimeError("XYZ init failed"))
+        sensor, color, depth, mailbox = self.resources
+        points, point_mailbox = self.point_resources
+        color.stop.assert_called_once()
+        depth.stop.assert_called_once()
+        points.stop.assert_not_called()
+        points.terminate.assert_called_once()
+        point_mailbox.publish.assert_not_called()
+
+    def test_single_xyz_timeout_keeps_image_frame_and_does_not_fail_sensor(self):
+        self.run_worker([object()], with_points=True,
+                        point_frame_error=RuntimeError("InuService timed out (0x5000033)"))
+        sensor, color, depth, mailbox = self.resources
+        points, point_mailbox = self.point_resources
+        sensor.init.assert_called_once()
+        mailbox.publish.assert_called_once()
+        point_mailbox.publish.assert_not_called()
 
     def test_one_service_timeout_recovers_without_reinitializing_sensor(self):
         self.run_worker([RuntimeError("Call to InuService timed out (0x5000033)"), object()])

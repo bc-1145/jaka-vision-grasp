@@ -1,0 +1,8 @@
+#STE_MAX_RATIO - standard error maximum ratio, when ste value < MAX_STE*STE_MAX_RATIO stop scan and focus back
+STE_MAX_RATIO 0.7
+#FOCUS_MAX_RATIO - focus maximum ratio, when focus value < MAX_FOCUS*FOCUS_MAX_RATIO stop scan and focus back
+FOCUS_MAX_RATIO 0.7
+#STE_MAX_PERCENT - standard error maximum percent , if abs(ste - MAX_STE)/MAX_STE < STE_MAX_PERCENT focus is reaced
+STE_MAX_PERCENT 0.14
+#FOCUS_MAX_PERCENT - focus maximum percent , if abs(focus - MAX_FOCUS)/MAX_FOCUS < FOCUS_MAX_PERCENT focus is reaced
+FOCUS_MAX_PERCENT 0.14

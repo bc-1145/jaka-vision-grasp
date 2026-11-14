@@ -51,6 +51,35 @@ class FrameMailbox:
             self.lock.release()
 
 
+class PointCloudMailbox:
+    """Latest native XYZ frame; preview readers never block acquisition."""
+    def __init__(self, context, capacity=BUFFER_BYTES):
+        self.capacity = capacity
+        self.data = context.RawArray("B", capacity)
+        self.meta = context.RawArray("q", 3)
+        self.lock = context.Lock()
+
+    def publish(self, points):
+        points = np.ascontiguousarray(points, dtype=np.float32).reshape(-1, 3)
+        if points.nbytes > self.capacity:
+            raise ValueError("Point cloud exceeds the preview buffer capacity")
+        with self.lock:
+            np.frombuffer(self.data, dtype=np.uint8)[:points.nbytes] = points.view(np.uint8).reshape(-1)
+            self.meta[:] = (self.meta[0] + 1, len(points), time.time_ns())
+
+    def read(self, last_sequence):
+        if not self.lock.acquire(False):
+            return None
+        try:
+            sequence, count, stamp = self.meta[:]
+            if not sequence or sequence == last_sequence:
+                return None
+            points = np.frombuffer(self.data, dtype=np.float32, count=count * 3).copy().reshape(-1, 3)
+            return sequence, stamp / 1e9, points
+        finally:
+            self.lock.release()
+
+
 def configure_logging(filename):
     directory = Path(__file__).resolve().parent / "logs"
     directory.mkdir(exist_ok=True)
@@ -60,7 +89,7 @@ def configure_logging(filename):
                         format="%(asctime)s %(levelname)s %(process)d %(message)s", force=True)
 
 
-def capture_worker(sdk_dir, mailbox, stop):
+def capture_worker(sdk_dir, mailbox, stop, point_mailbox=None):
     # A vendor DLL failure can terminate this child without closing the UI.
     configure_logging("camera_capture.log")
     from color_depth_viewer import prepare_runtime, frame_to_color, frame_to_depth
@@ -89,8 +118,17 @@ def capture_worker(sdk_dir, mailbox, stop):
         depth_stream.init(DepthOutputFormat.DEPTH, DepthPostProcessing.DEFAULT)
         depth_stream.start()
         started.append(depth_stream)
-        log.info("Color and depth acquisition started")
+        point_stream = None
+        if point_mailbox is not None:
+            point_stream = sensor.create_stream(StreamType.POINT_CLOUD)
+            streams.append(point_stream)
+            point_stream.init()
+            point_stream.start()
+            started.append(point_stream)
+        log.info("Color and depth acquisition started; native XYZ=%s", point_stream is not None)
         timeouts = 0
+        point_timeouts = 0
+        next_points = 0.0
         while not stop.value:
             try:
                 color_frame = color_stream.frame
@@ -110,6 +148,21 @@ def capture_worker(sdk_dir, mailbox, stop):
                 continue
             if color is not None and depth is not None:
                 mailbox.publish(color, depth)
+                if point_stream is not None and time.monotonic() >= next_points:
+                    try:
+                        point_frame = point_stream.frame
+                        raw = np.asarray(point_frame.data)
+                        if raw.size >= 300 and raw.size % 3 == 0:
+                            point_mailbox.publish(raw.reshape(-1, 3))
+                        point_timeouts = 0
+                    except RuntimeError as exc:
+                        if "0x5000033" not in str(exc).lower() and "timed out" not in str(exc).lower():
+                            raise
+                        point_timeouts += 1
+                        log.warning("Temporary XYZ timeout (%s/3): %s", point_timeouts, exc)
+                        if point_timeouts >= 3:
+                            raise
+                    next_points = time.monotonic() + (1.0 if point_timeouts else 0.3)
                 if timeouts:
                     log.info("Frame acquisition recovered after a temporary timeout")
                 timeouts = 0
@@ -145,10 +198,13 @@ class CameraCapture:
     START_TIMEOUT = 30.0
     STALL_TIMEOUT = 8.0
 
-    def __init__(self, sdk_dir, *, context=None, worker=capture_worker):
+    def __init__(self, sdk_dir, *, context=None, worker=capture_worker, with_points=False):
         self.sdk_dir = str(sdk_dir)
         self.context = context or mp.get_context("spawn")
         self.worker = worker
+        self.with_points = with_points
+        self.point_mailbox = None
+        self.point_sequence = 0
         self.process = None
         self.mailbox = None
         self.stop = None
@@ -163,8 +219,13 @@ class CameraCapture:
     def _start(self, now):
         self.mailbox = FrameMailbox(self.context)
         self.stop = self.context.RawValue("b", False)
+        self.point_mailbox = PointCloudMailbox(self.context) if self.with_points else None
+        self.point_sequence = 0
+        worker_args = (self.sdk_dir, self.mailbox, self.stop)
+        if self.with_points:
+            worker_args += (self.point_mailbox,)
         process = self.context.Process(target=self.worker,
-            args=(self.sdk_dir, self.mailbox, self.stop), name="camera-acquisition", daemon=True)
+            args=worker_args, name="camera-acquisition", daemon=True)
         process.start()
         self.process = process
         self.sequence = 0
@@ -190,6 +251,7 @@ class CameraCapture:
         self.process.close()
         self.process = None
         self.mailbox = None
+        self.point_mailbox = None
         self.stop = None
 
     def _retry(self, reason, now):
@@ -233,6 +295,14 @@ class CameraCapture:
         elif self.last_frame_at is not None and now - self.last_frame_at > 1:
             self.status = "Waiting for camera frames..."
         return None
+
+    def poll_points(self):
+        if self.point_mailbox is None:
+            return None
+        result = self.point_mailbox.read(self.point_sequence)
+        if result is not None:
+            self.point_sequence = result[0]
+        return result
 
     def close(self):
         self.closed = True

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "table_xy_bounds_mm": [
+    [
+      -150,
+      -740
+    ],
+    [
+      140,
+      -400
+    ]
+  ],
+  "table_anchor_xy_mm": [
+    43,
+    -537
+  ],
+  "reference_table_plane": {
+    "plane_base": [
+      -0.0024153166151622382,
+      0.002879460238151274,
+      0.9999929374522529,
+      -65.61318094261081
+    ],
+    "support_points": 87845,
+    "height_at_grasp_xy_mm": 67.26427522779848,
+    "normal_tilt_deg": 0.21533696330279517,
+    "residual_median_mm": 0.3480737006290866,
+    "grasp_clearance_above_table_mm": 17.783645316324396
+  },
+  "max_table_height_change_mm": 5,
+  "minimum_match_score": 0.78,
+  "max_rescans": 2,
+  "max_target_age_seconds": 180,
+  "reference_geometry_binding": "3ed4c1fb3a8f205975deb2187c039effce2a23eb30eee5e0b170bb31c77ba6ef",
+  "reference_note": "Known empty open/closed images from visually reviewed installation. Fixed workcell bounds are inside the observed table; targets and placement heights are always measured again.",
+  "empty_open_reference": "calibration_data/gripper_empty_open.png",
+  "empty_open_reference_sha256": "6d9a2477a16e0913971165dc4c8d59c50beddbbe1e3d5546f0a7a433759ef49a",
+  "empty_closed_reference": "calibration_data/gripper_empty_closed.png",
+  "empty_closed_reference_sha256": "07511a5d86e293a540d29855ebf33eea757b5b47e8b4e0998b9ebc7ccd957e67",
+  "placement_xy_mm": [
+    43,
+    -537
+  ]
+}

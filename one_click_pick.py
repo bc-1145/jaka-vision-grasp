@@ -1,4 +1,4 @@
-"""One-click: raise, observe, recognize, side-pick the shaft, and place at Home."""
+"""Home -> loading/bin -> vision -> open -> shaft grasp -> return Home holding."""
 from __future__ import annotations
 
 import argparse
@@ -15,6 +15,7 @@ import calibration_motion as safety
 from gripper_transport import close_connections
 import pick_place_3d as vision
 import side_pick_execute as side
+import one_click_loading as loading
 from controller_lease import controller_lease
 
 ROOT = Path(__file__).resolve().parent
@@ -23,8 +24,8 @@ POSES = ROOT / "robot_poses.json"
 RESULTS = ROOT / "pick_results"
 REPORT = RESULTS / "one_click_run.json"
 
-# Free-space profile is exactly the same as 一键回Home.  Only motion close to
-# the loose parts or the release point is reduced.
+# Free-space profile is exactly the same as 一键回Home. Motion close to the
+# loose parts is reduced.
 RAPID_LINEAR_SPEED = 1500.0
 RAPID_LINEAR_ACCEL = 8000.0
 RAPID_JOINT_SPEED = 180.0
@@ -159,19 +160,79 @@ def go_to_photo(robot, report):
 
 
 def fresh_scan_and_plan(config):
-    print("正在拍照、计算深度并识别螺栓…", flush=True)
+    print("正在拍照、计算深度并识别零件…", flush=True)
     mesh, model_cloud, scene, objects, support, clusters, matches, plane = vision.scan_scene(config)
     vision.save_scan(RESULTS, scene, objects, model_cloud, clusters, matches)
     if not matches or matches[0].score < float(config["matching"]["minimum_score"]):
-        raise RuntimeError("没有识别到达到阈值的螺栓")
+        raise RuntimeError("没有识别到达到阈值的零件")
     plan = vision.plan_saved_results(RESULTS, config)
     print(f"识别完成：{len(matches)} 个候选，最佳分数 {matches[0].score:.3f}", flush=True)
     return plan
 
 
+def go_to_loading(robot, report):
+    state = robot.motion_snapshot(); safety.check_motion_state(state)
+    position_error, angle_error = safety.pose_error(
+        state["actual_position"], arm_control.load_pose("home"))
+    if position_error > 0.5 or angle_error > 0.5:
+        raise RuntimeError("视觉抓取流程必须从 Home 出发，请先运行一键回Home")
+    target, speed, accel, lift_config = loading.settings()
+    loading.execute(robot, target, speed, accel, lift_config, report)
+    final = robot.motion_snapshot(); safety.check_motion_state(final)
+    if np.max(np.abs(np.asarray(final["joint_actual_position"]) - target)) > 0.2:
+        raise RuntimeError("尚未到达上料处，不能开始视觉选件")
+    report.update(stage="已到上料处，准备视觉选件", observation_state=final)
+    save(report)
+
+
+def verify_pick_alignment(robot, config, plan, report):
+    """Check the computed contact center and jaw direction before closing."""
+    state = robot.motion_snapshot(); safety.check_motion_state(state)
+    tcp = vision.pose_to_matrix(state["actual_position"])
+    center = vision.transform_points([config["gripper"]["tcp_to_grasp_center_mm"]], tcp)[0]
+    error = float(np.linalg.norm(center - np.asarray(plan["grasp_base"])))
+    orientation_error = safety.pose_error(state["actual_position"], plan["poses"]["pick"])[1]
+    shaft = np.asarray(plan["shaft_axis_base"], dtype=float)
+    shaft /= np.linalg.norm(shaft)
+    jaw = tcp[:3, :3] @ np.asarray(config["gripper"]["jaw_axis_tcp"], dtype=float)
+    jaw /= np.linalg.norm(jaw)
+    shaft_z = float(plan["grasp_model_z_mm"])
+    lower, upper = config["model"]["shaft_z_range_mm"]
+    if (not np.isfinite([error, orientation_error, shaft_z, *shaft, *jaw]).all()
+            or not lower < shaft_z < upper
+            or shaft_z <= config["model"]["head_z_range_mm"][1]
+            or error > 1.0 or orientation_error > 0.5 or abs(float(jaw @ shaft)) > 0.05):
+        raise RuntimeError("细管抓点的位置、高度或夹爪方向未对准，未发送闭合指令")
+    report.update(stage="细管抓点已对准，准备闭合", actual_grasp_center_base_mm=center.tolist(),
+                  grasp_center_error_mm=error, pick_orientation_error_deg=orientation_error)
+    save(report)
+
+
+def return_home_holding(robot, report):
+    close_connections()
+    speed, accel, joint_speed, joint_accel, _rate = arm_control.load_home_motion()
+    report.update(stage="保持夹持，执行一键回Home路线"); save(report)
+    # Same staged implementation used by 一键回Home.bat; it does not open jaws.
+    arm_control.move_home_staged(speed, accel, joint_speed, joint_accel)
+    final = robot.motion_snapshot(); safety.check_motion_state(final)
+    position_error, angle_error = safety.pose_error(
+        final["actual_position"], arm_control.load_pose("home"))
+    if position_error > 0.5 or angle_error > 0.5:
+        raise RuntimeError("回 Home 未到位，夹爪保持当前状态")
+    report.update(stage="已回到Home，夹爪保持闭合", actual=final,
+                  home_position_error_mm=position_error, home_rotation_error_deg=angle_error)
+    save(report)
+
+
 def execute(robot, config, saved, report, manual_verify=False, before_verification=None):
+    if manual_verify and before_verification is None:
+        raise RuntimeError("缺少抓取前视觉图，不能执行人工确认")
+    vision.verify_observation_unchanged(saved["observation"], vision.read_observation_pose())
     plan = side.build_plan(robot, config, saved)
     report["side_plan"] = plan; save(report)
+    # Controller IK/FK planning can take time. Recheck after it completes and
+    # before opening jaws or sending the first movement.
+    vision.verify_observation_unchanged(saved["observation"], vision.read_observation_pose())
     gripper = side.robot_gripper()
     gripper.connect(); gripper.set_opening_mm(config["gripper"]["open_command_mm"])
     close_connections()
@@ -181,40 +242,38 @@ def execute(robot, config, saved, report, manual_verify=False, before_verificati
                "快速转到抓取接近点", report, RAPID_JOINT_ACCEL)
     wait_joint(robot, plan["joints"]["prepick"], SHAFT_PREPICK_SPEED, "慢速接近杆身 35mm", report)
     wait_joint(robot, plan["joints"]["pick"], SHAFT_PICK_SPEED, "慢速到达杆身抓点", report)
+    verify_pick_alignment(robot, config, plan, report)
     gripper.set_opening_mm(config["gripper"]["close_command_mm"], settle_time=1.0)
-    close_connections(); report.update(stage="已夹杆身", holding=True); save(report)
+    close_connections()
+    report.update(stage="夹爪已收至细管开度，准备提起", holding=True,
+                  gripper_closed=True, close_command_mm=config["gripper"]["close_command_mm"],
+                  visual_grasp_confirmed=False)
+    save(report)
     wait_joint(robot, plan["joints"]["prepick"], SHAFT_RETREAT_SPEED, "夹紧后退出 35mm", report)
     wait_joint(robot, plan["joints"]["approach"], SIDE_RETREAT_SPEED, "退回抓取接近点", report)
     wait_joint(robot, plan["joints"]["lift"], SAFE_RETREAT_JOINT_SPEED,
                "抓后沿安全路线退出料框", report, SAFE_RETREAT_JOINT_ACCEL)
+    from grasp_verification import capture_verification
+    report["grasp_verification"] = capture_verification(
+        RESULTS / "after_grasp", config["camera"].get("sdk"))
+    save(report)
     if manual_verify:
-        from grasp_verification import capture_verification, compare_verification
-        if before_verification is None:
-            raise RuntimeError("缺少抓取前视觉图，不能执行人工确认")
-        report.update(stage="等待人工视觉确认", holding=True); save(report)
-        photo_pose = load_photo_pose()[0]
-        wait_linear(robot, photo_pose, 100.0, "回到同一拍照位复核抓取", report, 300.0)
-        verification = capture_verification(RESULTS / "after_grasp", config["camera"].get("sdk"))
-        comparison = compare_verification(
-            before_verification, verification, RESULTS / "grasp_before_after.png")
-        lift_pose = robot.forward(plan["joints"]["lift"]).tolist()
-        wait_linear(robot, lift_pose, 300.0, "复核后重新提高到安全位", report, 900.0)
-        report["grasp_verification"] = verification; save(report)
-        report["grasp_comparison_path"] = comparison; save(report)
-        print(f"抓取前后对比图：{comparison}", flush=True)
-        answer = input("看图确认夹具中有工件后输入 YES；其他输入将松开并停止：").strip().upper()
+        print(f"提起后的复核图：{report['grasp_verification']['view_path']}", flush=True)
+        answer = input("看图确认只有一个工件被夹住后输入 YES；其他输入将保持夹爪并停止：").strip().upper()
         if answer != "YES":
-            gripper.set_opening_mm(config["gripper"]["open_command_mm"], settle_time=1.0)
-            close_connections(); report.update(stage="视觉确认失败，已在安全位松开", holding=False); save(report)
-            raise RuntimeError("人工视觉确认未通过，未执行 Home 放置")
+            report.update(stage="视觉确认未通过，保持夹爪等待处理"); save(report)
+            raise RuntimeError("人工视觉确认未通过，未执行回 Home")
         report.update(stage="人工视觉确认成功", visual_grasp_confirmed=True); save(report)
-    wait_joint(robot, plan["joints"]["home_approach"], RAPID_JOINT_SPEED,
-               "快速转到 Home 上方", report, RAPID_JOINT_ACCEL)
-    wait_joint(robot, plan["joints"]["home"], HOME_DESCEND_SPEED, "下降到 Home", report)
-    gripper.set_opening_mm(config["gripper"]["open_command_mm"], settle_time=1.0)
-    close_connections(); report.update(stage="已在 Home 松开", holding=False); save(report)
-    wait_joint(robot, plan["joints"]["home_approach"], RAPID_JOINT_SPEED, "放置后提高", report,
-               RAPID_JOINT_ACCEL)
+    return_home_holding(robot, report)
+
+
+def run_cycle(robot, config, report, manual_verify=False):
+    go_to_loading(robot, report)
+    from grasp_verification import capture_verification
+    before = capture_verification(RESULTS / "before_grasp", config["camera"].get("sdk"))
+    report["before_grasp_verification"] = before; save(report)
+    saved = fresh_scan_and_plan(config)
+    execute(robot, config, saved, report, manual_verify=manual_verify, before_verification=before)
 
 
 def main():
@@ -223,12 +282,12 @@ def main():
     parser.add_argument("--goto-photo-only", action="store_true",
                         help="只移动到保存的新拍照点并验证，不拍照抓取")
     parser.add_argument("--manual-verify", action="store_true",
-                        help="抓起后暂停并保存彩色/深度图，确认后才放到 Home")
+                        help="提起后保存彩色/深度图并暂停，确认后保持夹持回 Home")
     args = parser.parse_args()
     config = vision.load_config(CONFIG)
     robot = FastRobot()
     report = {"created_unix": time.time(), "completed": False, "holding": False,
-              "mode": "check" if args.check else "one_click_fast_staged"}
+              "mode": "check" if args.check else "home_loading_vision_shaft_home"}
     try:
         if args.goto_photo_only:
             with controller_lease(timeout=8.0):
@@ -257,7 +316,8 @@ def main():
                 else:
                     saved = vision.plan_saved_results(RESULTS, config)
                 plan = side.build_plan(robot, config, saved)
-            print(json.dumps({"ready": True, "photo_pose": load_photo_pose()[0],
+            print(json.dumps({"ready": True, "home_pose": arm_control.load_pose("home"),
+                              "loading_joints": loading.settings()[0],
                               "side_plan": plan}, ensure_ascii=False, indent=2))
             return 0
         # Hold ownership for the complete sequence.  The gripper GUI releases
@@ -269,16 +329,7 @@ def main():
                 arm_control.set_rapid_rate(1.0)
             try:
                 try:
-                    go_to_photo(robot, report)
-                    saved = fresh_scan_and_plan(config)
-                    before_verification = None
-                    if args.manual_verify:
-                        from grasp_verification import capture_verification
-                        before_verification = capture_verification(
-                            RESULTS / "before_grasp", config["camera"].get("sdk"))
-                        report["before_grasp_verification"] = before_verification; save(report)
-                    execute(robot, config, saved, report, manual_verify=args.manual_verify,
-                            before_verification=before_verification)
+                    run_cycle(robot, config, report, manual_verify=args.manual_verify)
                 except BaseException:
                     try:
                         safety.stop_and_verify(robot)
@@ -292,8 +343,8 @@ def main():
                     except Exception as restoring:
                         report["rapid_rate_restore_error"] = str(restoring); save(report)
                         print(f"警告：未能恢复原速度倍率：{restoring}", flush=True)
-        report.update(completed=True, stage="完成"); save(report)
-        print("一键抓取完成。", flush=True)
+        report.update(completed=True, sequence_completed=True, stage="流程完成，已回Home并保持夹持"); save(report)
+        print("流程已回到 Home，夹爪保持闭合。提起后的复核图已保存。", flush=True)
         return 0
     except BaseException as exc:
         report["error"] = str(exc); save(report)

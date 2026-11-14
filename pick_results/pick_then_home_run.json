@@ -1,0 +1,103 @@
+{
+  "created_unix": 1794636394.7715437,
+  "completed": false,
+  "stage": "home_arrived_pick_not_confirmed",
+  "physical_grasp_confirmed": false,
+  "start": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 71040700,
+    "actual_position": [
+      210.80721158222786,
+      -5.996346418918281,
+      236.3832067664362,
+      179.99953216023633,
+      0.0022367458445894154,
+      -179.99983333492608
+    ],
+    "joint_actual_position": [
+      0.000637327915169239,
+      0.00041191458217451626,
+      -89.99913265564956,
+      0.00046782138971612763,
+      -89.99904225455904,
+      0.00047065502190962727
+    ]
+  },
+  "retreat_target": [
+    210.69018023766458,
+    -6.0290902198395875,
+    216.3835759821469,
+    179.99953216023633,
+    0.0022367458445894154,
+    -179.99983333492608
+  ],
+  "retreat_joints": [
+    -0.008267022320672363,
+    -0.2268227078177269,
+    -95.21550017431598,
+    0.00047029072641140867,
+    -84.55544044101795,
+    -0.008478309769133042
+  ],
+  "gripper_command_mm": 8.65,
+  "target_pose": [
+    210.81943246158568,
+    -5.996347753886881,
+    316.38320676643616,
+    179.99953231165378,
+    0.007043424917422291,
+    179.99744226515008
+  ],
+  "actual": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 0,
+    "actual_position": [
+      5.880370160877215,
+      -472.8755364882453,
+      221.94851268307147,
+      179.99970799562186,
+      -44.96549169440793,
+      -90.01634360805411
+    ],
+    "joint_actual_position": [
+      89.9862174976369,
+      45.03131082501034,
+      44.86697105874831,
+      -0.002965406138869031,
+      45.13347991605704,
+      0.0039038825504947583
+    ]
+  },
+  "retreat_direction_verified_by_depth": true,
+  "pick_completed": false,
+  "grasp_verification": "Part remained in pile after withdrawal; no held part confirmed",
+  "calibration_issue": "Base Z +10mm increased scene depth; configured camera axis predicts opposite direction",
+  "home_batch": "一键回Home.bat",
+  "home_batch_exit_code": 1,
+  "home_batch_output": "motion: speed=1500 mm/s accel=8000 mm/s^2 rapid_rate=1\nhome: [5.99999999975646, -472.8614764086692, 221.718755058717, 180.0, -45.000000000022844, -90.00000000005781]\nconfigured approach Z: 280; first lift Z: 340\nJOINT-3 Z LIFT: J3 -63.147 -> -56.147; planned Z 316.386 -> 340.721\nJOINT-3 Z LIFT OK: joints=[0.003, -4.367, -56.151, 0.0, -112.47, 0.005] tcp=[219.087, -5.988, 340.709, 179.999, 7.011, 179.998]\nJOINT ALIGN: [89.99999999998813, 50.1588412367574, 19.795453558237693, -3.38863621288129e-11, 65.04570520498046, 4.498801605726866e-11]\nJOINT ALIGN OK: [89.963, 50.123, 19.716, 0.004, 64.923, 0.005]\nDESCEND: [5.99999999975646, -472.8614764086692, 221.718755058717, 180.0, -45.000000000022844, -90.00000000005781]\nDESCEND OK: [5.846, -472.826, 221.58, 180.0, -44.896, -90.02]\nactual: [5.869, -472.824, 221.556, 180.0, -44.893, -90.018]\nHOME OK\n\nHOME OK.\nERROR: Input redirection is not supported, exiting the process immediately.\n",
+  "home_position_error_mm": 0.25941771361449695,
+  "home_rotation_error_deg": 0.03827230205463752,
+  "home_completed": true
+}

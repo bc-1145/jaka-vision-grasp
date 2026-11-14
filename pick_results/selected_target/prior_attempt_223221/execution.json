@@ -1,0 +1,331 @@
+{
+  "created_unix": 1794664828.4212613,
+  "motion_sent": true,
+  "completed": false,
+  "physical_grasp_confirmed": false,
+  "return_batch": "一键回Home.bat",
+  "create_home": false,
+  "release_at_existing_home": true,
+  "side_plan": {
+    "poses": {
+      "approach": [
+        235.76175578299762,
+        -143.4767943640683,
+        238.7797766701653,
+        165.40357841602878,
+        14.763097137239349,
+        160.46384661509197
+      ],
+      "prepick": [
+        246.84535395318022,
+        -138.0504649651179,
+        206.0275431454725,
+        165.40357841602878,
+        14.763097137239349,
+        160.46384661509197
+      ],
+      "pick": [
+        257.9289521233628,
+        -132.62413556616747,
+        173.27530962077967,
+        165.40357841602878,
+        14.763097137239349,
+        160.46384661509197
+      ]
+    },
+    "joints": {
+      "lift": [
+        181.87646670073897,
+        9.215563547915426,
+        66.80800116514725,
+        3.590807766866332,
+        103.35683212214393,
+        174.41916252003438
+      ],
+      "approach": [
+        136.3282150777236,
+        10.765894585536271,
+        80.37301363063114,
+        19.51962329081398,
+        81.91912486524716,
+        152.37631110932688
+      ],
+      "prepick": [
+        138.93352875374288,
+        12.921460848674926,
+        86.7234730376419,
+        19.858838808187727,
+        73.03706156064605,
+        151.94552519747717
+      ],
+      "pick": [
+        141.44017408827386,
+        16.44949463260588,
+        91.44941697914558,
+        20.680622417526973,
+        64.45125593327,
+        151.33099421402062
+      ],
+      "home_approach": [
+        89.99999999998813,
+        50.1588412367574,
+        19.795453558237693,
+        -3.38863621288129e-11,
+        65.04570520498046,
+        180.0
+      ],
+      "home": [
+        89.99999999998968,
+        45.00000000001135,
+        44.99999999994983,
+        -5.494368564893072e-11,
+        45.00000000004109,
+        180.00000000007773
+      ]
+    },
+    "selected_cluster_index": 22,
+    "selection": "highest_score",
+    "grasp_base": [
+      314.9303141414446,
+      -104.71729865727968,
+      4.835251493788097
+    ],
+    "approach_axis": [
+      0.316674233433788,
+      0.15503798282715442,
+      -0.9357781007055088
+    ],
+    "tool_axis": [
+      0.316674233433788,
+      0.15503798282715442,
+      -0.9357781007055088
+    ],
+    "strategy": "stage1_top_or_oblique_minimum_wrist_change",
+    "grasp_model_z_mm": 32.0,
+    "shaft_axis_base": [
+      -0.2976352976581534,
+      -0.9451036911589827,
+      -0.13487862152916805
+    ],
+    "grasp_rpy_deg": [
+      165.40357841602878,
+      14.763097137239349,
+      160.46384661509197
+    ],
+    "camera_ray_cone_deg": 40,
+    "approach_distance_mm": 70.0,
+    "prepick_distance_mm": 35.0,
+    "match_score": 0.8508651590579457,
+    "foreign_clearance_mm": 20.617366190890767,
+    "observed_flange_clearance_mm": 208.286845258922,
+    "observed_tool_axis_clearance_mm": 54.502772300682885
+  },
+  "target_observation": {
+    "created_unix": 1794664711.5191305,
+    "tcp_pose": [
+      239.34071575574248,
+      25.938436867269957,
+      244.95146124475568,
+      176.59448837235254,
+      0.9804448724062922,
+      -171.72315947254137
+    ],
+    "tool_id": 0,
+    "user_id": 0,
+    "camera_frame": "opencv_optical"
+  },
+  "initial_state": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 0,
+    "actual_position": [
+      239.34071575574248,
+      25.938436867269957,
+      244.95146124475568,
+      176.59448837235254,
+      0.9804448724062922,
+      -171.72315947254137
+    ],
+    "joint_actual_position": [
+      182.43410845085992,
+      7.626296901075445,
+      79.62016003960406,
+      3.490000281443633,
+      92.12131851777873,
+      174.2765931700484
+    ]
+  },
+  "home_pose": [
+    5.999999999746533,
+    -472.8614764086692,
+    221.718755058717,
+    180.0,
+    45.000000000022844,
+    89.99999999993723
+  ],
+  "tool_geometry_independently_measured": false,
+  "route_audit": [
+    {
+      "stage": "lift",
+      "flange_clearance_mm": 215.79562014061622,
+      "tool_axis_clearance_mm": 47.24432452081137,
+      "max_joint_change_deg": 12.812158874456813
+    },
+    {
+      "stage": "approach",
+      "flange_clearance_mm": 208.286845258922,
+      "tool_axis_clearance_mm": 54.5138354812929,
+      "max_joint_change_deg": 45.548251623015375
+    },
+    {
+      "stage": "prepick",
+      "flange_clearance_mm": 177.6506343066883,
+      "tool_axis_clearance_mm": 31.10430097674655,
+      "max_joint_change_deg": 8.882063304601104
+    },
+    {
+      "stage": "pick",
+      "flange_clearance_mm": 148.94994404572415,
+      "tool_axis_clearance_mm": 18.483958435851207,
+      "max_joint_change_deg": 8.585805627376047
+    }
+  ],
+  "before": {
+    "created_unix": 1794664849.8320022,
+    "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\before_motion\\grasp_verify_color_20261114_220049.png",
+    "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\before_motion\\grasp_verify_depth_20261114_220049.png",
+    "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\before_motion\\grasp_verify_depth_raw_20261114_220049.png",
+    "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\before_motion\\grasp_verify_view_20261114_220049.png",
+    "depth_min_mm": 179,
+    "depth_median_mm": 210.0,
+    "depth_max_mm": 290,
+    "overlay_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\before_motion\\target_overlay.png",
+    "observation": {
+      "created_unix": 1794664838.370178,
+      "tcp_pose": [
+        239.34071575574248,
+        25.938436867269957,
+        244.95146124475568,
+        176.59448837235254,
+        0.9804448724062922,
+        -171.72315947254137
+      ],
+      "tool_id": 0,
+      "user_id": 0,
+      "camera_frame": "opencv_optical"
+    }
+  },
+  "gripper_open_command_mm": 20.0,
+  "stage": "withdrawn_to_observation_target_validation_failed",
+  "target_joints": [
+    181.87646670073897,
+    9.215563547915426,
+    66.80800116514725,
+    3.590807766866332,
+    103.35683212214393,
+    174.41916252003438
+  ],
+  "staging_view": {
+    "created_unix": 1794664887.5567105,
+    "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\staging\\grasp_verify_color_20261114_220127.png",
+    "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\staging\\grasp_verify_depth_20261114_220127.png",
+    "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\staging\\grasp_verify_depth_raw_20261114_220127.png",
+    "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\staging\\grasp_verify_view_20261114_220127.png",
+    "depth_min_mm": 179,
+    "depth_median_mm": 208.0,
+    "depth_max_mm": 294,
+    "overlay_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\staging\\target_overlay.png",
+    "observation": {
+      "created_unix": 1794664876.6184628,
+      "tcp_pose": [
+        246.85388935423595,
+        -138.05068216378913,
+        206.03918108250272,
+        165.40011245410494,
+        14.767480702984152,
+        160.46631487360187
+      ],
+      "tool_id": 0,
+      "user_id": 0,
+      "camera_frame": "opencv_optical"
+    }
+  },
+  "actual": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 66354941,
+    "actual_position": [
+      239.26095623853251,
+      23.623136179470514,
+      284.8506069729774,
+      176.5916248282189,
+      0.9732689617392783,
+      -171.7132882254297
+    ],
+    "joint_actual_position": [
+      181.8772389457234,
+      9.220001119844659,
+      66.81216142146441,
+      3.5929971073011866,
+      103.35621228232068,
+      174.4104890436632
+    ]
+  },
+  "error": "Fresh depth does not verify the locked world target; no closure or movement sent",
+  "failed_stage": "pick",
+  "approach_view": {
+    "created_unix": 1794666127.4536233,
+    "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\approach_check\\grasp_verify_color_20261114_222207.png",
+    "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\approach_check\\grasp_verify_depth_20261114_222207.png",
+    "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\approach_check\\grasp_verify_depth_raw_20261114_222207.png",
+    "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\approach_check\\grasp_verify_view_20261114_222207.png",
+    "depth_min_mm": 179,
+    "depth_median_mm": 231.0,
+    "depth_max_mm": 350,
+    "overlay_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\approach_check\\target_overlay.png",
+    "observation": {
+      "created_unix": 1794666116.3369849,
+      "tcp_pose": [
+        235.78897286333822,
+        -143.4649601512483,
+        238.76457141530946,
+        165.39878136214648,
+        14.766544766486115,
+        160.4681081747787
+      ],
+      "tool_id": 0,
+      "user_id": 0,
+      "camera_frame": "opencv_optical"
+    }
+  },
+  "gripper_closed": false,
+  "gripper_feedback": "Snapshot(state={'enable': True, 'power': 1, 'errorMsg': '', 'errcode': 0, 'cmdName': 'get_robot_state', 'errorCode': '0', 'msg': ''}, high=16800.0, low=0.0)",
+  "grasp_not_attempted": true,
+  "release_not_attempted": true,
+  "outcome": "not_picked_target_depth_validation_failed",
+  "depth_validation_paths": [
+    "staging/depth_validation.json",
+    "approach_check/depth_validation.json"
+  ],
+  "pending": "Validate hand-eye and independently measure finger contact center before another physical pickup"
+}

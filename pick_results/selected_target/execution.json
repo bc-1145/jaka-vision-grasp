@@ -1,0 +1,327 @@
+{
+  "created_unix": 1794668110.4286718,
+  "motion_sent": true,
+  "completed": false,
+  "physical_grasp_confirmed": false,
+  "return_batch": "一键回Home.bat",
+  "create_home": false,
+  "release_at_existing_home": true,
+  "side_plan": {
+    "poses": {
+      "approach": [
+        283.71125057975945,
+        -75.70444435422894,
+        240.16109292351416,
+        173.6103702881578,
+        24.881155913412474,
+        -116.81346062373832
+      ],
+      "prepick": [
+        286.8362988855374,
+        -60.88655655403523,
+        208.60694463478,
+        173.6103702881578,
+        24.881155913412474,
+        -116.81346062373832
+      ],
+      "pick": [
+        289.9613471913153,
+        -46.06866875384153,
+        177.05279634604582,
+        173.6103702881578,
+        24.881155913412474,
+        -116.81346062373832
+      ]
+    },
+    "joints": {
+      "lift": [
+        181.31812074607112,
+        13.572393814699947,
+        49.9430782839802,
+        3.8889236276875794,
+        115.87082958224129,
+        174.72859864977022
+      ],
+      "approach": [
+        150.8210289482568,
+        26.74887763553285,
+        60.39317490359485,
+        24.804142419884812,
+        99.97644269359273,
+        89.04478813991382
+      ],
+      "prepick": [
+        153.5729390272012,
+        25.861659823834188,
+        70.26188727086672,
+        24.764746583585136,
+        90.66908014446848,
+        87.7763187786258
+      ],
+      "pick": [
+        156.39223117828482,
+        26.588224740970396,
+        77.93471221383591,
+        25.33928968124729,
+        81.88566475985171,
+        86.73418568751175
+      ],
+      "home_approach": [
+        89.99999999998813,
+        50.1588412367574,
+        19.795453558237693,
+        -3.38863621288129e-11,
+        65.04570520498046,
+        180.0
+      ],
+      "home": [
+        89.99999999998968,
+        45.00000000001135,
+        44.99999999994983,
+        -5.494368564893072e-11,
+        45.00000000004109,
+        180.00000000007773
+      ]
+    },
+    "selected_cluster_index": 16,
+    "selection": "highest_score_with_required_clearance",
+    "grasp_base": [
+      306.033024192459,
+      30.137611361440428,
+      14.774319432555865
+    ],
+    "approach_axis": [
+      0.08928709445079809,
+      0.4233682228626775,
+      -0.9015470939638331
+    ],
+    "tool_axis": [
+      0.08928709445079809,
+      0.4233682228626775,
+      -0.9015470939638331
+    ],
+    "strategy": "stage1_top_or_oblique_minimum_wrist_change",
+    "grasp_model_z_mm": 27.400000000000002,
+    "shaft_axis_base": [
+      -0.8555574768280174,
+      0.18022150560778372,
+      0.4853262951459968
+    ],
+    "grasp_rpy_deg": [
+      173.6103702881578,
+      24.881155913412474,
+      -116.81346062373832
+    ],
+    "camera_ray_cone_deg": 20,
+    "approach_distance_mm": 70.0,
+    "prepick_distance_mm": 35.0,
+    "match_score": 0.8419355295142507,
+    "foreign_clearance_mm": 16.666324409080783,
+    "observed_flange_clearance_mm": 158.54817630930518,
+    "observed_tool_axis_clearance_mm": 16.66632440907607
+  },
+  "target_observation": {
+    "created_unix": 1794668022.8227117,
+    "tcp_pose": [
+      239.26247947935627,
+      23.612844712095757,
+      284.8875775436122,
+      176.59519433458502,
+      0.981994266781071,
+      -171.72348647521412
+    ],
+    "tool_id": 0,
+    "user_id": 0,
+    "camera_frame": "opencv_optical"
+  },
+  "initial_state": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 66354941,
+    "actual_position": [
+      239.26247947935627,
+      23.612844712095757,
+      284.8875775436122,
+      176.59519433458502,
+      0.981994266781071,
+      -171.72348647521412
+    ],
+    "joint_actual_position": [
+      181.8765523002177,
+      9.21519460130464,
+      66.80735490292439,
+      3.590250525278319,
+      103.35621228232068,
+      174.4194154352375
+    ]
+  },
+  "home_pose": [
+    5.999999999746533,
+    -472.8614764086692,
+    221.718755058717,
+    180.0,
+    45.000000000022844,
+    89.99999999993723
+  ],
+  "tool_geometry_independently_measured": false,
+  "route_audit": [
+    {
+      "stage": "lift",
+      "flange_clearance_mm": 234.79139119716012,
+      "tool_axis_clearance_mm": 81.64773181431556,
+      "max_joint_change_deg": 16.86427661894419
+    },
+    {
+      "stage": "approach",
+      "flange_clearance_mm": 213.19069048450996,
+      "tool_axis_clearance_mm": 59.388739048116136,
+      "max_joint_change_deg": 85.6838105098564
+    },
+    {
+      "stage": "prepick",
+      "flange_clearance_mm": 187.8241191756172,
+      "tool_axis_clearance_mm": 34.018856623104185,
+      "max_joint_change_deg": 9.868712367271876
+    },
+    {
+      "stage": "pick",
+      "flange_clearance_mm": 158.54817630930518,
+      "tool_axis_clearance_mm": 16.66632440907607,
+      "max_joint_change_deg": 8.783415384616774
+    }
+  ],
+  "before": {
+    "created_unix": 1794668137.2856853,
+    "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\before_motion\\grasp_verify_color_20261114_225537.png",
+    "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\before_motion\\grasp_verify_depth_20261114_225537.png",
+    "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\before_motion\\grasp_verify_depth_raw_20261114_225537.png",
+    "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\before_motion\\grasp_verify_view_20261114_225537.png",
+    "depth_min_mm": 179,
+    "depth_median_mm": 241.0,
+    "depth_max_mm": 323,
+    "overlay_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\before_motion\\target_overlay.png",
+    "observation": {
+      "created_unix": 1794668125.8254173,
+      "tcp_pose": [
+        239.26247947935627,
+        23.612844712095757,
+        284.8875775436122,
+        176.59519433458502,
+        0.981994266781071,
+        -171.72348647521412
+      ],
+      "tool_id": 0,
+      "user_id": 0,
+      "camera_frame": "opencv_optical"
+    }
+  },
+  "gripper_open_command_mm": 20.0,
+  "stage": "at_existing_home_awaiting_visual_check",
+  "target_joints": [
+    181.31812074607112,
+    13.572393814699947,
+    49.9430782839802,
+    3.8889236276875794,
+    115.87082958224129,
+    174.72859864977022
+  ],
+  "staging_view": {
+    "created_unix": 1794668183.4398086,
+    "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\staging\\grasp_verify_color_20261114_225623.png",
+    "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\staging\\grasp_verify_depth_20261114_225623.png",
+    "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\staging\\grasp_verify_depth_raw_20261114_225623.png",
+    "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\staging\\grasp_verify_view_20261114_225623.png",
+    "depth_min_mm": 179,
+    "depth_median_mm": 209.0,
+    "depth_max_mm": 410,
+    "overlay_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\staging\\target_overlay.png",
+    "observation": {
+      "created_unix": 1794668172.1905594,
+      "tcp_pose": [
+        286.83184576243156,
+        -60.90405060175421,
+        208.59285083712686,
+        173.60482365560108,
+        24.88046654138894,
+        -116.82110588597814
+      ],
+      "tool_id": 0,
+      "user_id": 0,
+      "camera_frame": "opencv_optical"
+    }
+  },
+  "actual": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 0,
+    "actual_position": [
+      5.963565724215123,
+      -472.87480226068885,
+      221.6530468587812,
+      179.99898584745853,
+      44.974418030389,
+      89.99555219949667
+    ],
+    "joint_actual_position": [
+      89.99514388921122,
+      45.02238443343602,
+      44.96653465707728,
+      0.0018411124011501467,
+      45.035289608739504,
+      179.99841016918833
+    ]
+  },
+  "grasp_mode": "operator_requested_direct_middle",
+  "close_range_depth_verified": false,
+  "actual_grasp_center_base_mm": [
+    306.10419072078884,
+    30.086074683454243,
+    14.84520762947804
+  ],
+  "grasp_center_error_mm": 0.11289747736443317,
+  "pick_orientation_error_deg": 0.018245731158708516,
+  "gripper_closed": true,
+  "close_command_mm": 8.65,
+  "after_pick": {
+    "created_unix": 1794668286.6068666,
+    "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\after_pick\\grasp_verify_color_20261114_225806.png",
+    "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\after_pick\\grasp_verify_depth_20261114_225806.png",
+    "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\after_pick\\grasp_verify_depth_raw_20261114_225806.png",
+    "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\after_pick\\grasp_verify_view_20261114_225806.png",
+    "depth_min_mm": 179,
+    "depth_median_mm": 272.0,
+    "depth_max_mm": 475
+  },
+  "home_position_error_mm": 0.07630597816913985,
+  "home_angle_error_deg": 0.025862537910812358,
+  "at_home_view": {
+    "created_unix": 1794668540.5327206,
+    "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\at_home\\grasp_verify_color_20261114_230220.png",
+    "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\at_home\\grasp_verify_depth_20261114_230220.png",
+    "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\at_home\\grasp_verify_depth_raw_20261114_230220.png",
+    "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\selected_target\\at_home\\grasp_verify_view_20261114_230220.png",
+    "depth_min_mm": 179,
+    "depth_median_mm": 289.0,
+    "depth_max_mm": 3231
+  }
+}

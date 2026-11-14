@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "camera": {
+    "sdk": null,
+    "mount": "eye_in_hand",
+    "warmup_frames": 3,
+    "frames": 5,
+    "roi": {
+      "min_mm": [
+        -400,
+        -500,
+        150
+      ],
+      "max_mm": [
+        400,
+        310,
+        1000
+      ]
+    },
+    "base_T_camera": null,
+    "tcp_T_camera": [
+      [
+        0.0023554855949167175,
+        0.9999746201025155,
+        0.0067239005378091285,
+        -68.04274853232859
+      ],
+      [
+        -0.9999948001784398,
+        0.0023702365609072906,
+        -0.0021866857862803536,
+        -31.672073927879104
+      ],
+      [
+        -0.002202567523305886,
+        -0.006718714867855949,
+        0.9999750034710018,
+        24.03193202052736
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "calibration_tool_id": 0,
+    "color_projection": {
+      "image_size": [
+        1600,
+        1200
+      ],
+      "matrix": [
+        [
+          740.5405137314264,
+          0,
+          810.7097050275514
+        ],
+        [
+          0,
+          740.5405137314264,
+          594.4421837941743
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "distortion": [
+        0.1221117798226046,
+        -0.09611868676015464,
+        0.00039735611981520276,
+        -0.00015656739314048475,
+        0.007826031710443972
+      ],
+      "color_T_camera": [
+        [
+          0.9999936683004241,
+          -0.0019513450626610907,
+          0.002975837950568792,
+          62.97127565423475
+        ],
+        [
+          0.0019394074884384975,
+          0.9999900827642872,
+          0.004009123553566389,
+          0.032253384444180314
+        ],
+        [
+          -0.002983631621934243,
+          -0.004003326806594772,
+          0.9999875355807313,
+          2.6832698012696965
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "source": "Factory reference-to-real-color extrinsic; depth edge overlay reviewed"
+    },
+    "depth_projection": {
+      "image_size": [
+        1080,
+        720
+      ],
+      "matrix": [
+        [
+          540.0,
+          0,
+          540.0
+        ],
+        [
+          0,
+          510.0,
+          360.0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "distortion": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "color_T_camera": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "source": "InuDev factory calibration, real color / virtual right depth"
+    },
+    "excluded_boxes_mm": [],
+    "point_cloud_frame": "opencv_optical",
+    "optical_frame_validation": {
+      "source": "calibration_data/optical_frame_candidate.json",
+      "held_out_max_translation_mm": 0.18395588577443017,
+      "actual_base_z_probe_mm": 10,
+      "scene_depth_change_mm": 7,
+      "direction_consistent": true
+    },
+    "retreat_mm": 40
+  },
+  "model": {
+    "path": "螺栓.FCStd",
+    "axis_model": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "large_end_z_mm": 0.0,
+    "grasp_point_mm": [
+      0.0,
+      0.0,
+      27.4
+    ],
+    "grasp_width_mm": 21.0,
+    "grasp_region": "shaft",
+    "rotational_symmetry": "continuous",
+    "shaft_z_range_mm": [
+      3.6,
+      51.2
+    ],
+    "head_z_range_mm": [
+      0.0,
+      3.2
+    ]
+  },
+  "matching": {
+    "strategy": "clutter",
+    "local_candidate_budget": 24,
+    "live_search_budget": 6,
+    "scene_voxel_mm": 1.0,
+    "model_voxel_mm": 1.5,
+    "model_sample_points": 7000,
+    "plane_distance_mm": 1.5,
+    "cluster_eps_mm": 3.0,
+    "cluster_min_points": 20,
+    "min_cluster_points": 180,
+    "extent_tolerance": 0.55,
+    "ransac_distance_mm": 4.5,
+    "icp_distance_mm": 2.5,
+    "minimum_score": 0.58,
+    "minimum_observed_support": 0.65,
+    "minimum_visible_support": 0.6,
+    "minimum_head_support": 0.45,
+    "minimum_shaft_support": 0.65
+  },
+  "gripper": {
+    "open_command_mm": 20.0,
+    "close_command_mm": 8.65,
+    "measured_max_object_mm": 21.5,
+    "tcp_to_grasp_center_mm": [
+      0,
+      0,
+      180
+    ],
+    "tcp_to_grasp_center_estimate_mm": [
+      0,
+      0,
+      180
+    ],
+    "tcp_to_grasp_center_estimate_source": "Operator estimate 180mm; +TCP Z points from flange toward jaws after normalization to the optical camera frame. Length remains an estimate.",
+    "down_rpy_deg": [
+      -180.0,
+      0.0,
+      90.0
+    ],
+    "jaw_axis_tcp": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "confirmed_hold_setting": {
+      "command_mm": 8.65,
+      "source": "Operator-specified shaft closure command 8.65mm; physical holding must be verified after pickup",
+      "is_measured_finger_spacing": false,
+      "is_camera_or_tool_geometry_calibration": false,
+      "grasp_region": "shaft"
+    }
+  },
+  "robot": {
+    "speed_mm_s": 10.0,
+    "accel_mm_s2": 20.0,
+    "approach_mm": 60.0,
+    "lift_mm": 80.0,
+    "motion_timeout_s": 120.0,
+    "max_direct_rotation_deg": 100.0,
+    "observation_pose": {
+      "created_unix": 1794606561.3957477,
+      "tcp_pose": [
+        253.56110175124527,
+        -62.730297336802245,
+        262.28821902853895,
+        177.6921274143897,
+        -1.7455069485724777,
+        179.84335931934498
+      ],
+      "tool_id": 0,
+      "user_id": 0
+    },
+    "table_observation_pose": {
+      "created_unix": 1794669538.6802483,
+      "tcp_pose": [
+        6.033276321806451,
+        -298.8207927277766,
+        363.31132842354793,
+        -179.99923596941485,
+        28.012900721338053,
+        90.0087500023081
+      ],
+      "tool_id": 0,
+      "user_id": 0,
+      "camera_frame": "opencv_optical",
+      "joint_position_deg": [
+        90.0061302173027,
+        12.54954517706651,
+        44.97752098516875,
+        0.00046782138971612763,
+        94.4600331102509,
+        179.99772352368262
+      ],
+      "source": "User-selected elevated overview before table grasp; independent of existing Home"
+    }
+  },
+  "placement": {
+    "home_pose": [
+      5.999999999746533,
+      -472.8614764086692,
+      221.718755058717,
+      180.0,
+      45.000000000022844,
+      89.99999999993723
+    ],
+    "platform_z_mm": null,
+    "yaw_deg": 0.0,
+    "mode": "home_tcp"
+  },
+  "fixture": {
+    "enabled": false,
+    "open_command_mm": 20.0,
+    "close_command_mm": 10.0,
+    "deposit_approach_pose": null,
+    "deposit_pose": null,
+    "pickup_approach_pose": null,
+    "pickup_pose": null,
+    "model_pose_when_clamped": null
+  }
+}

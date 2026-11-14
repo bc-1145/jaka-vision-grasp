@@ -1,0 +1,253 @@
+{
+  "completed": false,
+  "motion_sent": false,
+  "actuator_write_attempted": false,
+  "stage": "流程停止，保留现场状态",
+  "run_created_unix": 1794675304.239084,
+  "create_home": false,
+  "mode": "execute",
+  "events": [
+    {
+      "stage": "控制器与夹爪反馈检查",
+      "created_unix": 1794675308.4510064,
+      "feedback": {
+        "available": false,
+        "grip_state": null,
+        "state_name": null,
+        "holding": null,
+        "dropped": null,
+        "actual_position_mm": null,
+        "current_a": null,
+        "initialization_state": null,
+        "reason": "夹爪反馈读取失败：timed out",
+        "source": "jaka_extio_input_registers",
+        "protocol_source": "https://cn.hitbot.cc/hitbot/document/Z-EFG/Z-EFG-20P/Z-EFG-20P.pdf",
+        "created_unix": 1794675308.4510064,
+        "field_available": {
+          "state": false,
+          "position": false,
+          "current": false,
+          "initialization": false
+        },
+        "device_id": "ext_n7sn2kaoncejc6b2",
+        "unit_id": 1,
+        "command_is_measured_gap": false
+      }
+    },
+    {
+      "stage": "已在高处总览位",
+      "created_unix": 1794675308.4828963
+    },
+    {
+      "stage": "保存复核画面：overview",
+      "created_unix": 1794675322.611488,
+      "view": {
+        "created_unix": 1794675321.1829634,
+        "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_005504\\overview\\grasp_verify_color_20261115_005521.png",
+        "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_005504\\overview\\grasp_verify_depth_20261115_005521.png",
+        "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_005504\\overview\\grasp_verify_depth_raw_20261115_005521.png",
+        "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_005504\\overview\\grasp_verify_view_20261115_005521.png",
+        "depth_min_mm": 220,
+        "depth_median_mm": 419.0,
+        "depth_max_mm": 2373,
+        "observation": {
+          "created_unix": 1794675310.4742064,
+          "tcp_pose": [
+            6.033276321806451,
+            -298.8207927277766,
+            363.31132842354793,
+            -179.99923596941485,
+            28.012900721338053,
+            90.0087500023081
+          ],
+          "tool_id": 0,
+          "user_id": 0
+        }
+      }
+    },
+    {
+      "stage": "高位重新扫描零件",
+      "created_unix": 1794675322.613531,
+      "scan_attempt": 1
+    },
+    {
+      "stage": "核对大法兰方向",
+      "created_unix": 1794675343.903906,
+      "direction": {
+        "accepted": false,
+        "status": "unknown",
+        "reason": "Insufficient independent wide-end evidence",
+        "head_annulus_points": 515,
+        "reverse_annulus_points": 265,
+        "direction_ratio": 1.9398496240601504
+      }
+    },
+    {
+      "stage": "高位重新扫描零件",
+      "created_unix": 1794675343.9069138,
+      "scan_attempt": 2
+    },
+    {
+      "stage": "核对大法兰方向",
+      "created_unix": 1794675365.3070061,
+      "direction": {
+        "accepted": true,
+        "status": "verified",
+        "reason": "Measured wide flange supports CAD direction",
+        "head_annulus_points": 531,
+        "reverse_annulus_points": 235,
+        "direction_ratio": 2.2542372881355934
+      }
+    },
+    {
+      "stage": "流程停止，保留现场状态",
+      "created_unix": 1794675371.8277516,
+      "error": "No controller-valid upright route with table clearance"
+    }
+  ],
+  "output": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_005504",
+  "independent_tool_calibration": false,
+  "target": {
+    "best": {
+      "cluster_index": 28,
+      "score": 0.8577047854433992,
+      "fitness": 0.9462719298245614,
+      "rmse_mm": 1.1195665392033682,
+      "camera_T_model": [
+        [
+          0.7343150597948643,
+          -0.5303506101287565,
+          0.42368576007994413,
+          -149.56253427550277
+        ],
+        [
+          -0.5340815323880164,
+          -0.06615332708088792,
+          0.8428408236898572,
+          -74.42221929321329
+        ],
+        [
+          -0.4189729224192563,
+          -0.8451934498398482,
+          -0.3318278508915174,
+          361.6270240243221
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 2740,
+      "clearance_mm": 15.445922907642151,
+      "observation": {
+        "created_unix": 1794675344.8243105,
+        "tcp_pose": [
+          6.033276321806451,
+          -298.8207927277766,
+          363.31132842354793,
+          -179.99923596941485,
+          28.012900721338053,
+          90.0087500023081
+        ],
+        "tool_id": 0,
+        "user_id": 0,
+        "camera_frame": "opencv_optical"
+      }
+    },
+    "observation": {
+      "created_unix": 1794675344.8243105,
+      "tcp_pose": [
+        6.033276321806451,
+        -298.8207927277766,
+        363.31132842354793,
+        -179.99923596941485,
+        28.012900721338053,
+        90.0087500023081
+      ],
+      "tool_id": 0,
+      "user_id": 0,
+      "camera_frame": "opencv_optical"
+    },
+    "base_T_model": [
+      [
+        -0.734613167749634,
+        0.5319998169039212,
+        -0.4210934440038721,
+        122.99728904061263
+      ],
+      [
+        -0.276716677167685,
+        0.3317514052788128,
+        0.9018696611333639,
+        -604.2582843138841
+      ],
+      [
+        0.6194928363961305,
+        0.7790489072643174,
+        -0.09649572914979154,
+        88.04391545590272
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "base_T_camera": [
+      [
+        -0.9999952355730111,
+        0.002235023254900001,
+        -0.002129202275148912,
+        -25.628220182005776
+      ],
+      [
+        0.0029675493290149957,
+        0.8859753758066207,
+        -0.46372279123987187,
+        -370.1835034406549
+      ],
+      [
+        0.0008499895636451388,
+        -0.4637269003792728,
+        -0.8859777871833889,
+        374.05296750774403
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "shaft_grasp_center_base_mm": [
+      111.45932867490653,
+      -579.54705559883,
+      85.39993247719843
+    ],
+    "source_scan": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_005504\\scan_2",
+    "created_unix": 1794675365.2781901
+  },
+  "table_plane": {
+    "accepted": true,
+    "status": "verified",
+    "reason": "Current tabletop measured",
+    "plane_base": [
+      -0.004214556252667639,
+      0.0014128920964874404,
+      0.999990120576957,
+      -66.4801301030617
+    ],
+    "support_points": 69709,
+    "normal_tilt_deg": 0.25468524143359966,
+    "residual_median_mm": 0.34517252402527276,
+    "height_at_grasp_xy_mm": 67.42074515580342,
+    "fit_xy_mm": [
+      43.0,
+      -537.0
+    ]
+  },
+  "error": "No controller-valid upright route with table clearance"
+}

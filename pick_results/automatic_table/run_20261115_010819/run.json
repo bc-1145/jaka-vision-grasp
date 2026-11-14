@@ -1,0 +1,148 @@
+{
+  "completed": false,
+  "motion_sent": false,
+  "actuator_write_attempted": false,
+  "stage": "流程停止，保留现场状态",
+  "run_created_unix": 1794676100.0647483,
+  "create_home": false,
+  "mode": "execute",
+  "events": [
+    {
+      "stage": "控制器与夹爪反馈检查",
+      "created_unix": 1794676104.7264318,
+      "feedback": {
+        "available": false,
+        "grip_state": null,
+        "state_name": null,
+        "holding": null,
+        "dropped": null,
+        "actual_position_mm": null,
+        "current_a": null,
+        "initialization_state": null,
+        "reason": "夹持状态 0x0041 未映射到输入；AO 开度设定值不能确认夹持",
+        "source": "jaka_extio_input_registers",
+        "protocol_source": "https://cn.hitbot.cc/hitbot/document/Z-EFG/Z-EFG-20P/Z-EFG-20P.pdf",
+        "created_unix": 1794676104.7264318,
+        "field_available": {
+          "state": false,
+          "position": false,
+          "current": false,
+          "initialization": false
+        },
+        "device_id": "ext_n7sn2kaoncejc6b2",
+        "unit_id": 1,
+        "command_is_measured_gap": false,
+        "input_mapping": {
+          "first_register": 0,
+          "register_count": 0,
+          "input_offset": 0
+        }
+      }
+    },
+    {
+      "stage": "保存复核画面：startup",
+      "created_unix": 1794676118.8922281,
+      "view": {
+        "created_unix": 1794676117.881063,
+        "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_010819\\startup\\grasp_verify_color_20261115_010837.png",
+        "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_010819\\startup\\grasp_verify_depth_20261115_010837.png",
+        "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_010819\\startup\\grasp_verify_depth_raw_20261115_010837.png",
+        "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_010819\\startup\\grasp_verify_view_20261115_010837.png",
+        "depth_min_mm": 243,
+        "depth_median_mm": 417.0,
+        "depth_max_mm": 2465,
+        "observation": {
+          "created_unix": 1794676106.7464979,
+          "tcp_pose": [
+            6.033276139151571,
+            -298.8190969530242,
+            363.3104262873237,
+            -179.9996012852395,
+            28.01221408280004,
+            90.0079722296266
+          ],
+          "tool_id": 0,
+          "user_id": 0
+        }
+      }
+    },
+    {
+      "stage": "启动前确认空爪",
+      "created_unix": 1794676119.5040863,
+      "empty_jaws": {
+        "accepted": true,
+        "status": "visually_empty",
+        "reason": "Visible grasp space is clear with the known tool present",
+        "hidden_volume_observed": false,
+        "visible_grasp_pixels": 44784,
+        "fixed_tool_pixels": 41834,
+        "visible_volume_fraction": 0.3813124217732254,
+        "inspection_radius_mm": 34.27100840070827,
+        "tool_visible_fraction": 1.0,
+        "tool_reference_error_median": 5.0,
+        "new_dark_fraction": 0.0,
+        "largest_new_dark_component_pixels": 0,
+        "bright_grasp_fraction": 1.0
+      }
+    },
+    {
+      "stage": "已在高处总览位",
+      "created_unix": 1794676119.557385
+    },
+    {
+      "stage": "保存复核画面：overview",
+      "created_unix": 1794676133.0130522,
+      "view": {
+        "created_unix": 1794676131.9796104,
+        "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_010819\\overview\\grasp_verify_color_20261115_010851.png",
+        "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_010819\\overview\\grasp_verify_depth_20261115_010851.png",
+        "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_010819\\overview\\grasp_verify_depth_raw_20261115_010851.png",
+        "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_010819\\overview\\grasp_verify_view_20261115_010851.png",
+        "depth_min_mm": 244,
+        "depth_median_mm": 419.0,
+        "depth_max_mm": 2604,
+        "observation": {
+          "created_unix": 1794676120.9080405,
+          "tcp_pose": [
+            6.033276321806451,
+            -298.8207927277766,
+            363.31132842354793,
+            -179.99923596941485,
+            28.012900721338053,
+            90.0087500023081
+          ],
+          "tool_id": 0,
+          "user_id": 0
+        }
+      }
+    },
+    {
+      "stage": "高位重新扫描零件",
+      "created_unix": 1794676133.0150516,
+      "scan_attempt": 1
+    },
+    {
+      "stage": "本次没有工作区内有效候选",
+      "created_unix": 1794676153.2181673,
+      "candidate_count": 0
+    },
+    {
+      "stage": "高位重新扫描零件",
+      "created_unix": 1794676153.2206829,
+      "scan_attempt": 2
+    },
+    {
+      "stage": "本次没有工作区内有效候选",
+      "created_unix": 1794676175.3219562,
+      "candidate_count": 0
+    },
+    {
+      "stage": "流程停止，保留现场状态",
+      "created_unix": 1794676175.325547,
+      "error": "No fresh, direction-verified lying tube after bounded rescans"
+    }
+  ],
+  "output": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_010819",
+  "independent_tool_calibration": false,
+  "error": "No fresh, direction-verified lying tube after bounded rescans"
+}

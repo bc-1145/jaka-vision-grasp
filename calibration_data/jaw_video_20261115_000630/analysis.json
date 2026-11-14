@@ -1,0 +1,58 @@
+{
+  "cycles": [
+    {
+      "cycle": 1,
+      "features": 39,
+      "median_ray_residual_mm": 0.11735181891599901,
+      "left_contact_estimate_tcp_mm": [
+        -24.670804278727772,
+        9.566822153018624,
+        163.36638815325063
+      ],
+      "right_contact_estimate_tcp_mm": [
+        -20.424855298832995,
+        -11.736390176646253,
+        169.47884987561918
+      ],
+      "scale_assumption": "command difference equals total empty-jaw travel; independently measured spacing still needed"
+    },
+    {
+      "cycle": 2,
+      "features": 49,
+      "median_ray_residual_mm": 0.1558778894738654,
+      "left_contact_estimate_tcp_mm": [
+        -25.128557485024814,
+        9.468205195298978,
+        165.12143310073643
+      ],
+      "right_contact_estimate_tcp_mm": [
+        -19.535955366555367,
+        -11.681594020462605,
+        169.5475062564466
+      ],
+      "scale_assumption": "command difference equals total empty-jaw travel; independently measured spacing still needed"
+    },
+    {
+      "cycle": 3,
+      "features": 37,
+      "median_ray_residual_mm": 0.15243304765576526,
+      "left_contact_estimate_tcp_mm": [
+        -24.61525564596044,
+        9.66140651273216,
+        161.49024854425056
+      ],
+      "right_contact_estimate_tcp_mm": [
+        -19.662367749151436,
+        -11.539773834187027,
+        168.74859979645203
+      ],
+      "scale_assumption": "command difference equals total empty-jaw travel; independently measured spacing still needed"
+    }
+  ],
+  "independent_metric_calibration": false,
+  "jaw_axis_tcp": [
+    0,
+    1,
+    0
+  ]
+}

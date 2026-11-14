@@ -1,0 +1,629 @@
+{
+  "frame": "frame_001.npz",
+  "strategy": "clutter",
+  "tracking": true,
+  "duration_s": 9.671999999998661,
+  "scene_points": 121720,
+  "clusters": 30,
+  "matches": [
+    {
+      "cluster_index": 25,
+      "score": 0.836453959133347,
+      "fitness": 0.9230769230769231,
+      "rmse_mm": 1.1458258567049011,
+      "camera_T_model": [
+        [
+          0.9496144419756325,
+          0.24195829099300856,
+          -0.1992199714161483,
+          -141.31125257324953
+        ],
+        [
+          0.30401144440928285,
+          -0.5565100455208604,
+          0.7732228727233516,
+          1.8380117255923636
+        ],
+        [
+          0.07621976947938125,
+          -0.7948287580693799,
+          -0.6020280658627122,
+          229.99536490095235
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 2491,
+      "clearance_mm": 14.62207043356814,
+      "observation": null
+    },
+    {
+      "cluster_index": 26,
+      "score": 0.7826405851306056,
+      "fitness": 0.8514357053682896,
+      "rmse_mm": 1.125631282369011,
+      "camera_T_model": [
+        [
+          0.700110734259405,
+          0.648365827608193,
+          -0.2991098683840107,
+          -174.64267824845956
+        ],
+        [
+          0.6773560031186676,
+          -0.47053494404230434,
+          0.5654959871424454,
+          -72.57092634558663
+        ],
+        [
+          0.22590662853015173,
+          -0.5985136757209889,
+          -0.7686010507155783,
+          243.91354168260213
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 2017,
+      "clearance_mm": 15.038197286659468,
+      "observation": null
+    },
+    {
+      "cluster_index": 27,
+      "score": 0.7355493897799579,
+      "fitness": 0.7918781725888325,
+      "rmse_mm": 1.0870840227474357,
+      "camera_T_model": [
+        [
+          -0.07125670610471029,
+          -0.7393348345671419,
+          -0.6695569312841766,
+          -103.08498148204502
+        ],
+        [
+          -0.9124254686272343,
+          0.31951710058299204,
+          -0.25571192118360475,
+          68.8673293590639
+        ],
+        [
+          0.4029916203042917,
+          0.592699607584327,
+          -0.6973556690340346,
+          245.43682326059067
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 2217,
+      "clearance_mm": 13.083677224496448,
+      "observation": null
+    },
+    {
+      "cluster_index": 28,
+      "score": 0.7241156396124383,
+      "fitness": 0.7848970251716247,
+      "rmse_mm": 1.1735135752238146,
+      "camera_T_model": [
+        [
+          0.09224715266967518,
+          -0.8816139311157697,
+          0.46286859829430765,
+          -188.92086882979507
+        ],
+        [
+          -0.7688573502370719,
+          0.23231998232939635,
+          0.595722922839887,
+          -25.135003874298697
+        ],
+        [
+          -0.6327312524372148,
+          -0.4108336674045449,
+          -0.656404494131603,
+          244.12818593657545
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 2205,
+      "clearance_mm": 13.01692985627418,
+      "observation": null
+    },
+    {
+      "cluster_index": 29,
+      "score": 0.6084137243824923,
+      "fitness": 0.6316526610644257,
+      "rmse_mm": 1.1349560745320562,
+      "camera_T_model": [
+        [
+          0.9639707764435324,
+          0.1426827205158474,
+          0.2245038606105702,
+          -205.52173577867993
+        ],
+        [
+          -0.25079858523370335,
+          0.7687867261215051,
+          0.5882746292201898,
+          -19.22505342901829
+        ],
+        [
+          -0.08865896349285092,
+          -0.6233848017120522,
+          0.7768725617414985,
+          210.66373263182115
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 1438,
+      "clearance_mm": 13.74099709225196,
+      "observation": null
+    }
+  ],
+  "diagnostics": [
+    {
+      "candidate_index": 0,
+      "source_cluster_index": 9,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1562,
+      "observed_support": 1.0,
+      "visible_support": 0.47701149425287354,
+      "head_support": 0.3556280587275693,
+      "shaft_support": 0.555672268907563,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "candidate_index": 1,
+      "source_cluster_index": 10,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1287,
+      "observed_support": 1.0,
+      "visible_support": 0.8378854625550661,
+      "head_support": 0.23008849557522124,
+      "shaft_support": 0.906679764243615,
+      "accepted": false,
+      "reason": "insufficient head_support"
+    },
+    {
+      "candidate_index": 2,
+      "source_cluster_index": 11,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1438,
+      "observed_support": 1.0,
+      "visible_support": 0.6316526610644257,
+      "head_support": 0.4968944099378882,
+      "shaft_support": 0.8070739549839229,
+      "accepted": true,
+      "reason": "shaft curvature supported",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 3.0662340897069766,
+      "shaft_cylinder_rmse_mm": 1.426735071286849,
+      "score": 0.6084137243824923,
+      "rmse_mm": 1.1349560745320562
+    },
+    {
+      "candidate_index": 3,
+      "source_cluster_index": 14,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1287,
+      "observed_support": 1.0,
+      "visible_support": 0.5580720092915215,
+      "head_support": 0.18944519621109607,
+      "shaft_support": 0.8360488798370672,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support"
+    },
+    {
+      "candidate_index": 4,
+      "source_cluster_index": 17,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 845,
+      "observed_support": 1.0,
+      "visible_support": 0.3531317494600432,
+      "head_support": 0.09090909090909091,
+      "shaft_support": 0.41040843214756256,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "candidate_index": 5,
+      "source_cluster_index": 20,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1112,
+      "observed_support": 1.0,
+      "visible_support": 0.6536718041704442,
+      "head_support": 0.48095238095238096,
+      "shaft_support": 0.6933483652762119,
+      "accepted": false,
+      "reason": "duplicate pose suppressed",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 2.1266319886901424,
+      "shaft_cylinder_rmse_mm": 1.3729598994706151,
+      "score": 0.6093933492883323,
+      "rmse_mm": 1.1702023871706788
+    },
+    {
+      "candidate_index": 6,
+      "source_cluster_index": 21,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1349,
+      "observed_support": 1.0,
+      "visible_support": 0.5196568977841315,
+      "head_support": 0.3953488372093023,
+      "shaft_support": 0.7193308550185874,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support"
+    },
+    {
+      "candidate_index": 7,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "accepted": false,
+      "reason": "no cylinder-supported hypothesis"
+    },
+    {
+      "candidate_index": 8,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 2075,
+      "observed_support": 1.0,
+      "visible_support": 0.4223433242506812,
+      "head_support": 0.3370165745856354,
+      "shaft_support": 0.4430727023319616,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "candidate_index": 9,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "accepted": false,
+      "reason": "no cylinder-supported hypothesis"
+    },
+    {
+      "candidate_index": 10,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 2493,
+      "observed_support": 1.0,
+      "visible_support": 0.9210383991346673,
+      "head_support": 0.9806451612903225,
+      "shaft_support": 0.9096901779828609,
+      "accepted": false,
+      "reason": "duplicate pose suppressed",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 2.483563511685498,
+      "shaft_cylinder_rmse_mm": 1.341834162021219,
+      "score": 0.8347953526141256,
+      "rmse_mm": 1.1470958037721484
+    },
+    {
+      "candidate_index": 11,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 1827,
+      "observed_support": 1.0,
+      "visible_support": 0.30632790028763185,
+      "head_support": 0.14824797843665768,
+      "shaft_support": 0.39373601789709173,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "candidate_index": 12,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 1736,
+      "observed_support": 1.0,
+      "visible_support": 0.4266389177939646,
+      "head_support": 0.2369146005509642,
+      "shaft_support": 0.4736156351791531,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "candidate_index": 13,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 1857,
+      "observed_support": 1.0,
+      "visible_support": 0.4623921085080148,
+      "head_support": 0.22551546391752578,
+      "shaft_support": 0.6797153024911032,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support"
+    },
+    {
+      "candidate_index": 14,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 1907,
+      "observed_support": 1.0,
+      "visible_support": 0.5373641304347826,
+      "head_support": 0.2723684210526316,
+      "shaft_support": 0.8202247191011236,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support"
+    },
+    {
+      "candidate_index": 15,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "accepted": false,
+      "reason": "no cylinder-supported hypothesis"
+    },
+    {
+      "candidate_index": 16,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 2017,
+      "observed_support": 1.0,
+      "visible_support": 0.8514357053682896,
+      "head_support": 0.6287425149700598,
+      "shaft_support": 0.8787878787878788,
+      "accepted": true,
+      "reason": "shaft curvature supported",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 1.7114742410876937,
+      "shaft_cylinder_rmse_mm": 1.421827433821453,
+      "score": 0.7826405851306056,
+      "rmse_mm": 1.125631282369011
+    },
+    {
+      "candidate_index": 17,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 2491,
+      "observed_support": 1.0,
+      "visible_support": 0.9230769230769231,
+      "head_support": 0.977491961414791,
+      "shaft_support": 0.9127561136814276,
+      "accepted": true,
+      "reason": "shaft curvature supported",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 2.4816354649179297,
+      "shaft_cylinder_rmse_mm": 1.338896483230657,
+      "score": 0.836453959133347,
+      "rmse_mm": 1.1458258567049011
+    },
+    {
+      "candidate_index": 18,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "accepted": false,
+      "reason": "no cylinder-supported hypothesis"
+    },
+    {
+      "candidate_index": 19,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 2205,
+      "observed_support": 1.0,
+      "visible_support": 0.7848970251716247,
+      "head_support": 0.6507352941176471,
+      "shaft_support": 0.8100137174211248,
+      "accepted": true,
+      "reason": "shaft curvature supported",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 5.008598377552836,
+      "shaft_cylinder_rmse_mm": 1.0884822278684272,
+      "score": 0.7241156396124383,
+      "rmse_mm": 1.1735135752238146
+    },
+    {
+      "candidate_index": 20,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 2234,
+      "observed_support": 1.0,
+      "visible_support": 0.7811256395679363,
+      "head_support": 0.6125461254612546,
+      "shaft_support": 0.8115646258503402,
+      "accepted": false,
+      "reason": "duplicate pose suppressed",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 5.055048125899554,
+      "shaft_cylinder_rmse_mm": 1.0868232504769277,
+      "score": 0.7212312150605444,
+      "rmse_mm": 1.1752871472711897
+    },
+    {
+      "candidate_index": 21,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 2025,
+      "observed_support": 1.0,
+      "visible_support": 0.8435960591133005,
+      "head_support": 0.5307262569832403,
+      "shaft_support": 0.8877980364656382,
+      "accepted": false,
+      "reason": "duplicate pose suppressed",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 1.7346674562199589,
+      "shaft_cylinder_rmse_mm": 1.4735733060716938,
+      "score": 0.7765007223933879,
+      "rmse_mm": 1.1219538283256432
+    },
+    {
+      "candidate_index": 22,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 2215,
+      "observed_support": 1.0,
+      "visible_support": 0.7786927431806485,
+      "head_support": 0.8757225433526011,
+      "shaft_support": 0.7587080430652312,
+      "accepted": false,
+      "reason": "duplicate pose suppressed",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 2.472050883508883,
+      "shaft_cylinder_rmse_mm": 1.4366936672791728,
+      "score": 0.7226146226889115,
+      "rmse_mm": 1.1226403047924236
+    },
+    {
+      "candidate_index": 23,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "accepted": false,
+      "reason": "no cylinder-supported hypothesis"
+    },
+    {
+      "candidate_index": 24,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 1282,
+      "observed_support": 1.0,
+      "visible_support": 0.8440860215053764,
+      "head_support": 0.2169811320754717,
+      "shaft_support": 0.911530815109344,
+      "accepted": false,
+      "reason": "insufficient head_support"
+    },
+    {
+      "candidate_index": 25,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 1821,
+      "observed_support": 1.0,
+      "visible_support": 0.41675231243576566,
+      "head_support": 0.3003533568904594,
+      "shaft_support": 0.46545454545454545,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "candidate_index": 26,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 2217,
+      "observed_support": 1.0,
+      "visible_support": 0.7918781725888325,
+      "head_support": 0.9111111111111111,
+      "shaft_support": 0.7668133249528598,
+      "accepted": true,
+      "reason": "shaft curvature supported",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 2.390125704640062,
+      "shaft_cylinder_rmse_mm": 1.3561769734573617,
+      "score": 0.7355493897799579,
+      "rmse_mm": 1.0870840227474357
+    },
+    {
+      "candidate_index": 27,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 1432,
+      "observed_support": 1.0,
+      "visible_support": 0.6308864265927978,
+      "head_support": 0.48402948402948404,
+      "shaft_support": 0.821939586645469,
+      "accepted": false,
+      "reason": "duplicate pose suppressed",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 3.349777724439969,
+      "shaft_cylinder_rmse_mm": 1.4046808437946832,
+      "score": 0.6069939909584403,
+      "rmse_mm": 1.1400913488343538
+    },
+    {
+      "candidate_index": 28,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 1589,
+      "observed_support": 1.0,
+      "visible_support": 0.60543580131209,
+      "head_support": 0.32098765432098764,
+      "shaft_support": 0.6595505617977528,
+      "accepted": false,
+      "reason": "insufficient head_support"
+    },
+    {
+      "candidate_index": 29,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 1251,
+      "observed_support": 1.0,
+      "visible_support": 0.84,
+      "head_support": 0.3418803418803419,
+      "shaft_support": 0.900398406374502,
+      "accepted": false,
+      "reason": "insufficient head_support"
+    },
+    {
+      "candidate_index": 30,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 1572,
+      "observed_support": 1.0,
+      "visible_support": 0.5415212840195395,
+      "head_support": 0.4491725768321513,
+      "shaft_support": 0.6746166950596252,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support"
+    }
+  ],
+  "statistics": {
+    "segmented_clusters": 25,
+    "candidate_regions": 31,
+    "registered_candidates": 31,
+    "validated_instances": 5,
+    "previous_pose_hints": 0,
+    "elapsed_s": 9.139999999999418
+  },
+  "preview_only": true
+}

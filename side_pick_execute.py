@@ -63,29 +63,88 @@ def move_joint_path(robot, target_joints, report, stage, max_step=2.0):
     return cursor
 
 
-def build_plan(robot, config, saved):
+def select_highest_score_match(matches, *, highest_graspable=False):
+    """Lock the highest score before safety filtering; never substitute a part."""
+    if not matches:
+        raise RuntimeError("本次扫描没有可供抓取的零件")
+    if any(not np.isfinite(item.score) for item in matches):
+        raise RuntimeError("匹配分数无效，需要重新扫描")
+    if highest_graspable:
+        matches = [item for item in matches if item.score >= 0.78
+                   and np.isfinite(item.clearance_mm) and item.clearance_mm >= 10.0]
+        if not matches:
+            raise RuntimeError("没有同时满足抓取匹配分和下爪净空的候选零件")
+    selected = max(matches, key=lambda item: item.score)
+    if (selected.score < 0.78 or not np.isfinite(selected.clearance_mm)
+            or selected.clearance_mm < 10.0):
+        raise RuntimeError(
+            f"最高分零件 {selected.cluster_index} 未通过抓取门槛："
+            f"匹配分 {selected.score:.3f}，外部净空 {selected.clearance_mm:.1f} mm；未改选其他零件")
+    return selected
+
+
+def shaft_middle_model_z(config):
+    lower, upper = np.asarray(config["model"]["shaft_z_range_mm"], dtype=float)
+    if not np.isfinite([lower, upper]).all() or lower >= upper:
+        raise ValueError("管身轴向范围无效")
+    middle = float((lower + upper) / 2.0)
+    if middle <= float(config["model"]["head_z_range_mm"][1]):
+        raise ValueError("管身中点不能位于大头区域")
+    return middle
+
+
+def grasp_rotation(tool_axis, jaw_axis, jaw_axis_tcp):
+    """Map the configured physical closing axis onto the desired world axis."""
+    tool = np.asarray(tool_axis, float)
+    jaw = np.asarray(jaw_axis, float)
+    local = np.asarray(jaw_axis_tcp, float)
+    if any(a.shape != (3,) or not np.isfinite(a).all() for a in (tool, jaw, local)):
+        raise ValueError("Invalid tool or jaw axis")
+    if min(np.linalg.norm(a) for a in (tool, jaw, local)) < 1e-8:
+        raise ValueError("Tool and jaw axes must be nonzero")
+    tool = tool / np.linalg.norm(tool)
+    jaw = jaw / np.linalg.norm(jaw)
+    local = local / np.linalg.norm(local)
+    if abs(jaw @ tool) > 1e-6 or abs(local[2]) > 1e-6:
+        raise ValueError("Jaw closing axis must be perpendicular to tool Z")
+    world_basis = np.column_stack((jaw, np.cross(tool, jaw), tool))
+    local_basis = np.column_stack((local, np.cross([0, 0, 1], local), [0, 0, 1]))
+    return world_basis @ local_basis.T
+
+
+def flange_position(grasp_center, rotation, tcp_to_grasp):
+    return np.asarray(grasp_center, float) - np.asarray(rotation, float) @ np.asarray(tcp_to_grasp, float)
+
+
+def build_plan(robot, config, saved, *, highest_graspable=False):
     matches = [vision.MatchResult(**item) for item in json.loads(
         (RESULTS / "matches.json").read_text(encoding="utf-8"))]
-    eligible = [item for item in matches if item.score >= 0.78 and item.clearance_mm >= 10]
-    if not eligible:
-        raise RuntimeError("没有同时满足匹配分和外部净空要求的螺栓")
+    preferred = select_highest_score_match(matches, highest_graspable=highest_graspable)
+    eligible = (sorted([item for item in matches if item.score >= 0.78
+                        and np.isfinite(item.clearance_mm) and item.clearance_mm >= 10.0],
+                       key=lambda item: -item.score)
+                if highest_graspable else [preferred])
     if any(item.observation != saved["observation"] for item in eligible):
         raise RuntimeError("识别结果与抓取方案不是同一次扫描")
     base_T_camera = vision.camera_transform(config, eligible[0].observation)
     tcp_to_grasp = np.asarray(config["gripper"]["tcp_to_grasp_center_mm"], dtype=float)
     tool_offset_z = float(tcp_to_grasp[2])
     tool_length = abs(tool_offset_z)
-    if np.max(np.abs(tcp_to_grasp[:2])) > 0.01 or abs(tool_length - 180.0) > 0.01:
-        raise RuntimeError("本路线只适用于现场给出的轴向 180 mm 夹持中心估计")
+    if (tcp_to_grasp.shape != (3,) or not np.isfinite(tcp_to_grasp).all()
+            or not 50 <= tool_length <= 400 or np.linalg.norm(tcp_to_grasp[:2]) > 100):
+        raise RuntimeError("夹持中心偏移超出已支持的末端尺寸范围")
     tool_z_sign = 1.0 if tool_offset_z > 0 else -1.0
     state = robot.motion_snapshot()
     current_joints = np.asarray(state["joint_actual_position"], dtype=float)
     # The bin lies along the calibrated camera +Z viewing direction.  Retreat
-    # opposite that ray before changing wrist orientation; increasing base Z
-    # was shown by live depth to move this installation closer to the pile.
+    # opposite that ray before changing wrist orientation. Use the normalized
+    # optical frame, whose direction was cross-checked against live depth.
     camera_axis = base_T_camera[:3, 2] / np.linalg.norm(base_T_camera[:3, 2])
     lift_pose = list(state["actual_position"])
-    lift_pose[:3] = (np.asarray(lift_pose[:3]) - camera_axis * 100.0).tolist()
+    retreat_mm = float(config["camera"].get("retreat_mm", 100.0))
+    if not 30.0 <= retreat_mm <= 150.0:
+        raise ValueError("camera.retreat_mm must be between 30 and 150 mm")
+    lift_pose[:3] = (np.asarray(lift_pose[:3]) - camera_axis * retreat_mm).tolist()
     joints = {"lift": robot.inverse(lift_pose, current_joints)}
     home_approach = np.asarray(arm_control.load_home_joint(), dtype=float)
     home_pose = arm_control.load_pose("home")
@@ -99,9 +158,8 @@ def build_plan(robot, config, saved):
     model_cloud = mesh.sample_points_uniformly(int(config["matching"]["model_sample_points"]))
     model_points = np.asarray(model_cloud.points)
     candidates = []
-    # Try every isolated, well-matched workpiece.  A very clear object can be
-    # unreachable while the next one has a safe controller-valid route.
-    for selected in sorted(eligible, key=lambda item: (-item.clearance_mm, -item.score)):
+    # Search approach orientations only for the locked highest-scoring part.
+    for selected in eligible:
         camera_T_model = vision.matrix(selected.camera_T_model, "camera_T_model")
         base_T_model = base_T_camera @ camera_T_model
         shaft = base_T_model[:3, 2] / np.linalg.norm(base_T_model[:3, 2])
@@ -114,7 +172,10 @@ def build_plan(robot, config, saved):
         if len(foreign_points) < 100:
             continue
         foreign_tree = cKDTree(foreign_points)
-        grasp_z_values = np.asarray([8.0, 16.0, 24.0, 32.0, 40.0, 46.0])
+        # The operator requests the middle of the thin tube. Keep that point
+        # fixed while searching approach orientations; never drift to an end
+        # merely because a different axial point has more clearance.
+        grasp_z_values = np.asarray([shaft_middle_model_z(config)])
         grasp_options = vision.transform_points(
             np.column_stack((np.zeros(len(grasp_z_values)),
                              np.zeros(len(grasp_z_values)), grasp_z_values)),
@@ -148,13 +209,14 @@ def build_plan(robot, config, saved):
                 jaw /= np.linalg.norm(jaw)
                 for sign in (1.0, -1.0):
                     jaw_axis = jaw * sign
-                    rotation = np.column_stack((jaw_axis, np.cross(tool_axis, jaw_axis), tool_axis))
+                    rotation = grasp_rotation(tool_axis, jaw_axis, config["gripper"]["jaw_axis_tcp"])
                     orientation = Rotation.from_matrix(rotation).as_euler("xyz", degrees=True)
                     poses, candidate_joints = {}, {}
                     previous = joints["lift"]
                     valid = True
                     for name, extra in (("approach", 70.0), ("prepick", 35.0), ("pick", 0.0)):
-                        pose = [*(grasp - approach_axis * (tool_length + extra)), *orientation]
+                        center = grasp - approach_axis * extra
+                        pose = [*flange_position(center, rotation, tcp_to_grasp), *orientation]
                         try:
                             q = robot.inverse(pose, previous)
                         except Exception:
@@ -181,22 +243,35 @@ def build_plan(robot, config, saved):
                         "candidate_joints": candidate_joints, "tree": foreign_tree,
                     })
     if not candidates:
-        raise RuntimeError("所有合格螺栓都没有满足控制器关节范围的抓取姿态")
-    candidates.sort(key=lambda value: value["rank"])
+        raise RuntimeError("最高分零件没有通过关节范围检查的抓取姿态；未改选其他零件")
+    candidates.sort(key=lambda value: (-value["selected"].score, value["rank"]))
     selected_route = None
     best_rejected = None
-    for candidate in candidates[:60]:
+    examined = {}
+    for candidate in candidates:
+        index = candidate["selected"].cluster_index
+        examined[index] = examined.get(index, 0) + 1
+        if examined[index] > 60:
+            continue
         minimum_flange = float("inf"); minimum_axis = float("inf")
         approach_joints = candidate["candidate_joints"]["approach"]
         tree = candidate["tree"]
-        for fraction in np.linspace(0, 1, 31):
-            q = joints["lift"] * (1 - fraction) + approach_joints * fraction
-            tcp = vision.pose_to_matrix(robot.forward(q))
-            flange = tcp[:3, 3]
-            center = vision.transform_points([[0, 0, tool_offset_z]], tcp)[0]
-            axis_samples = flange + np.linspace(0, 1, 61)[:, None] * (center - flange)
-            minimum_flange = min(minimum_flange, float(tree.query(flange)[0]))
-            minimum_axis = min(minimum_axis, float(np.min(tree.query(axis_samples)[0])))
+        route = [(joints["lift"], approach_joints, 31),
+                 (approach_joints, candidate["candidate_joints"]["prepick"], 17),
+                 (candidate["candidate_joints"]["prepick"], candidate["candidate_joints"]["pick"], 17)]
+        for q0, q1, samples in route:
+            for fraction in np.linspace(0, 1, samples):
+                q = q0 * (1 - fraction) + q1 * fraction
+                tcp = vision.pose_to_matrix(robot.forward(q))
+                flange = tcp[:3, 3]
+                center = vision.transform_points([tcp_to_grasp], tcp)[0]
+                axis_samples = flange + np.linspace(0, 1, 91)[:, None] * (center - flange)
+                minimum_flange = min(minimum_flange, float(tree.query(flange)[0]))
+                minimum_axis = min(minimum_axis, float(np.min(tree.query(axis_samples)[0])))
+                if minimum_flange < 50 or minimum_axis < 10:
+                    break
+            if minimum_flange < 50 or minimum_axis < 10:
+                break
         if (best_rejected is None or minimum_axis > best_rejected[1]):
             best_rejected = (minimum_flange, minimum_axis)
         if minimum_flange >= 50 and minimum_axis >= 10:
@@ -218,10 +293,15 @@ def build_plan(robot, config, saved):
     candidate_joints = candidate["candidate_joints"]
     joints.update(candidate_joints, home_approach=home_approach, home=home_joints)
     return {"poses": poses, "joints": {key: value.tolist() for key, value in joints.items()},
+            "selected_cluster_index": selected.cluster_index,
+            "selection": "highest_score_with_required_clearance" if highest_graspable else "highest_score",
             "grasp_base": grasp.tolist(), "approach_axis": approach_axis.tolist(),
             "tool_axis": (approach_axis * tool_z_sign).tolist(),
             "strategy": "stage1_top_or_oblique_minimum_wrist_change",
             "grasp_model_z_mm": grasp_z,
+            "shaft_axis_base": (base_T_camera[:3, :3] @
+                                np.asarray(selected.camera_T_model)[:3, :3] @
+                                np.asarray(config["model"]["axis_model"])).tolist(),
             "grasp_rpy_deg": orientation.tolist(), "camera_ray_cone_deg": cone_deg,
             "approach_distance_mm": 70.0, "prepick_distance_mm": 35.0,
             "match_score": selected.score, "foreign_clearance_mm": grasp_clearance,

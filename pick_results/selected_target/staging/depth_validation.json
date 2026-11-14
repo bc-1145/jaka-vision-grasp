@@ -1,0 +1,25 @@
+{
+  "created_unix": 1794665510.3041022,
+  "supported_points": 4,
+  "observation": {
+    "created_unix": 1794665501.4766078,
+    "tcp_pose": [
+      246.8471923109704,
+      -138.05277920179464,
+      206.02855917758635,
+      165.4044412371703,
+      14.76358240340611,
+      160.46427051576845
+    ],
+    "tool_id": 0,
+    "user_id": 0,
+    "camera_frame": "opencv_optical"
+  },
+  "world_pose_changed": false,
+  "observed_support": 1.0,
+  "visible_support": 0.0,
+  "head_support": 0.0,
+  "shaft_support": 0.0,
+  "accepted": false,
+  "reason": "Too few current target points"
+}

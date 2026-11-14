@@ -1,0 +1,28 @@
+{
+  "created_unix": 1794671052.7258565,
+  "supported_points": 1847,
+  "observation": {
+    "created_unix": 1794671042.4237423,
+    "tcp_pose": [
+      6.033276321806451,
+      -298.8207927277766,
+      363.31132842354793,
+      -179.99923596941485,
+      28.012900721338053,
+      90.0087500023081
+    ],
+    "tool_id": 0,
+    "user_id": 0,
+    "camera_frame": "opencv_optical"
+  },
+  "world_pose_changed": false,
+  "observed_support": 1.0,
+  "visible_support": 0.8240740740740741,
+  "head_support": 0.576271186440678,
+  "shaft_support": 0.8667117726657646,
+  "accepted": false,
+  "reason": "shaft evidence is better explained by a plane",
+  "curvature_accepted": false,
+  "shaft_plane_rmse_mm": 1.336170869882192,
+  "shaft_cylinder_rmse_mm": 1.2749291721713278
+}

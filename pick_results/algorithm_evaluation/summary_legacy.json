@@ -1,0 +1,38 @@
+[
+  {
+    "frame": "frame_001.npz",
+    "strategy": "legacy",
+    "matches": 0,
+    "duration_s": 4.094,
+    "clusters": 25,
+    "reasons": {
+      "cluster dimensions incompatible with CAD": 18,
+      "insufficient visible_support, head_support, shaft_support": 7
+    }
+  },
+  {
+    "frame": "frame_002.npz",
+    "strategy": "legacy",
+    "matches": 0,
+    "duration_s": 7.953,
+    "clusters": 34,
+    "reasons": {
+      "cluster dimensions incompatible with CAD": 22,
+      "insufficient visible_support, head_support, shaft_support": 10,
+      "insufficient observed_support, visible_support, shaft_support": 1,
+      "insufficient visible_support, shaft_support": 1
+    }
+  },
+  {
+    "frame": "frame_003.npz",
+    "strategy": "legacy",
+    "matches": 0,
+    "duration_s": 6.062,
+    "clusters": 26,
+    "reasons": {
+      "cluster dimensions incompatible with CAD": 17,
+      "insufficient visible_support, head_support, shaft_support": 8,
+      "insufficient observed_support, visible_support, head_support, shaft_support": 1
+    }
+  }
+]

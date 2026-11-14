@@ -1,0 +1,248 @@
+{
+  "arm_motion_sent": false,
+  "command_is_measured_gap": false,
+  "output": "C:\\Users\\Administrator\\Desktop\\1\\calibration_data\\jaw_video_20261115_000630",
+  "commands": [
+    {
+      "step": 0,
+      "cycle": 1,
+      "command_mm": 8.65,
+      "sent_unix": 1794672401.5131073,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672403.630159
+    },
+    {
+      "step": 1,
+      "cycle": 1,
+      "command_mm": 12,
+      "sent_unix": 1794672405.172221,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672405.6554303
+    },
+    {
+      "step": 2,
+      "cycle": 1,
+      "command_mm": 16,
+      "sent_unix": 1794672407.2418025,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672407.668042
+    },
+    {
+      "step": 3,
+      "cycle": 1,
+      "command_mm": 20,
+      "sent_unix": 1794672409.2647905,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672409.6831057
+    },
+    {
+      "step": 4,
+      "cycle": 1,
+      "command_mm": 16,
+      "sent_unix": 1794672411.2574127,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672411.7216804
+    },
+    {
+      "step": 5,
+      "cycle": 1,
+      "command_mm": 12,
+      "sent_unix": 1794672413.2649894,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672413.7653124
+    },
+    {
+      "step": 6,
+      "cycle": 1,
+      "command_mm": 8.65,
+      "sent_unix": 1794672415.2929847,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672415.7931163
+    },
+    {
+      "step": 7,
+      "cycle": 2,
+      "command_mm": 8.65,
+      "sent_unix": 1794672417.379586,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672417.8157518
+    },
+    {
+      "step": 8,
+      "cycle": 2,
+      "command_mm": 12,
+      "sent_unix": 1794672419.3348236,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672419.839119
+    },
+    {
+      "step": 9,
+      "cycle": 2,
+      "command_mm": 16,
+      "sent_unix": 1794672421.3773253,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672421.8556702
+    },
+    {
+      "step": 10,
+      "cycle": 2,
+      "command_mm": 20,
+      "sent_unix": 1794672423.451453,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672423.9264855
+    },
+    {
+      "step": 11,
+      "cycle": 2,
+      "command_mm": 16,
+      "sent_unix": 1794672425.4672265,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672425.958721
+    },
+    {
+      "step": 12,
+      "cycle": 2,
+      "command_mm": 12,
+      "sent_unix": 1794672427.549957,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672427.9682643
+    },
+    {
+      "step": 13,
+      "cycle": 2,
+      "command_mm": 8.65,
+      "sent_unix": 1794672429.5109167,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672429.9935477
+    },
+    {
+      "step": 14,
+      "cycle": 3,
+      "command_mm": 8.65,
+      "sent_unix": 1794672431.5713708,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672431.9993436
+    },
+    {
+      "step": 15,
+      "cycle": 3,
+      "command_mm": 12,
+      "sent_unix": 1794672433.6127756,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672434.0369153
+    },
+    {
+      "step": 16,
+      "cycle": 3,
+      "command_mm": 16,
+      "sent_unix": 1794672435.5781007,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672436.0749226
+    },
+    {
+      "step": 17,
+      "cycle": 3,
+      "command_mm": 20,
+      "sent_unix": 1794672437.677529,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672438.0989003
+    },
+    {
+      "step": 18,
+      "cycle": 3,
+      "command_mm": 16,
+      "sent_unix": 1794672439.6428075,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672440.1348183
+    },
+    {
+      "step": 19,
+      "cycle": 3,
+      "command_mm": 12,
+      "sent_unix": 1794672441.6761997,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672442.1451614
+    },
+    {
+      "step": 20,
+      "cycle": 3,
+      "command_mm": 8.65,
+      "sent_unix": 1794672443.6918664,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672444.2029765
+    },
+    {
+      "step": 21,
+      "cycle": 3,
+      "command_mm": 20,
+      "sent_unix": 1794672445.748621,
+      "command_is_measured_gap": false,
+      "setpoint_readback_unix": 1794672446.2023404
+    }
+  ],
+  "completed": true,
+  "start_state": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 71620722,
+    "actual_position": [
+      6.033276321806451,
+      -298.8207927277766,
+      363.31132842354793,
+      -179.99923596941485,
+      28.012900721338053,
+      90.0087500023081
+    ],
+    "joint_actual_position": [
+      90.0061302173027,
+      12.54954517706651,
+      44.97752098516875,
+      0.00046782138971612763,
+      94.4600331102509,
+      179.99772352368262
+    ]
+  },
+  "end_state": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 71620722,
+    "actual_position": [
+      6.033276321806451,
+      -298.8207927277766,
+      363.31132842354793,
+      -179.99923596941485,
+      28.012900721338053,
+      90.0087500023081
+    ],
+    "joint_actual_position": [
+      90.0061302173027,
+      12.54954517706651,
+      44.97752098516875,
+      0.00046782138971612763,
+      94.4600331102509,
+      179.99772352368262
+    ]
+  },
+  "video_frames": 477,
+  "fresh_frames": 678
+}

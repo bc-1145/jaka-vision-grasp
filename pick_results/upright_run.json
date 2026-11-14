@@ -1,0 +1,36 @@
+{
+  "stage": "at_unloading",
+  "completed": false,
+  "j6_rotation_deg": 180,
+  "actual": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 0,
+    "actual_position": [
+      6.0061830654065,
+      -472.86398704444036,
+      221.64185394242062,
+      -179.99886807703749,
+      -44.9881509105375,
+      -90.00049610467589
+    ],
+    "joint_actual_position": [
+      90.00063705325697,
+      45.010024814333114,
+      44.99743370483455,
+      0.00046782138971612763,
+      45.00439056098224,
+      0.00047065502190962727
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "created_unix": 1794637309.2135377,
+  "stage": "waiting_for_valid_single_part_pose",
+  "command_before_mm": 8.649999618530273,
+  "command_after_mm": 20.0,
+  "actual": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 0,
+    "actual_position": [
+      259.0854589302487,
+      -93.15599464990333,
+      265.7359197714761,
+      -171.5785073564724,
+      0.6471539670565123,
+      178.16966111698923
+    ],
+    "joint_actual_position": [
+      -13.816043538122791,
+      -16.444747947340556,
+      -63.66078434735595,
+      -8.174733569677175,
+      -97.42580004439438,
+      -13.17076343564205
+    ]
+  },
+  "target_close_mm": 8.65,
+  "start": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 86442800,
+    "actual_position": [
+      210.80721158222786,
+      -5.996346418918281,
+      236.3832067664362,
+      179.99953216023633,
+      0.0022367458445894154,
+      -179.99983333492608
+    ],
+    "joint_actual_position": [
+      0.000637327915169239,
+      0.00041191458217451626,
+      -89.99913265564956,
+      0.00046782138971612763,
+      -89.99904225455904,
+      0.00047065502190962727
+    ]
+  },
+  "corrected_photo_approach": [
+    255.04325662642162,
+    -64.2576817088613,
+    302.2315578212085,
+    177.6921274143897,
+    -1.7455069485724777,
+    179.84335931934498
+  ],
+  "photo_retreat_mm": 40,
+  "gripper_command_mm": 20.0,
+  "target_pose": [
+    253.56110175124527,
+    -62.730297336802245,
+    262.28821902853895,
+    177.6921274143897,
+    -1.7455069485724777,
+    179.84335931934498
+  ],
+  "pick_completed": false,
+  "home_after_pick_completed": false,
+  "blocking_reason": "No single-part CAD pose passed visible surface/head/shaft validation in the stacked scene"
+}

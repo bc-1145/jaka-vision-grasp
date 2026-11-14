@@ -1,0 +1,25 @@
+{
+  "created_unix": 1794666139.034271,
+  "supported_points": 323,
+  "observation": {
+    "created_unix": 1794666130.4658368,
+    "tcp_pose": [
+      235.76332218334298,
+      -143.47530253154116,
+      238.7822430638026,
+      165.40358832797676,
+      14.763525608409607,
+      160.46386204530253
+    ],
+    "tool_id": 0,
+    "user_id": 0,
+    "camera_frame": "opencv_optical"
+  },
+  "world_pose_changed": false,
+  "observed_support": 1.0,
+  "visible_support": 0.15601374570446735,
+  "head_support": 0.0030864197530864196,
+  "shaft_support": 0.20323741007194246,
+  "accepted": false,
+  "reason": "insufficient visible_support, head_support, shaft_support"
+}

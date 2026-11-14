@@ -1,0 +1,131 @@
+{
+  "completed": false,
+  "motion_sent": false,
+  "actuator_write_attempted": false,
+  "stage": "零件框尝试停止，保留夹爪状态",
+  "run_created_unix": 1794677521.6298237,
+  "create_home": false,
+  "mode": "execute",
+  "events": [
+    {
+      "stage": "控制器与夹爪反馈检查",
+      "created_unix": 1794677526.0145109,
+      "feedback": {
+        "available": false,
+        "grip_state": null,
+        "state_name": null,
+        "holding": null,
+        "dropped": null,
+        "actual_position_mm": null,
+        "current_a": null,
+        "initialization_state": null,
+        "reason": "夹持状态 0x0041 未映射到输入；AO 开度设定值不能确认夹持",
+        "source": "jaka_extio_input_registers",
+        "protocol_source": "https://cn.hitbot.cc/hitbot/document/Z-EFG/Z-EFG-20P/Z-EFG-20P.pdf",
+        "created_unix": 1794677526.0145109,
+        "field_available": {
+          "state": false,
+          "position": false,
+          "current": false,
+          "initialization": false
+        },
+        "device_id": "ext_n7sn2kaoncejc6b2",
+        "unit_id": 1,
+        "command_is_measured_gap": false,
+        "input_mapping": {
+          "first_register": 0,
+          "register_count": 0,
+          "input_offset": 0
+        }
+      }
+    },
+    {
+      "stage": "确认已在零件框 BAT 拍照位置",
+      "created_unix": 1794677526.0638351,
+      "actual": {
+        "queue": 0,
+        "errorCode": "0",
+        "errorMsg": "",
+        "cmdName": "get_motion_state",
+        "queue_full": false,
+        "active_queue": 0,
+        "inpos": true,
+        "collision": 0,
+        "paused": false,
+        "err_add_line": 0,
+        "soft_limit": 0,
+        "estop": 0,
+        "motion_line": 86411700,
+        "actual_position": [
+          210.80721158222786,
+          -5.996346418918281,
+          236.3832067664362,
+          179.99953216023633,
+          0.0022367458445894154,
+          -179.99983333492608
+        ],
+        "joint_actual_position": [
+          0.000637327915169239,
+          0.00041191458217451626,
+          -89.99913265564956,
+          0.00046782138971612763,
+          -89.99904225455904,
+          0.00047065502190962727
+        ]
+      }
+    },
+    {
+      "stage": "保存复核画面：bin_overview",
+      "created_unix": 1794677540.1199865,
+      "view": {
+        "created_unix": 1794677539.5108783,
+        "color_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_013200\\bin_overview\\grasp_verify_color_20261115_013219.png",
+        "depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_013200\\bin_overview\\grasp_verify_depth_20261115_013219.png",
+        "raw_depth_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_013200\\bin_overview\\grasp_verify_depth_raw_20261115_013219.png",
+        "view_path": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_013200\\bin_overview\\grasp_verify_view_20261115_013219.png",
+        "depth_min_mm": 179,
+        "depth_median_mm": 204.0,
+        "depth_max_mm": 266,
+        "observation": {
+          "created_unix": 1794677528.033638,
+          "tcp_pose": [
+            210.80721158222786,
+            -5.996346418918281,
+            236.3832067664362,
+            179.99953216023633,
+            0.0022367458445894154,
+            -179.99983333492608
+          ],
+          "tool_id": 0,
+          "user_id": 0
+        }
+      }
+    },
+    {
+      "stage": "下爪前空爪检查",
+      "created_unix": 1794677540.756139,
+      "empty_jaws": {
+        "accepted": false,
+        "status": "occupied_or_uncertain",
+        "reason": "A dark object or occlusion occupies the visible grasp space",
+        "visible_grasp_pixels": 44784,
+        "fixed_tool_pixels": 41834,
+        "visible_volume_fraction": 0.3813124217732254,
+        "inspection_radius_mm": 34.27100840070827,
+        "tool_visible_fraction": 0.874575703972845,
+        "tool_reference_error_median": 30.0,
+        "new_dark_fraction": 0.685088424437299,
+        "largest_new_dark_component_pixels": 29478,
+        "bright_grasp_fraction": 0.19984816005716327
+      }
+    },
+    {
+      "stage": "零件框尝试停止，保留夹爪状态",
+      "created_unix": 1794677540.7584953,
+      "error": "Initial empty jaws are uncertain; no opening sent"
+    }
+  ],
+  "output": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\bin_grasp\\run_20261115_013200",
+  "independent_tool_calibration": false,
+  "error": "Initial empty jaws are uncertain; no opening sent"
+}

@@ -1,0 +1,598 @@
+{
+  "frame": "frame_002.npz",
+  "strategy": "clutter",
+  "tracking": true,
+  "duration_s": 7.811999999998079,
+  "scene_points": 123528,
+  "clusters": 41,
+  "matches": [
+    {
+      "cluster_index": 34,
+      "score": 0.8407728990737621,
+      "fitness": 0.9245382585751979,
+      "rmse_mm": 1.1187259746753557,
+      "camera_T_model": [
+        [
+          0.8842054167461207,
+          0.4263042805075676,
+          -0.19090689201216668,
+          -141.23324079668765
+        ],
+        [
+          0.4082442841893724,
+          -0.5067029545980223,
+          0.7593343928917902,
+          2.266918498842557
+        ],
+        [
+          0.22697441579069424,
+          -0.7493442307928716,
+          -0.6220657829795125,
+          229.75132190335648
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 2479,
+      "clearance_mm": 15.42385419781912,
+      "observation": null
+    },
+    {
+      "cluster_index": 35,
+      "score": 0.8371243051740181,
+      "fitness": 0.9222050489438434,
+      "rmse_mm": 1.090341800520208,
+      "camera_T_model": [
+        [
+          0.8045931977482426,
+          -0.27301416997752154,
+          -0.5273452845420558,
+          -90.90924892382289
+        ],
+        [
+          -0.2095068689004063,
+          0.7004318630546527,
+          -0.6822771263213621,
+          34.89131326247123
+        ],
+        [
+          0.555640763462154,
+          0.6594379942111868,
+          0.5063643685824684,
+          234.24189576646086
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 2112,
+      "clearance_mm": 13.168565659916666,
+      "observation": null
+    },
+    {
+      "cluster_index": 36,
+      "score": 0.7544396841507957,
+      "fitness": 0.8138107416879795,
+      "rmse_mm": 1.0587507601889443,
+      "camera_T_model": [
+        [
+          -0.048077450236293756,
+          -0.7452594294641921,
+          -0.665039052667949,
+          -102.95205419460736
+        ],
+        [
+          -0.923041130606833,
+          0.28757302867830237,
+          -0.2555324331368683,
+          68.37684318230087
+        ],
+        [
+          0.38168524989425,
+          0.6015730512344242,
+          -0.7017308843436124,
+          245.72036829013163
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 2157,
+      "clearance_mm": 12.99741439621191,
+      "observation": null
+    },
+    {
+      "cluster_index": 37,
+      "score": 0.7108971351951815,
+      "fitness": 0.7717041800643086,
+      "rmse_mm": 1.2149991575052073,
+      "camera_T_model": [
+        [
+          -0.018116406022506255,
+          -0.12812595406348593,
+          -0.9915924241986467,
+          -26.167808574665923
+        ],
+        [
+          0.36066112096076125,
+          0.924146873918647,
+          -0.126000441482238,
+          -37.44015443156237
+        ],
+        [
+          0.9325209658019245,
+          -0.3599115104045899,
+          0.029467830224363795,
+          266.5274679867294
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 1481,
+      "clearance_mm": 12.952690473224939,
+      "observation": null
+    },
+    {
+      "cluster_index": 38,
+      "score": 0.6968125475575719,
+      "fitness": 0.7461538461538462,
+      "rmse_mm": 1.1279435129182924,
+      "camera_T_model": [
+        [
+          0.7973361546306199,
+          -0.5187280177883415,
+          -0.3085065640796567,
+          -51.884212188129695
+        ],
+        [
+          -0.5748054359712743,
+          -0.4968401554821858,
+          -0.6501911800988295,
+          10.285016553680707
+        ],
+        [
+          0.1839939327715171,
+          0.6957521853805521,
+          -0.6943163034535886,
+          274.9561202807439
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 1533,
+      "clearance_mm": 12.907623861609492,
+      "observation": null
+    },
+    {
+      "cluster_index": 39,
+      "score": 0.6651895296752331,
+      "fitness": 0.7147147147147147,
+      "rmse_mm": 1.0687367412510271,
+      "camera_T_model": [
+        [
+          0.9409317539636112,
+          0.3318339423603425,
+          0.06733252617085968,
+          -152.78170884204775
+        ],
+        [
+          0.03529347074834836,
+          0.10165567986587055,
+          -0.9941933884680271,
+          102.0450147785296
+        ],
+        [
+          -0.3367518452889199,
+          0.937844527333071,
+          0.08393948561855358,
+          225.67735404523737
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 1510,
+      "clearance_mm": 6.231690361695324,
+      "observation": null
+    },
+    {
+      "cluster_index": 40,
+      "score": 0.6366511339493308,
+      "fitness": 0.6730878186968838,
+      "rmse_mm": 1.1742612714678864,
+      "camera_T_model": [
+        [
+          -0.7774317131333252,
+          -0.44269818233118263,
+          0.4467865830295828,
+          -187.85939971779436
+        ],
+        [
+          -0.10392219136440148,
+          0.7909972554496416,
+          0.602929116906089,
+          -26.04432573032076
+        ],
+        [
+          -0.6203225850769931,
+          0.4223051754736161,
+          -0.6609525166088677,
+          244.6695936029146
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 1733,
+      "clearance_mm": 12.895441095346582,
+      "observation": null
+    }
+  ],
+  "diagnostics": [
+    {
+      "candidate_index": 0,
+      "source_cluster_index": -2,
+      "local_window": true,
+      "previous_pose_refit": true,
+      "supported_points": 2479,
+      "observed_support": 1.0,
+      "visible_support": 0.9245382585751979,
+      "head_support": 0.9814814814814815,
+      "shaft_support": 0.9133807369101486,
+      "accepted": true,
+      "reason": "shaft curvature supported",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 2.4581764593121664,
+      "shaft_cylinder_rmse_mm": 1.512869293920289,
+      "score": 0.8407728990737621,
+      "rmse_mm": 1.1187259746753557
+    },
+    {
+      "candidate_index": 1,
+      "source_cluster_index": -2,
+      "local_window": true,
+      "previous_pose_refit": true,
+      "supported_points": 1990,
+      "observed_support": 1.0,
+      "visible_support": 0.8519218651543793,
+      "head_support": 0.6821192052980133,
+      "shaft_support": 0.8710359408033826,
+      "accepted": false,
+      "reason": "shaft evidence is better explained by a plane",
+      "curvature_accepted": false,
+      "shaft_plane_rmse_mm": 1.5670512001189787,
+      "shaft_cylinder_rmse_mm": 1.5003664239656906
+    },
+    {
+      "candidate_index": 2,
+      "source_cluster_index": -2,
+      "local_window": true,
+      "previous_pose_refit": true,
+      "supported_points": 2157,
+      "observed_support": 1.0,
+      "visible_support": 0.8138107416879795,
+      "head_support": 0.9549295774647887,
+      "shaft_support": 0.7836812144212524,
+      "accepted": true,
+      "reason": "shaft curvature supported",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 1.9262139806277376,
+      "shaft_cylinder_rmse_mm": 1.3917170086647113,
+      "score": 0.7544396841507957,
+      "rmse_mm": 1.0587507601889443
+    },
+    {
+      "candidate_index": 3,
+      "source_cluster_index": -2,
+      "local_window": true,
+      "previous_pose_refit": true,
+      "supported_points": 1733,
+      "observed_support": 1.0,
+      "visible_support": 0.6730878186968838,
+      "head_support": 0.5577689243027888,
+      "shaft_support": 0.6933867735470942,
+      "accepted": true,
+      "reason": "shaft curvature supported",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 4.597130957858082,
+      "shaft_cylinder_rmse_mm": 1.2288352178530717,
+      "score": 0.6366511339493308,
+      "rmse_mm": 1.1742612714678864
+    },
+    {
+      "candidate_index": 4,
+      "source_cluster_index": -2,
+      "local_window": true,
+      "previous_pose_refit": true,
+      "supported_points": 1433,
+      "observed_support": 1.0,
+      "visible_support": 0.4926027397260274,
+      "head_support": 0.4464720194647202,
+      "shaft_support": 0.530938123752495,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "candidate_index": 5,
+      "source_cluster_index": 2,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1533,
+      "observed_support": 1.0,
+      "visible_support": 0.7461538461538462,
+      "head_support": 0.4711864406779661,
+      "shaft_support": 0.8037135278514589,
+      "accepted": true,
+      "reason": "shaft curvature supported",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 2.6595731525116006,
+      "shaft_cylinder_rmse_mm": 0.9923318174902491,
+      "score": 0.6968125475575719,
+      "rmse_mm": 1.1279435129182924
+    },
+    {
+      "candidate_index": 6,
+      "source_cluster_index": 3,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1996,
+      "observed_support": 1.0,
+      "visible_support": 0.5193992490613266,
+      "head_support": 0.6181818181818182,
+      "shaft_support": 0.5,
+      "accepted": false,
+      "reason": "insufficient visible_support, shaft_support"
+    },
+    {
+      "candidate_index": 7,
+      "source_cluster_index": 6,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1006,
+      "observed_support": 1.0,
+      "visible_support": 0.3931034482758621,
+      "head_support": 0.1892744479495268,
+      "shaft_support": 0.4394046775336641,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "candidate_index": 8,
+      "source_cluster_index": 8,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1481,
+      "observed_support": 1.0,
+      "visible_support": 0.7717041800643086,
+      "head_support": 0.7591973244147158,
+      "shaft_support": 0.7743221690590112,
+      "accepted": true,
+      "reason": "shaft curvature supported",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 3.140267124920669,
+      "shaft_cylinder_rmse_mm": 1.1804819179856274,
+      "score": 0.7108971351951815,
+      "rmse_mm": 1.2149991575052073
+    },
+    {
+      "candidate_index": 9,
+      "source_cluster_index": 10,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1951,
+      "observed_support": 1.0,
+      "visible_support": 0.5221339387060159,
+      "head_support": 0.5151515151515151,
+      "shaft_support": 0.5249671484888305,
+      "accepted": false,
+      "reason": "insufficient visible_support, shaft_support"
+    },
+    {
+      "candidate_index": 10,
+      "source_cluster_index": 11,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 2112,
+      "observed_support": 1.0,
+      "visible_support": 0.9222050489438434,
+      "head_support": 0.9394285714285714,
+      "shaft_support": 0.9080675422138836,
+      "accepted": true,
+      "reason": "shaft curvature supported",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 2.7342331278036127,
+      "shaft_cylinder_rmse_mm": 0.9369326908371312,
+      "score": 0.8371243051740181,
+      "rmse_mm": 1.090341800520208
+    },
+    {
+      "candidate_index": 11,
+      "source_cluster_index": 13,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 805,
+      "observed_support": 1.0,
+      "visible_support": 0.2996197718631179,
+      "head_support": 0.10344827586206896,
+      "shaft_support": 0.35763546798029555,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "candidate_index": 12,
+      "source_cluster_index": 15,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1510,
+      "observed_support": 1.0,
+      "visible_support": 0.7147147147147147,
+      "head_support": 0.5338345864661654,
+      "shaft_support": 0.7615457115928369,
+      "accepted": true,
+      "reason": "shaft curvature supported",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 2.7555541945123205,
+      "shaft_cylinder_rmse_mm": 1.4904000011479461,
+      "score": 0.6651895296752331,
+      "rmse_mm": 1.0687367412510271
+    },
+    {
+      "candidate_index": 13,
+      "source_cluster_index": 16,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1414,
+      "observed_support": 1.0,
+      "visible_support": 0.5523648648648649,
+      "head_support": 0.5334143377885784,
+      "shaft_support": 0.569327731092437,
+      "accepted": false,
+      "reason": "insufficient visible_support, shaft_support"
+    },
+    {
+      "candidate_index": 14,
+      "source_cluster_index": 17,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1088,
+      "observed_support": 1.0,
+      "visible_support": 0.37684210526315787,
+      "head_support": 0.2777777777777778,
+      "shaft_support": 0.5142378559463987,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "candidate_index": 15,
+      "source_cluster_index": 23,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 890,
+      "observed_support": 1.0,
+      "visible_support": 0.43157894736842106,
+      "head_support": 0.1826086956521739,
+      "shaft_support": 0.5275590551181102,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "candidate_index": 16,
+      "source_cluster_index": 24,
+      "local_window": false,
+      "previous_pose_refit": false,
+      "supported_points": 1345,
+      "observed_support": 1.0,
+      "visible_support": 0.47860199714693297,
+      "head_support": 0.3573923166472643,
+      "shaft_support": 0.6715867158671587,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support"
+    },
+    {
+      "candidate_index": 17,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 2096,
+      "observed_support": 1.0,
+      "visible_support": 0.5346687211093991,
+      "head_support": 0.3465346534653465,
+      "shaft_support": 0.5914634146341463,
+      "accepted": false,
+      "reason": "insufficient visible_support, head_support, shaft_support"
+    },
+    {
+      "candidate_index": 18,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 2331,
+      "observed_support": 1.0,
+      "visible_support": 0.7218966435801811,
+      "head_support": 0.4198717948717949,
+      "shaft_support": 0.7870550161812297,
+      "accepted": false,
+      "reason": "insufficient head_support"
+    },
+    {
+      "candidate_index": 19,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 1848,
+      "observed_support": 1.0,
+      "visible_support": 0.6730523627075351,
+      "head_support": 0.22608695652173913,
+      "shaft_support": 0.7549167927382754,
+      "accepted": false,
+      "reason": "insufficient head_support"
+    },
+    {
+      "candidate_index": 20,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "accepted": false,
+      "reason": "no cylinder-supported hypothesis"
+    },
+    {
+      "candidate_index": 21,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "accepted": false,
+      "reason": "no cylinder-supported hypothesis"
+    },
+    {
+      "candidate_index": 22,
+      "source_cluster_index": -1,
+      "local_window": true,
+      "previous_pose_refit": false,
+      "supported_points": 2465,
+      "observed_support": 1.0,
+      "visible_support": 0.9111824505082932,
+      "head_support": 0.8863636363636364,
+      "shaft_support": 0.9174252275682705,
+      "accepted": false,
+      "reason": "duplicate pose suppressed",
+      "curvature_accepted": true,
+      "shaft_plane_rmse_mm": 2.3516695593069135,
+      "shaft_cylinder_rmse_mm": 1.395256633563695,
+      "score": 0.8265811262138395,
+      "rmse_mm": 1.1737325318405
+    }
+  ],
+  "statistics": {
+    "segmented_clusters": 34,
+    "candidate_regions": 23,
+    "registered_candidates": 23,
+    "validated_instances": 7,
+    "previous_pose_hints": 5,
+    "elapsed_s": 7.484000000000378
+  },
+  "preview_only": true
+}

@@ -11,6 +11,7 @@ except ImportError:
     GripperApp = None
 
 from gripper_backend import GripperProfile, WriteUncertainError, words_to_opening
+from controller_lease import ControllerBusyError
 
 
 @unittest.skipIf(GripperApp is None, "Tkinter is not installed")
@@ -220,6 +221,32 @@ class InterfaceTests(unittest.TestCase):
         self.assertTrue(self.app.connected)
         self.assertFalse(self.app.armed.get())
         self.assertIsNone(self.app.reconnect_job)
+
+    def test_background_lease_contention_preserves_permission_and_clears_target(self):
+        self.connect_simulator()
+        self.app.armed.set(True)
+        with patch.object(self.app.client, "snapshot", side_effect=ControllerBusyError("busy")):
+            self.app._refresh()
+            self.app.pending_target = 12
+            self.wait_for_result()
+        self.assertTrue(self.app.connected)
+        self.assertTrue(self.app.armed.get())
+        self.assertIsNone(self.app.pending_target)
+        self.assertIsNone(self.app.reconnect_job)
+
+    def test_busy_initial_connection_does_not_claim_connected_and_retries_read_only(self):
+        self.app.mode.set("sim")
+        with patch("gripper_app.GripperClient.connect", side_effect=ControllerBusyError("busy")):
+            self.app._connect()
+            self.wait_for_result()
+        self.assertFalse(self.app.connected)
+        self.assertFalse(self.app.armed.get())
+        self.assertIsNotNone(self.app.reconnect_job)
+        self.app._cancel_reconnect()
+        self.app._reconnect()
+        self.wait_for_result()
+        self.assertTrue(self.app.connected)
+        self.assertFalse(self.app.armed.get())
 
 
 if __name__ == "__main__":

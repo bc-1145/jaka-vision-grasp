@@ -21,21 +21,24 @@ def _capture_verification_once(output_dir: Path, sdk_path=None) -> dict:
 
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+    from camera_cleanup import CameraResource
     sensor = InuSensor()
+    sensor_lifecycle = CameraResource(sensor)
     streams = []
-    started = []
     color = depth = None
     try:
-        sensor.init()
-        sensor.start()
+        sensor_lifecycle.init()
+        sensor_lifecycle.start()
         color_stream = sensor.create_stream(StreamType.GENERAL_CAMERA)
-        streams.append(color_stream)
-        color_stream.init(ImageOutputFormat.BGRA, ImagePostProcessing.NONE_PROCESSING)
-        color_stream.start(); started.append(color_stream)
+        color_lifecycle = CameraResource(color_stream)
+        streams.append(color_lifecycle)
+        color_lifecycle.init(ImageOutputFormat.BGRA, ImagePostProcessing.NONE_PROCESSING)
+        color_lifecycle.start()
         depth_stream = sensor.create_stream(StreamType.DEPTH)
-        streams.append(depth_stream)
-        depth_stream.init(DepthOutputFormat.DEPTH, DepthPostProcessing.DEFAULT)
-        depth_stream.start(); started.append(depth_stream)
+        depth_lifecycle = CameraResource(depth_stream)
+        streams.append(depth_lifecycle)
+        depth_lifecycle.init(DepthOutputFormat.DEPTH, DepthPostProcessing.DEFAULT)
+        depth_lifecycle.start()
         valid = 0
         for _ in range(50):
             cframe = color_stream.frame
@@ -51,21 +54,9 @@ def _capture_verification_once(output_dir: Path, sdk_path=None) -> dict:
                 depth = current_depth.copy()
                 break
     finally:
-        for stream in reversed(started):
-            try:
-                stream.stop()
-            except Exception:
-                pass
-        for stream in reversed(streams):
-            try:
-                stream.terminate()
-            except Exception:
-                pass
-        for operation in (sensor.stop, sensor.terminate):
-            try:
-                operation()
-            except Exception:
-                pass
+        for lifecycle in reversed(streams):
+            lifecycle.close()
+        sensor_lifecycle.close()
     if color is None or depth is None:
         raise RuntimeError("相机没有提供抓取验证图像")
 
@@ -113,6 +104,28 @@ def capture_verification(output_dir: Path, sdk_path=None) -> dict:
             if attempt < 2:
                 time.sleep(1.0 + attempt)
     raise RuntimeError(f"抓取验证相机连续 3 次失败：{last_error}") from last_error
+
+
+def capture_verification_isolated(output_dir: Path, sdk_path=None, timeout_seconds=45) -> dict:
+    """Bound a native SDK stall and isolate RGB/depth lifecycle from XYZ scans."""
+    import subprocess
+    import sys
+    output_dir = Path(output_dir).resolve()
+    started = time.time()
+    command = [sys.executable, "-X", "utf8", "-c",
+               "import sys; from pathlib import Path; from grasp_verification import _capture_verification_once; "
+               "_capture_verification_once(Path(sys.argv[1]), sys.argv[2] or None)",
+               str(output_dir), str(sdk_path or "")]
+    try:
+        subprocess.run(command, cwd=str(Path(__file__).resolve().parent), check=True,
+                       timeout=timeout_seconds, stdin=subprocess.DEVNULL,
+                       creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    except subprocess.TimeoutExpired as exc:
+        raise RuntimeError("RGB/depth camera exceeded its capture deadline") from exc
+    result = json.loads((output_dir / "grasp_verify_latest.json").read_text(encoding="utf-8"))
+    if result["created_unix"] < started or not Path(result["color_path"]).is_file():
+        raise RuntimeError("Isolated camera returned an old or missing image")
+    return result
 
 
 def compare_verification(before: dict, after: dict, output_path: Path) -> str:

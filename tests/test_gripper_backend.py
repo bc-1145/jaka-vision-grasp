@@ -103,9 +103,24 @@ class GripperTests(unittest.TestCase):
             self.assertEqual(command.call_count, 3)
 
     def test_readback_mismatch_is_uncertain(self):
-        with patch("gripper_backend.send_command", return_value={"errorCode": 0, "value": 0}), patch("gripper_backend.time.sleep"):
+        with patch("gripper_backend.send_command", return_value={"errorCode": 0, "value": 0}), patch("gripper_backend.READBACK_TIMEOUT", 0):
             with self.assertRaisesRegex(WriteUncertainError, "回读"):
                 GripperClient().set_target(100)
+
+    def test_delayed_bus_readback_only_repeats_reads(self):
+        words = iter([16800, 0, 16654, 0, 16654, 5243])
+        calls = []
+
+        def response(command, **kwargs):
+            calls.append(command)
+            return {"errorCode": 0, "value": next(words)
+                    if command["cmdName"] == "get_analog_output" else 0}
+
+        with patch("gripper_backend.send_command", side_effect=response), patch("gripper_backend.time.sleep"):
+            result = GripperClient().set_opening_mm(8.88, settle_time=0)
+        self.assertEqual((result.high, result.low), (16654, 5243))
+        self.assertEqual(sum(c["cmdName"] == "set_analog_output" for c in calls), 2)
+        self.assertEqual(sum(c["cmdName"] == "get_analog_output" for c in calls), 6)
 
     def test_error_code_or_missing_readback_fails_connection(self):
         for reply in ({"errorCode": 5}, {"errorCode": 0}, {"value": 0}):

@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "camera": {
+    "sdk": null,
+    "mount": "eye_in_hand",
+    "warmup_frames": 3,
+    "frames": 5,
+    "roi": {
+      "min_mm": [
+        -400,
+        -500,
+        150
+      ],
+      "max_mm": [
+        400,
+        310,
+        1000
+      ]
+    },
+    "base_T_camera": null,
+    "tcp_T_camera": [
+      [
+        -0.002269905777721941,
+        0.999980073923184,
+        -0.005890609844854176,
+        68.00336779272727
+      ],
+      [
+        0.9999960480570503,
+        0.002279634276846483,
+        0.0016453382162851153,
+        31.733340484948133
+      ],
+      [
+        0.001658733867263288,
+        -0.005886851802776676,
+        -0.9999812966139967,
+        -24.066712241311986
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "calibration_tool_id": 0,
+    "color_projection": {
+      "image_size": [
+        1600,
+        1200
+      ],
+      "matrix": [
+        [
+          740.5405137314264,
+          0,
+          810.7097050275514
+        ],
+        [
+          0,
+          740.5405137314264,
+          594.4421837941743
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "distortion": [
+        0.1221117798226046,
+        -0.09611868676015464,
+        0.00039735611981520276,
+        -0.00015656739314048475,
+        0.007826031710443972
+      ],
+      "color_T_camera": [
+        [
+          0.9999936683004238,
+          0.0019394074884384973,
+          -0.002983631621934243,
+          -62.962933602861455
+        ],
+        [
+          -0.0019513450626610905,
+          0.9999900827642872,
+          -0.004003326806594772,
+          0.10136762918234647
+        ],
+        [
+          0.002975837950568791,
+          0.004009123553566388,
+          0.9999875355807313,
+          -2.8707579755607395
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "source": "InuDev factory calibration, real color / virtual right depth"
+    },
+    "depth_projection": {
+      "image_size": [
+        1080,
+        720
+      ],
+      "matrix": [
+        [
+          540.0,
+          0,
+          540.0
+        ],
+        [
+          0,
+          510.0,
+          360.0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "distortion": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "color_T_camera": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "source": "InuDev factory calibration, real color / virtual right depth"
+    },
+    "excluded_boxes_mm": [
+      {
+        "min_mm": [
+          -100,
+          115,
+          245
+        ],
+        "max_mm": [
+          120,
+          310,
+          450
+        ],
+        "source": "Wrist-mounted camera: tool volume observed in saved gripper false positives; review after camera/tool geometry changes"
+      }
+    ]
+  },
+  "model": {
+    "path": "螺栓.FCStd",
+    "axis_model": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "large_end_z_mm": 0.0,
+    "grasp_point_mm": [
+      0.0,
+      0.0,
+      27.4
+    ],
+    "grasp_width_mm": 21.0,
+    "grasp_region": "shaft",
+    "shaft_z_range_mm": [
+      3.6,
+      51.2
+    ],
+    "head_z_range_mm": [
+      0.0,
+      3.2
+    ]
+  },
+  "matching": {
+    "scene_voxel_mm": 1.0,
+    "model_voxel_mm": 1.5,
+    "model_sample_points": 7000,
+    "plane_distance_mm": 1.5,
+    "cluster_eps_mm": 3.0,
+    "cluster_min_points": 20,
+    "min_cluster_points": 180,
+    "extent_tolerance": 0.55,
+    "ransac_distance_mm": 4.5,
+    "icp_distance_mm": 2.5,
+    "minimum_score": 0.58,
+    "minimum_observed_support": 0.65,
+    "minimum_visible_support": 0.6,
+    "minimum_head_support": 0.65,
+    "minimum_shaft_support": 0.65
+  },
+  "gripper": {
+    "open_command_mm": 20.0,
+    "close_command_mm": 8.65,
+    "measured_max_object_mm": 21.5,
+    "tcp_to_grasp_center_mm": [
+      0.0,
+      0.0,
+      -180.0
+    ],
+    "tcp_to_grasp_center_estimate_mm": [
+      0.0,
+      0.0,
+      -180.0
+    ],
+    "tcp_to_grasp_center_estimate_source": "Operator estimated approximately 18 cm. Axis sign corrected to flange -Z from the calibrated camera viewing direction and observed workpiece depth; provisional for first pickup",
+    "down_rpy_deg": [
+      -180.0,
+      0.0,
+      90.0
+    ],
+    "jaw_axis_tcp": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "confirmed_hold_setting": {
+      "command_mm": 9.43,
+      "source": "Operator confirmed holding the shaft/body, not the large head, at 9.43 mm command",
+      "is_measured_finger_spacing": false,
+      "is_camera_or_tool_geometry_calibration": false,
+      "grasp_region": "shaft"
+    }
+  },
+  "robot": {
+    "speed_mm_s": 10.0,
+    "accel_mm_s2": 20.0,
+    "approach_mm": 60.0,
+    "lift_mm": 80.0,
+    "motion_timeout_s": 120.0,
+    "max_direct_rotation_deg": 100.0,
+    "observation_pose": {
+      "created_unix": 1794606561.3957477,
+      "tcp_pose": [
+        253.56110175124527,
+        -62.730297336802245,
+        262.28821902853895,
+        177.6921274143897,
+        -1.7455069485724777,
+        179.84335931934498
+      ],
+      "tool_id": 0,
+      "user_id": 0
+    }
+  },
+  "placement": {
+    "home_pose": [
+      5.99999999975646,
+      -472.8614764086692,
+      221.718755058717,
+      180.0,
+      -45.000000000022844,
+      -90.00000000005781
+    ],
+    "platform_z_mm": null,
+    "yaw_deg": 0.0,
+    "mode": "home_tcp"
+  },
+  "fixture": {
+    "enabled": false,
+    "open_command_mm": 20.0,
+    "close_command_mm": 10.0,
+    "deposit_approach_pose": null,
+    "deposit_pose": null,
+    "pickup_approach_pose": null,
+    "pickup_pose": null,
+    "model_pose_when_clamped": null
+  }
+}

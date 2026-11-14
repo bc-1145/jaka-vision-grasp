@@ -16,6 +16,8 @@ from gripper_transport import send_command
 
 MAX_TARGET = sdk.GRIPPER_OPEN
 MAX_OPENING_MM = 20.0
+READBACK_TIMEOUT = 2.0
+READBACK_INTERVAL = 0.05
 _CONTROLLER_LOCKS: dict[str, threading.RLock] = {}
 _LOCK_REGISTRY = threading.Lock()
 
@@ -184,12 +186,19 @@ class GripperClient:
     def _validate_mapping(self):
         if self.simulated or not self.profile.device_id:
             return
-        current = profiles_from_status(read_controller_status(self.host, self.timeout))
+        status = read_controller_status(self.host, self.timeout)
+        current = profiles_from_status(status)
         matching = next((item for item in current if item.device_id == self.profile.device_id), None)
         if (matching is None or matching.high_index != self.profile.high_index
                 or matching.low_index != self.profile.low_index
                 or matching.unit_id != self.profile.unit_id):
             raise RuntimeError(f"{self.profile.name} 的 IO 映射已变化，已阻止操作；请重新识别夹爪。")
+        # Verified on this controller against the JAKA IO panel: editor=0,
+        # running=1. Cached AO values remain readable while the bus is stopped.
+        if status["extio"].get("mode") != 1:
+            raise RuntimeError(
+                "扩展 IO 未运行，夹爪指令无法执行。请在 JAKA I/O 面板中，"
+                "先将静止的机器人下使能，再点击扩展 IO「运行」，之后恢复机器人使能。")
 
     def connect(self) -> Snapshot:
         with self._controller_lock:
@@ -244,6 +253,12 @@ class GripperClient:
             if settle_time > 0:
                 time.sleep(settle_time)
             result = self.snapshot()
+            # Extended IO is updated asynchronously by the Modbus bus. Wait
+            # only for readback; never resend either word after a mismatch.
+            deadline = time.monotonic() + READBACK_TIMEOUT
+            while (result.high, result.low) != (high, low) and time.monotonic() < deadline:
+                time.sleep(READBACK_INTERVAL)
+                result = Snapshot(result.state, self._read(high_index), self._read(low_index))
             if result.high != high:
                 raise RuntimeError(f"寄存器 {high_index} 回读 {result.high:g}，目标 {high}")
             if result.low != low:

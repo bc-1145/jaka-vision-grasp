@@ -1,0 +1,238 @@
+{
+  "completed": false,
+  "motion_sent": false,
+  "actuator_write_attempted": false,
+  "stage": "只读识别完成",
+  "run_created_unix": 1794675088.9027357,
+  "create_home": false,
+  "mode": "read_only",
+  "events": [
+    {
+      "stage": "控制器与夹爪反馈检查",
+      "created_unix": 1794675093.4279814,
+      "feedback": {
+        "available": false,
+        "grip_state": null,
+        "state_name": null,
+        "holding": null,
+        "dropped": null,
+        "actual_position_mm": null,
+        "current_a": null,
+        "initialization_state": null,
+        "reason": "夹爪反馈读取失败：timed out",
+        "source": "jaka_extio_input_registers",
+        "protocol_source": "https://cn.hitbot.cc/hitbot/document/Z-EFG/Z-EFG-20P/Z-EFG-20P.pdf",
+        "created_unix": 1794675093.4279814,
+        "field_available": {
+          "state": false,
+          "position": false,
+          "current": false,
+          "initialization": false
+        },
+        "device_id": "ext_n7sn2kaoncejc6b2",
+        "unit_id": 1,
+        "command_is_measured_gap": false
+      }
+    },
+    {
+      "stage": "已在高处总览位",
+      "created_unix": 1794675093.4604857
+    },
+    {
+      "stage": "高位重新扫描零件",
+      "created_unix": 1794675093.4628592,
+      "scan_attempt": 1
+    },
+    {
+      "stage": "核对大法兰方向",
+      "created_unix": 1794675115.8587565,
+      "direction": {
+        "accepted": true,
+        "status": "verified",
+        "reason": "Measured wide flange supports CAD direction",
+        "head_annulus_points": 479,
+        "reverse_annulus_points": 223,
+        "direction_ratio": 2.142857142857143
+      }
+    },
+    {
+      "stage": "只读识别完成",
+      "created_unix": 1794675115.8648129
+    }
+  ],
+  "output": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_005128",
+  "independent_tool_calibration": false,
+  "target": {
+    "best": {
+      "cluster_index": 22,
+      "score": 0.8407004332691161,
+      "fitness": 0.9268558951965066,
+      "rmse_mm": 1.152401608821451,
+      "camera_T_model": [
+        [
+          0.4548693794012282,
+          -0.7896575489786442,
+          0.41174604190469355,
+          -149.6045867269802
+        ],
+        [
+          -0.4844908970212024,
+          0.1685133373474324,
+          0.8584123868162784,
+          -74.75192978967198
+        ],
+        [
+          -0.7472365210472071,
+          -0.5899527188487821,
+          -0.30593033706417044,
+          360.9463158766017
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cluster_points": 2865,
+      "clearance_mm": 15.669686649419791,
+      "observation": {
+        "created_unix": 1794675095.481125,
+        "tcp_pose": [
+          6.033276321806451,
+          -298.8207927277766,
+          363.31132842354793,
+          -179.99923596941485,
+          28.012900721338053,
+          90.0087500023081
+        ],
+        "tool_id": 0,
+        "user_id": 0,
+        "camera_frame": "opencv_optical"
+      }
+    },
+    "observation": {
+      "created_unix": 1794675095.481125,
+      "tcp_pose": [
+        6.033276321806451,
+        -298.8207927277766,
+        363.31132842354793,
+        -179.99923596941485,
+        28.012900721338053,
+        90.0087500023081
+      ],
+      "tool_id": 0,
+      "user_id": 0,
+      "camera_frame": "opencv_optical"
+    },
+    "base_T_model": [
+      [
+        -0.45435904293022217,
+        0.7912865466118412,
+        -0.40917412095419625,
+        123.0400537464441
+      ],
+      [
+        -0.08138655198523286,
+        0.42052984113930464,
+        0.9036209835253413,
+        -604.2348646053351
+      ],
+      [
+        0.8870930555829467,
+        0.4438696361122909,
+        -0.1266714524826129,
+        88.79986763673816
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "base_T_camera": [
+      [
+        -0.9999952355730111,
+        0.002235023254900001,
+        -0.002129202275148912,
+        -25.628220182005776
+      ],
+      [
+        0.0029675493290149957,
+        0.8859753758066207,
+        -0.46372279123987187,
+        -370.1835034406549
+      ],
+      [
+        0.0008499895636451388,
+        -0.4637269003792728,
+        -0.8859777871833889,
+        374.05296750774403
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "shaft_grasp_center_base_mm": [
+      111.82868283229912,
+      -579.4756496567408,
+      85.32906983871456
+    ],
+    "source_scan": "C:\\Users\\Administrator\\Desktop\\1\\pick_results\\automatic_table\\run_20261115_005128\\scan_1",
+    "created_unix": 1794675115.813187
+  },
+  "table_plane": {
+    "accepted": true,
+    "status": "verified",
+    "reason": "Current tabletop measured",
+    "plane_base": [
+      -0.0038445191345956096,
+      0.0016091151413448932,
+      0.9999913151728297,
+      -66.33199268895868
+    ],
+    "support_points": 70857,
+    "normal_tilt_deg": 0.2387913191547596,
+    "residual_median_mm": 0.34030187407624624,
+    "height_at_grasp_xy_mm": 67.3619868698623,
+    "fit_xy_mm": [
+      43.0,
+      -537.0
+    ]
+  },
+  "final_state": {
+    "queue": 0,
+    "errorCode": "0",
+    "errorMsg": "",
+    "cmdName": "get_motion_state",
+    "queue_full": false,
+    "active_queue": 0,
+    "inpos": true,
+    "collision": 0,
+    "paused": false,
+    "err_add_line": 0,
+    "soft_limit": 0,
+    "estop": 0,
+    "motion_line": 72842736,
+    "actual_position": [
+      6.033276321806451,
+      -298.8207927277766,
+      363.31132842354793,
+      -179.99923596941485,
+      28.012900721338053,
+      90.0087500023081
+    ],
+    "joint_actual_position": [
+      90.0061302173027,
+      12.54954517706651,
+      44.97752098516875,
+      0.00046782138971612763,
+      94.4600331102509,
+      179.99772352368262
+    ]
+  }
+}
